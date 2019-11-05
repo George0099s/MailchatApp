@@ -5,9 +5,14 @@
     <string name="title_activity_security">SECURITY CODE</string>
     <string name="title_activity_registration">RegistrationActivity</string>
     <string name="title_activity_loader">LoaderActivity</string>
-    <string name="terms">I confirm \n Terms &amp; policies</string>
+    <string name="terms">By clicking "Continue", you agree to the Terms and Privacy Policy</string>
     <string name="title_activity_log_in">LogIn</string>
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="title_activity_security_log_in">SecurityLogInActivity</string>
     <string name="title_activity_failed_connection">FailedConnection</string>
+    <string name="title_activity_sign_up_business">SignUpBusiness</string>
+    <string name="title_activity_security_code_business">SecurityCodeBusiness</string>
+    <string name="title_activity_add_new_company">AddNewCompany</string>
+    <string name="title_activity_add_user">AddUser</string>
+    <string name="title_activity_company_profile">CompanyProfile</string>
 </resources>

@@ -102,7 +102,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <ImageButton
-            android:id="@+id/logINBTN"
+            android:id="@+id/BusinessBTN"
             android:layout_width="30dp"
             android:layout_height="35dp"
             android:background="@drawable/business_user">

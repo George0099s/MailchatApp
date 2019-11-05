@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "998463900931-51qnhm4dna11498no86vpfqehnkka1vk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mailchat",
+            "certificate_hash": "f2afb88307d68cca356d96b49d37bb9812147ab8"
+          }
+        },
+        {
           "client_id": "998463900931-fn79d5se8r9ub68q5f354h2sa9t965rt.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

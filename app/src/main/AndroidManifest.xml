@@ -14,10 +14,30 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".FailedConnection"
-            android:noHistory="true"
-            android:label="@string/title_activity_failed_connection"
+            android:name=".CompanyProfile"
+            android:label="@string/title_activity_company_profile"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".AddUser"
+            android:label="@string/title_activity_add_user"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddNewCompany"
+            android:label="@string/title_activity_add_new_company"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SecurityCodeBusiness"
+            android:label="@string/title_activity_security_code_business"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SignUpBusiness"
+            android:label="@string/title_activity_sign_up_business"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FailedConnection"
+            android:label="@string/title_activity_failed_connection"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ProfileActivity"
             android:label="@string/title_activity_profile"
