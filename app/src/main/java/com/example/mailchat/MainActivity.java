@@ -1,0 +1,181 @@
+    package com.example.mailchat;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
+
+import java.util.concurrent.TimeUnit;
+
+    public class MainActivity extends AppCompatActivity {
+
+    private EditText editTextPhone, editTextName;
+    private final String TAG = "sss";
+    FirebaseAuth mAuth;
+    static String codeSent;
+    CheckBox checkBox;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
+
+        mAuth = FirebaseAuth.getInstance();
+
+        editTextPhone = findViewById(R.id.phoneTV);
+        editTextName = findViewById(R.id.nameTV);
+        checkBox = findViewById(R.id.checkBox);
+        findViewById(R.id.btnGetCode).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+
+                sendVerificationCode();
+
+            }
+
+        });
+        findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                onBackPressed();
+
+            }
+
+        });
+
+
+    }
+
+
+        static String phone;
+        private void sendVerificationCode(){
+
+        phone = editTextPhone.getText().toString();
+        String name = editTextName.getText().toString();
+
+        if(phone.isEmpty() && name.isEmpty() )
+        {
+            editTextName.setError("Введите имя");
+            editTextName.requestFocus();
+            editTextPhone.setError("введите значение");
+            editTextPhone.requestFocus();
+            checkBox.setError("Подтвердите соглашение");
+            checkBox.requestFocus();
+            return;
+        }
+        if (checkBox == null)
+        {
+            checkBox.setError("Подтвердите соглашение");
+            checkBox.requestFocus();
+        }
+        if (phone.isEmpty())
+        {
+            editTextName.setError("Введите имя");
+            editTextName.requestFocus();
+        }
+
+        if (phone.length() < 11 )
+
+        {
+            editTextPhone.setError("введите правильно номер");
+            editTextPhone.requestFocus();
+            return;
+        }
+        if(name.isEmpty())
+        {
+            editTextName.setError("Введите имя");
+            editTextName.requestFocus();
+        }
+
+        if (name != null && phone !=null && checkBox.isChecked() ) {
+            PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                    phone,        // Phone number to verify
+                    60,                 // Timeout duration
+                    TimeUnit.SECONDS,   // Unit of timeout
+                    this,               // Activity (for callback binding)
+                    mCallbacks);        // OnVerificationStateChangedCallbacks
+
+
+            TextView s = findViewById(R.id.phone_text_view);
+
+        }
+
+    }
+
+
+        PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+            @Override
+            public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+                Log.d("ABCD","Verification completed"+phoneAuthCredential.toString());
+                Toast.makeText(getApplicationContext(), "Verification completed",
+                                            Toast.LENGTH_SHORT).show();
+            }
+
+
+            @Override
+            public void onVerificationFailed(@NonNull FirebaseException e) {
+                Log.d("ABCD","Verification failed"+e.getMessage());
+                Toast.makeText(getApplicationContext(), "Incorrect verification code",
+                                            Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+                Log.d("ABCD","Code sent "+ s);
+                super.onCodeSent(s, forceResendingToken);
+                codeSent = s;
+                Intent intent = new Intent(MainActivity.this, SecurityActivity.class);
+                intent.putExtra("phone", phone);
+                startActivity(intent);
+            }
+
+        };
+
+//        private void verifySignInCode()
+//        {
+//
+//            String code = editTextCode.getText().toString();
+//            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(codeSent, code);
+//            Log.d("ABCD",credential.toString());
+//            signInWithPhoneAuthCredential(credential);
+//        }
+//        private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
+//            mAuth.signInWithCredential(credential)
+//                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<AuthResult> task) {
+//                            if (task.isSuccessful()) {
+//                                Toast.makeText(getApplicationContext(), "log success",
+//                                        Toast.LENGTH_SHORT).show();
+//                            } else {
+//
+//                                if (task.getException() instanceof  FirebaseAuthInvalidCredentialsException)
+//                                {
+//                                    Toast.makeText(getApplicationContext(), "Incorrect verification code",
+//                                            Toast.LENGTH_SHORT).show();
+//                                }
+//
+//                            }
+//                        }
+//                    });
+//        }
+
+    }
