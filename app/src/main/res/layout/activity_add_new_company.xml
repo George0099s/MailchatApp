@@ -22,7 +22,7 @@
         android:id="@+id/imageView9"
         android:layout_width="92dp"
         android:layout_height="69dp"
-        android:src="@drawable/starts_shadow2"
+        android:src="@drawable/stars_shadow2"
         app:layout_constraintEnd_toEndOf="@+id/imageView8"
         app:layout_constraintStart_toStartOf="@+id/imageView8"
         app:layout_constraintTop_toBottomOf="@+id/imageView8">
@@ -59,6 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <LinearLayout
+        android:orientation="horizontal"
         android:id="@+id/linearLayout5"
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -103,7 +104,7 @@
         android:layout_height="27dp"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
-        android:src="@drawable/s11"
+        android:src="@drawable/s2"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout5"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout5"
         app:layout_constraintStart_toStartOf="parent"

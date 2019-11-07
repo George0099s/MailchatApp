@@ -22,9 +22,9 @@ import java.util.concurrent.TimeUnit;
     public class MainActivity extends AppCompatActivity {
 
     private EditText editTextPhone, editTextName;
-    private final String TAG = "sss";
+    private final String TAG = "Sign Up Private user";
     FirebaseAuth mAuth;
-    static String codeSent;
+    String codeSent;
     CheckBox checkBox;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +59,8 @@ import java.util.concurrent.TimeUnit;
     }
 
 
-        static String phone;
+
+        String phone;
         private void sendVerificationCode(){
 
         phone = editTextPhone.getText().toString();
@@ -108,7 +109,7 @@ import java.util.concurrent.TimeUnit;
                     mCallbacks);        // OnVerificationStateChangedCallbacks
 
 
-            TextView s = findViewById(R.id.phone_text_view);
+
 
         }
 
@@ -138,6 +139,7 @@ import java.util.concurrent.TimeUnit;
                 codeSent = s;
                 Intent intent = new Intent(MainActivity.this, SecurityActivity.class);
                 intent.putExtra("phone", phone);
+                intent.putExtra("codeSent", codeSent);
                 startActivity(intent);
             }
 

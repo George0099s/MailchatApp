@@ -11,22 +11,25 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 
-public class AddUser extends AppCompatActivity {
+public class AddUser2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_user);
-        findViewById(R.id.goToUserAdd2).setOnClickListener(new View.OnClickListener(){
+        setContentView(R.layout.activity_add_user2);
+
+
+        findViewById(R.id.backbtn).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-
-                Intent intent = new Intent(AddUser.this, AddUser2.class);
-                startActivity(intent);
+            public void onClick(View v) {
+                onBackPressed();
             }
-
         });
-    }
 
+}
+
+@Override
+    public void onBackPressed(){
+        super.onBackPressed();
+}
 }

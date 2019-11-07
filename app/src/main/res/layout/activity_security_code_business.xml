@@ -45,7 +45,7 @@
         android:layout_height="122dp"
         android:layout_gravity="center"
         android:layout_marginTop="34dp"
-        android:src="@drawable/shadowphone"
+        android:src="@drawable/security_code_shadow_img"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -89,7 +89,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
-        android:id="@+id/codeTV"
+        android:id="@+id/codeBusinessTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -120,10 +120,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/codeTV" />
+        app:layout_constraintTop_toBottomOf="@+id/codeBusinessTV" />
 
     <TextView
-        android:id="@+id/send_again_btn"
+        android:id="@+id/send_again_business_btn"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginStart="30dp"
@@ -131,7 +131,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/rectangleshadow"
+        android:background="@drawable/shadow_rect"
         android:gravity="center"
         android:text="Get New Code after 9:59"
         android:textColor="#999999"
@@ -141,7 +141,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6"></TextView>
 
     <Button
-        android:id="@+id/btnVerifyCode"
+        android:id="@+id/btnVerifyCodeBusiness"
 
         android:layout_width="wrap_content"
         android:layout_height="40dp"
@@ -150,6 +150,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
+        android:layout_marginBottom="140dp"
         android:alpha="0.5"
         android:background="@drawable/bg_confirm"
         android:text="Verify"
@@ -158,8 +159,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/send_again_btn"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/send_again_business_btn"
+        app:layout_constraintVertical_bias="0.01" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

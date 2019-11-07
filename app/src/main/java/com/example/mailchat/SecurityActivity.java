@@ -28,12 +28,13 @@ import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class SecurityActivity extends AppCompatActivity {
-    EditText editTextCode;
+    private EditText editTextCode;
     FirebaseAuth mAuth;
     private TextView sendAgain;
 
     private CountDownTimer countDownTimer;
     String phone;
+    String codeSent;
     private Boolean mTimerRunning;
     private long mTimeLeft = Constants.START_TIME;
 
@@ -44,6 +45,7 @@ public class SecurityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_security);
         phone = getIntent().getStringExtra("phone");
+        codeSent = getIntent().getStringExtra("codeSent");
         startTimer();
        sendAgain = findViewById(R.id.send_again_btn);
         sendAgain.setOnClickListener(new View.OnClickListener() {
@@ -160,8 +162,8 @@ public class SecurityActivity extends AppCompatActivity {
 
         String code = editTextCode.getText().toString();
         try {
-            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(MainActivity.codeSent, code);
-//            Log.d("ABCD", credential.toString());
+            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(codeSent, code);
+            Log.d("Credential" ," " + credential.toString());
             signInWithPhoneAuthCredential(credential);
         } catch (Exception e) {
             Toast toast = Toast.makeText(this, "Verification Code is wrong", Toast.LENGTH_SHORT);
