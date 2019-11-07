@@ -15,4 +15,16 @@
     <string name="title_activity_add_new_company">AddNewCompany</string>
     <string name="title_activity_add_user">AddUser</string>
     <string name="title_activity_company_profile">CompanyProfile</string>
+    <string name="title_activity_add_user2">ADD USERS</string>
+
+    <array name="months">
+        <item>September</item>
+        <item>Oktober</item>
+        <item>November</item>
+    </array>
+    <string name="title_activity_add_private_user_photo">AddPrivateUserPhoto</string>
+    <string name="title_activity_choose_private_mailchat_id">CHOOSE MAILCHAT ID</string>
+    <string name="howitworks"><u>how it works?</u></string>
+    <string name="title_activity_choose_business_id">ChooseBusinessID</string>
+    <string name="title_activity_congratulation_business">CongratulationBusiness</string>
 </resources>

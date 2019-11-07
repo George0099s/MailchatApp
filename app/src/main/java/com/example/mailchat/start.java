@@ -36,6 +36,7 @@ public class start extends AppCompatActivity implements View.OnClickListener{
         switch (v.getId()) {
             case R.id.signUPBTN:
                 Intent intent = new Intent(this, RegistrationActivity.class);
+//                Intent intent = new Intent(this, ProfileActivity.class);
                 startActivity(intent);
                 break;
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,8 +7,122 @@
     tools:context=".ProfileActivity">
 
     <TextView
-        android:layout_width="333dp"
-        android:layout_height="514dp"
-        android:text="Profile" android:gravity="center"/>
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:letterSpacing="0.5"
+        android:text="USER PROFILE"
+        android:textColor="#262626"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"></TextView>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Gender"
+        app:layout_constraintBottom_toTopOf="@+id/btnMale"
+        app:layout_constraintStart_toStartOf="@+id/btnMale" />
+
+    <Button
+        android:id="@+id/btnMale"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginRight="19dp"
+        android:background="@drawable/rect_okbtn"
+        android:text="Male"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toStartOf="@+id/btnFemale"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+
+    <Button
+        android:id="@+id/btnFemale"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginRight="31dp"
+        android:background="@drawable/rect_okbtn"
+        android:text="Button"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="@+id/btnMale"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnMale" />
+
+    <Spinner
+        android:id="@+id/monthSspinner"
+        android:layout_width="118dp"
+        android:dropDownWidth="match_parent"
+        android:orientation="vertical"
+
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintStart_toStartOf="@+id/btnMale"
+        app:layout_constraintTop_toBottomOf="@+id/btnMale" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="Date of birth"
+        app:layout_constraintBottom_toTopOf="@+id/monthSspinner"
+        app:layout_constraintStart_toStartOf="@+id/monthSspinner" />
+
+    <Spinner
+        android:id="@+id/yearSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginLeft="72dp"
+        app:layout_constraintBottom_toBottomOf="@+id/monthSspinner"
+        app:layout_constraintStart_toEndOf="@+id/monthSspinner"
+        app:layout_constraintTop_toTopOf="@+id/monthSspinner"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        android:alpha="0.5"
+        android:background="@drawable/okbtn"
+        android:text="Next"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/yearSpinner"
+        app:layout_constraintEnd_toEndOf="@+id/btnFemale"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/yearSpinner"
+        app:layout_constraintTop_toTopOf="@+id/yearSpinner" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

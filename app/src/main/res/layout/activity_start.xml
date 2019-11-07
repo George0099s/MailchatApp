@@ -1,132 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".start"
-    android:padding="20dp"
-    android:background="@drawable/bg_gradient">
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".start"
 
+android:background="#FCFDFF">
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="100dp"
-        android:src="@drawable/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="170dp"
-        android:layout_height="16dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/mailchat"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="164dp"
-
-        android:layout_height="1dp"
-        android:layout_marginTop="11dp"
-        android:background="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"></LinearLayout>
-
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="160dp"
-        android:layout_height="10dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="7dp"
-        android:src="@drawable/businesschat"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout1" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <Button
+        android:id="@+id/signUPBTN"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4">
-
-        <ImageButton
-            android:id="@+id/signUPBTN"
-            android:layout_width="45dp"
-            android:layout_height="35dp"
-            android:background="@drawable/login"></ImageButton>
-
-        <TextView
-            android:id="@+id/signUpTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Sign Up"
-            android:textColor="#ffffff"
-            android:textSize="18sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:paddingRight="12dp"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:layout_editor_absoluteX="-2dp">
-
-        <ImageButton
-            android:id="@+id/logINBTN"
-            android:layout_width="45dp"
-            android:layout_height="35dp"
-            android:background="@drawable/registr">
-
-        </ImageButton>
-
-
-        <TextView
-            android:id="@+id/logInTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Log In"
-            android:textColor="#ffffff"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
-        android:gravity="center"
-        android:text="Mailchat 2019. All right reserved."
-        android:textColor="#257084"
+        android:background="@drawable/rect_okbtn"
+        android:text="Create account"
+        android:textColor="#2592FB"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintEnd_toEndOf="@+id/editText4"
+        app:layout_constraintStart_toStartOf="@+id/logINBTN" />
 
+<TextView
+    android:id="@+id/textView26"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="30dp"
+    android:text="MAILCHAT"
+    android:textColor="#262626"
+    android:textSize="18sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
 
-    </TextView>
+<TextView
+    android:id="@+id/textView27"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="30dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginTop="53dp"
+    android:layout_marginEnd="30dp"
+    android:layout_marginRight="30dp"
+    android:text="Log in"
+    android:textColor="#262626"
+    android:textSize="16sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+<EditText
+    android:id="@+id/editText4"
+    android:layout_width="match_parent"
+    android:layout_height="41dp"
+    android:layout_marginStart="30dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginTop="40dp"
+    android:layout_marginEnd="30dp"
+    android:layout_marginRight="30dp"
+    android:ems="10"
+    android:gravity="start|top"
+    android:hint="Mailchat ID or Phone number"
+    android:inputType="textMultiLine"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+<CheckBox
+    android:id="@+id/checkBox2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="32dp"
+    android:text="CheckBox"
+    android:textColor="#262626"
+    app:layout_constraintStart_toStartOf="@+id/editText4"
+    app:layout_constraintTop_toBottomOf="@+id/editText4" />
+
+<TextView
+    android:id="@+id/textView28"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Trouble loging in?"
+    android:textColor="#262626"
+    app:layout_constraintBottom_toBottomOf="@+id/checkBox2"
+    app:layout_constraintEnd_toEndOf="@+id/editText4"
+    app:layout_constraintTop_toTopOf="@+id/checkBox2" />
+
+    <Button
+        android:id="@+id/logINBTN"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="277dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        android:alpha="0.5"
+        android:background="@drawable/okbtn"
+        android:text="Next"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/signUPBTN"
+        app:layout_constraintEnd_toEndOf="@+id/editText4"
+        app:layout_constraintHorizontal_bias="0.266"
+        app:layout_constraintStart_toStartOf="@+id/editText4"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

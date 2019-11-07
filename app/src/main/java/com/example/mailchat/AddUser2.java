@@ -11,22 +11,25 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 
-public class AddNewCompany extends AppCompatActivity {
+public class AddUser2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_new_company);
+        setContentView(R.layout.activity_add_user2);
 
 
-        findViewById(R.id.goToChoooseCompanyID).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.backbtn).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
-            Intent intent = new Intent(AddNewCompany.this, CompanyProfile.class);
-            startActivity(intent);
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
-    }
 
+}
+
+@Override
+    public void onBackPressed(){
+        super.onBackPressed();
+}
 }

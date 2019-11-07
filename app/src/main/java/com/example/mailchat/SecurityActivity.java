@@ -23,17 +23,22 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class SecurityActivity extends AppCompatActivity {
-    EditText editTextCode;
+    private EditText editTextCode;
     FirebaseAuth mAuth;
     private TextView sendAgain;
 
     private CountDownTimer countDownTimer;
     String phone;
+    String codeSent;
     private Boolean mTimerRunning;
     private long mTimeLeft = Constants.START_TIME;
 
@@ -44,6 +49,7 @@ public class SecurityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_security);
         phone = getIntent().getStringExtra("phone");
+        codeSent = getIntent().getStringExtra("codeSent");
         startTimer();
        sendAgain = findViewById(R.id.send_again_btn);
         sendAgain.setOnClickListener(new View.OnClickListener() {
@@ -83,12 +89,7 @@ public class SecurityActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+
     }
 
     public void verify(String phone) {
@@ -160,8 +161,8 @@ public class SecurityActivity extends AppCompatActivity {
 
         String code = editTextCode.getText().toString();
         try {
-            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(MainActivity.codeSent, code);
-//            Log.d("ABCD", credential.toString());
+            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(codeSent, code);
+            Log.d("Credential" ," " + credential.toString());
             signInWithPhoneAuthCredential(credential);
         } catch (Exception e) {
             Toast toast = Toast.makeText(this, "Verification Code is wrong", Toast.LENGTH_SHORT);
@@ -178,6 +179,28 @@ public class SecurityActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
+
+
+                            String phoneNum = user.getPhoneNumber();
+                            String uid = user.getUid();
+
+
+                            HashMap<Object, String> userInfo = new HashMap<>();
+
+                            userInfo.put("phone number", phoneNum);
+                            userInfo.put("uid", uid);
+                            userInfo.put("first name", "");
+                            userInfo.put("last name", "");
+
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+                            DatabaseReference reference = database.getReference("Users");
+                            Log.d("MM", "onComplete: " + "message has sent");
+//                            reference.child(uid).setValue(userInfo);
+                            reference.setValue("hello world");
+//
+
+
 
                             Toast.makeText(getApplicationContext(), "number" + user.getPhoneNumber(),
                                     Toast.LENGTH_SHORT).show();
@@ -197,6 +220,10 @@ public class SecurityActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
+
+
 
     @Override
     public void onBackPressed()

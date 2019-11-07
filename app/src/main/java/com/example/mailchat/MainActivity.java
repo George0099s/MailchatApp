@@ -21,10 +21,10 @@ import java.util.concurrent.TimeUnit;
 
     public class MainActivity extends AppCompatActivity {
 
-    private EditText editTextPhone, editTextName;
-    private final String TAG = "sss";
+    private EditText editTextPhone, editTextName, editTextLastName;
+    private final String TAG = "Sign Up Private user";
     FirebaseAuth mAuth;
-    static String codeSent;
+    String codeSent;
     CheckBox checkBox;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +33,11 @@ import java.util.concurrent.TimeUnit;
         getSupportActionBar().hide();
 
         mAuth = FirebaseAuth.getInstance();
-
-        editTextPhone = findViewById(R.id.lastNameTV);
-        editTextName = findViewById(R.id.nameTV);
-        checkBox = findViewById(R.id.checkBox);
-        findViewById(R.id.btnGetCode).setOnClickListener(new View.OnClickListener() {
+        editTextLastName = findViewById(R.id.lastNameTV);
+        editTextPhone = findViewById(R.id.phoneTV);
+        editTextName = findViewById(R.id.firstNameTV);
+        checkBox = findViewById(R.id.checkBoxTerms);
+        findViewById(R.id.btnGetCodePrivate).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
@@ -46,20 +46,14 @@ import java.util.concurrent.TimeUnit;
             }
 
         });
-        findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                onBackPressed();
 
-            }
-
-        });
 
 
     }
 
 
-        static String phone;
+
+        String phone;
         private void sendVerificationCode(){
 
         phone = editTextPhone.getText().toString();
@@ -108,7 +102,7 @@ import java.util.concurrent.TimeUnit;
                     mCallbacks);        // OnVerificationStateChangedCallbacks
 
 
-            TextView s = findViewById(R.id.phone_text_view);
+
 
         }
 
@@ -138,6 +132,7 @@ import java.util.concurrent.TimeUnit;
                 codeSent = s;
                 Intent intent = new Intent(MainActivity.this, SecurityActivity.class);
                 intent.putExtra("phone", phone);
+                intent.putExtra("codeSent", codeSent);
                 startActivity(intent);
             }
 

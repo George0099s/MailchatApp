@@ -24,10 +24,10 @@
         app:layout_constraintBottom_toTopOf="@+id/textView13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxTerms" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/checkBoxTerms"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -168,8 +168,8 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginLeft="84dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginLeft="104dp"
         android:layout_marginBottom="40dp"
         android:shadowColor="#999999"
         android:text="Already have an account?"
