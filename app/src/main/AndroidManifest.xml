@@ -16,9 +16,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".RepresentativeAdded"
+            android:label="@string/title_activity_representative_added"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".AddRepresentativeUser"
+            android:label="@string/title_activity_add_representative_user"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".CongratulationBusiness"
             android:label="@string/title_activity_congratulation_business"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ChooseBusinessID"
             android:label="@string/title_activity_choose_business_id"

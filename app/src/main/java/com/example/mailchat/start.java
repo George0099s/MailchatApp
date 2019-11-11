@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -23,9 +25,16 @@ public class start extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        findViewById(R.id.signUPBTN).setOnClickListener(this);
+        findViewById(R.id.signUPBTN).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        findViewById(R.id.logINBTN).setOnClickListener(this);
+                Intent intent = new Intent(start.this, RegistrationActivity.class);
+//                Intent intent = new Intent(this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
 

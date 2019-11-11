@@ -1,5 +1,6 @@
 package com.example.mailchat;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -27,16 +28,37 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
 
         monthSpinner = findViewById(R.id.monthSspinner);
         yearSpinner = findViewById(R.id.yearSpinner);
+        daySpinner = findViewById(R.id.daySpinner);
+
+       findViewById(R.id.btnNext).setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent(ProfileActivity.this, AddPrivateUserPhoto.class);
+               startActivity(intent);
+           }
+       });
 
         ArrayList<String> years = new ArrayList<>();
         int thisYear = Calendar.getInstance().get(Calendar.YEAR);
         for (int i = 1900; i <= thisYear; i++) {
             years.add(Integer.toString(i));
         }
+        ArrayList<String> days = new ArrayList<>();
+
+        for (int i = 1; i <= 31; i++) {
+            days.add(Integer.toString(i));
+        }
+
+
         ArrayAdapter<String> adapterYear = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, years);
         adapterYear.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         yearSpinner.setAdapter(adapterYear);
         yearSpinner.setOnItemSelectedListener(this);
+
+        ArrayAdapter<String> adapterDay = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, days);
+        adapterYear.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        daySpinner.setAdapter(adapterDay);
+        daySpinner.setOnItemSelectedListener(this);
 
         ArrayAdapter<CharSequence> adapterMonth = ArrayAdapter.createFromResource(this, R.array.months, android.R.layout.simple_spinner_item);
         adapterMonth.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);

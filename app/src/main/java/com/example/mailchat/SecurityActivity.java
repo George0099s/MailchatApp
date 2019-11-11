@@ -37,7 +37,7 @@ public class SecurityActivity extends AppCompatActivity {
     private TextView sendAgain;
 
     private CountDownTimer countDownTimer;
-    String phone;
+    String phone, name, lastname;
     String codeSent;
     private Boolean mTimerRunning;
     private long mTimeLeft = Constants.START_TIME;
@@ -50,6 +50,11 @@ public class SecurityActivity extends AppCompatActivity {
         setContentView(R.layout.activity_security);
         phone = getIntent().getStringExtra("phone");
         codeSent = getIntent().getStringExtra("codeSent");
+        name = getIntent().getStringExtra("firstName");
+        lastname = getIntent().getStringExtra("lastName");
+
+
+
         startTimer();
        sendAgain = findViewById(R.id.send_again_btn);
         sendAgain.setOnClickListener(new View.OnClickListener() {
@@ -189,15 +194,15 @@ public class SecurityActivity extends AppCompatActivity {
 
                             userInfo.put("phone number", phoneNum);
                             userInfo.put("uid", uid);
-                            userInfo.put("first name", "");
-                            userInfo.put("last name", "");
+                            userInfo.put("first name", name);
+                            userInfo.put("last name", lastname);
 
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
 
                             DatabaseReference reference = database.getReference("Users");
                             Log.d("MM", "onComplete: " + "message has sent");
-//                            reference.child(uid).setValue(userInfo);
-                            reference.setValue("hello world");
+                            reference.child(uid).setValue(userInfo);
+//                            reference.setValue("hello world");
 //
 
 

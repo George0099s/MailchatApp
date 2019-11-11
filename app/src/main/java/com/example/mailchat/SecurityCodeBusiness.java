@@ -14,6 +14,8 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 import androidx.annotation.NonNull;
@@ -183,24 +185,24 @@ public class SecurityCodeBusiness extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
-
-                            String phoneNum = user.getPhoneNumber();
-                            String uid = user.getUid();
-
-
-                            HashMap<Object, String> userInfo = new HashMap<>();
-
-                            userInfo.put("phone number", phoneNum);
-                            userInfo.put("uid", uid);
-                            userInfo.put("first name", firsName); // передается из signUpbusiness puExtra
-                            userInfo.put("last name", lastName);
-
+//
+//                            String phoneNum = user.getPhoneNumber();
+//                            String uid = user.getUid();
+//
+//
+//                            HashMap<Object, String> userInfo = new HashMap<>();
+//
+//                            userInfo.put("phone number", phoneNum);
+//                            userInfo.put("uid", uid);
+//                            userInfo.put("first name", firsName); // передается из signUpbusiness puExtra
+//                            userInfo.put("last name", lastName);
+//
 //                            FirebaseDatabase database = FirebaseDatabase.getInstance();
 //
 //                            DatabaseReference reference = database.getReference("Users");
 //
 //                            reference.child(uid).setValue(userInfo);
-//
+
 //                            reference.addValueEventListener(new ValueEventListener() {
 //                                @Override
 //                                public void onDataChange(DataSnapshot dataSnapshot) {
@@ -217,7 +219,7 @@ public class SecurityCodeBusiness extends AppCompatActivity {
 //                                }
 //                            });
 
-
+                            addData();
                             Toast.makeText(getApplicationContext(), "number" + user.getPhoneNumber(),
                                     Toast.LENGTH_SHORT).show();
 
@@ -235,4 +237,24 @@ public class SecurityCodeBusiness extends AppCompatActivity {
                 });
     }
 
+
+    public void addData(){
+        FirebaseUser user = mAuth.getCurrentUser();
+                            String phoneNum = user.getPhoneNumber();
+                            String uid = user.getUid();
+
+
+                            HashMap<Object, String> userInfo = new HashMap<>();
+
+                            userInfo.put("phone number", phoneNum);
+                            userInfo.put("uid", uid);
+                            userInfo.put("first name", firsName); // передается из signUpbusiness puExtra
+                            userInfo.put("last name", lastName);
+
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+                            DatabaseReference reference = database.getReference("Users");
+
+                            reference.child(uid).setValue(userInfo);
+    }
 }

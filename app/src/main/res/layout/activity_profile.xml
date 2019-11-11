@@ -6,6 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
 
+    <Spinner
+        android:id="@+id/daySpinner"
+        android:layout_width="118dp"
+
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="42dp"
+        android:dropDownWidth="match_parent"
+        android:orientation="vertical"
+        android:spinnerMode="dialog"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMale" />
+
+    <Spinner
+        android:id="@+id/yearSpinner"
+        android:layout_width="118dp"
+
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:dropDownWidth="match_parent"
+        android:orientation="vertical"
+        android:spinnerMode="dialog"
+        app:layout_constraintBottom_toBottomOf="@+id/daySpinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/daySpinner" />
+
+    <TextView
+        android:id="@+id/textView56"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="Date of birth"
+        app:layout_constraintBottom_toTopOf="@+id/monthSspinner2"
+        app:layout_constraintStart_toStartOf="@+id/monthSspinner2" />
+
     <TextView
         android:id="@+id/textView29"
         android:layout_width="wrap_content"
@@ -66,14 +103,15 @@
     <Spinner
         android:id="@+id/monthSspinner"
         android:layout_width="118dp"
+        android:layout_height="wrap_content"
+
         android:dropDownWidth="match_parent"
         android:orientation="vertical"
-
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
         android:spinnerMode="dialog"
-        app:layout_constraintStart_toStartOf="@+id/btnMale"
-        app:layout_constraintTop_toBottomOf="@+id/btnMale" />
+        app:layout_constraintBottom_toBottomOf="@+id/daySpinner"
+        app:layout_constraintEnd_toStartOf="@+id/yearSpinner"
+        app:layout_constraintStart_toEndOf="@+id/daySpinner"
+        app:layout_constraintTop_toTopOf="@+id/daySpinner" />
 
     <TextView
         android:id="@+id/textView31"
@@ -81,19 +119,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:text="Date of birth"
-        app:layout_constraintBottom_toTopOf="@+id/monthSspinner"
-        app:layout_constraintStart_toStartOf="@+id/monthSspinner" />
-
-    <Spinner
-        android:id="@+id/yearSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginLeft="72dp"
-        app:layout_constraintBottom_toBottomOf="@+id/monthSspinner"
-        app:layout_constraintStart_toEndOf="@+id/monthSspinner"
-        app:layout_constraintTop_toTopOf="@+id/monthSspinner"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toTopOf="@+id/daySpinner"
+        app:layout_constraintStart_toStartOf="@+id/daySpinner" />
 
     <Button
         android:id="@+id/btnNext"
@@ -113,16 +140,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Spinner
-        android:id="@+id/spinner3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/yearSpinner"
-        app:layout_constraintEnd_toEndOf="@+id/btnFemale"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/yearSpinner"
-        app:layout_constraintTop_toTopOf="@+id/yearSpinner" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

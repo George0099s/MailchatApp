@@ -27,4 +27,7 @@
     <string name="howitworks"><u>how it works?</u></string>
     <string name="title_activity_choose_business_id">ChooseBusinessID</string>
     <string name="title_activity_congratulation_business">CongratulationBusiness</string>
+    <string name="title_activity_add_representative_user">AddRepresentativeUser</string>
+    <string name="title_activity_representative_added">RepresentativeAdded</string>
+    <string name="action_settings">Settings</string>
 </resources>

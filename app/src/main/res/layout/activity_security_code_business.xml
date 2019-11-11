@@ -101,7 +101,7 @@
         app:layout_constraintVertical_bias="0.753"></TextView>
 
     <Button
-        android:id="@+id/btnVerifyCode"
+        android:id="@+id/btnVerifyCodeBusiness"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"

@@ -32,7 +32,10 @@ import java.util.concurrent.TimeUnit;
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
+
         mAuth = FirebaseAuth.getInstance();
+
+
         editTextLastName = findViewById(R.id.lastNameTV);
         editTextPhone = findViewById(R.id.phoneTV);
         editTextName = findViewById(R.id.firstNameTV);
@@ -54,10 +57,13 @@ import java.util.concurrent.TimeUnit;
 
 
         String phone;
+        String lastName;
+        String name;
         private void sendVerificationCode(){
 
         phone = editTextPhone.getText().toString();
-        String name = editTextName.getText().toString();
+        name = editTextName.getText().toString();
+        lastName = editTextLastName.getText().toString();
 
         if(phone.isEmpty() && name.isEmpty() )
         {
@@ -132,6 +138,8 @@ import java.util.concurrent.TimeUnit;
                 codeSent = s;
                 Intent intent = new Intent(MainActivity.this, SecurityActivity.class);
                 intent.putExtra("phone", phone);
+               intent.putExtra("firstName",name );
+                intent.putExtra("lastName",lastName );
                 intent.putExtra("codeSent", codeSent);
                 startActivity(intent);
             }
