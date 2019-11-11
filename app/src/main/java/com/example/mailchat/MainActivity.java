@@ -138,7 +138,7 @@ import java.util.concurrent.TimeUnit;
                 codeSent = s;
                 Intent intent = new Intent(MainActivity.this, SecurityActivity.class);
                 intent.putExtra("phone", phone);
-               intent.putExtra("firstName",name );
+                 intent.putExtra("firstName",name );
                 intent.putExtra("lastName",lastName );
                 intent.putExtra("codeSent", codeSent);
                 startActivity(intent);

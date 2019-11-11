@@ -11,7 +11,7 @@
     android:scrollbars="vertical">
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/aboutCompany"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -24,7 +24,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2">
+        app:layout_constraintTop_toBottomOf="@+id/workHours">
 
     </EditText>
 
@@ -88,7 +88,7 @@
 
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/webSite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -106,7 +106,7 @@
     </EditText>
 
     <EditText
-        android:id="@+id/editText223"
+        android:id="@+id/companyPhoneNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -118,12 +118,12 @@
         android:textColor="#999999"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText">
+        app:layout_constraintTop_toBottomOf="@+id/webSite">
 
     </EditText>
 
     <EditText
-        android:id="@+id/dasda"
+        android:id="@+id/address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -135,12 +135,12 @@
         android:textColor="#999999"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText223">
+        app:layout_constraintTop_toBottomOf="@+id/companyPhoneNumber">
 
     </EditText>
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/workHours"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -153,7 +153,7 @@
         android:textColor="#999999"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dasda">
+        app:layout_constraintTop_toBottomOf="@+id/address">
 
     </EditText>
 
@@ -173,8 +173,8 @@
         android:textAllCaps="false"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editText3"
-        app:layout_constraintStart_toStartOf="@+id/editText3"
+        app:layout_constraintEnd_toEndOf="@+id/aboutCompany"
+        app:layout_constraintStart_toStartOf="@+id/aboutCompany"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <TextView
@@ -195,7 +195,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.394"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/aboutCompany" />
 
     <TextView
         android:id="@+id/textView24"

@@ -16,7 +16,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class start extends AppCompatActivity implements View.OnClickListener{
+public class start extends AppCompatActivity{
 
 
 
@@ -29,7 +29,16 @@ public class start extends AppCompatActivity implements View.OnClickListener{
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(start.this, RegistrationActivity.class);
+                Intent intent = new Intent(start.this, tst.class);
+//                Intent intent = new Intent(this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.logINBTN).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(start.this, LogIn.class);
 //                Intent intent = new Intent(this, ProfileActivity.class);
                 startActivity(intent);
             }
@@ -40,21 +49,7 @@ public class start extends AppCompatActivity implements View.OnClickListener{
 
     }
 
-    public void onClick(View v)
-    {
-        switch (v.getId()) {
-            case R.id.signUPBTN:
-                Intent intent = new Intent(this, RegistrationActivity.class);
-//                Intent intent = new Intent(this, ProfileActivity.class);
-                startActivity(intent);
-                break;
 
-            case R.id.logINBTN:
-                intent = new Intent(this, LogIn.class);
-                startActivity(intent);
-                break;
-        }
-        }
 
     }
 

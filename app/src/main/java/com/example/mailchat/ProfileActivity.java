@@ -12,6 +12,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import java.util.Calendar;
 public class ProfileActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Spinner monthSpinner, daySpinner, yearSpinner;
+    Button male, female;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,10 +32,29 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
         yearSpinner = findViewById(R.id.yearSpinner);
         daySpinner = findViewById(R.id.daySpinner);
 
+        male = findViewById(R.id.btnMale);
+        female = findViewById(R.id.btnFemale);
+
+        findViewById(R.id.btnMale).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        findViewById(R.id.btnFemale).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+
+
        findViewById(R.id.btnNext).setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                Intent intent = new Intent(ProfileActivity.this, AddPrivateUserPhoto.class);
+//               intent.putExtra("");
                startActivity(intent);
            }
        });

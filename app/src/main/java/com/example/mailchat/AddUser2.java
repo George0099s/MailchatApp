@@ -25,6 +25,13 @@ public class AddUser2 extends AppCompatActivity {
                 onBackPressed();
             }
         });
+        findViewById(R.id.addRepresentative).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AddUser2.this, AddRepresentativeUser.class);
+                startActivity(intent);
+            }
+        });
 
 }
 

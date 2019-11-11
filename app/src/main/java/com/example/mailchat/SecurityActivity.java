@@ -183,7 +183,7 @@ public class SecurityActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                        FirebaseUser user = mAuth.getCurrentUser();
+                             FirebaseUser user = mAuth.getCurrentUser();
 
 
                             String phoneNum = user.getPhoneNumber();

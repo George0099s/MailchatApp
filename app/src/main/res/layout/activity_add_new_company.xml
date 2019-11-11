@@ -38,7 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/cpName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -58,8 +58,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Company name"
-        app:layout_constraintBottom_toTopOf="@+id/editText6"
-        app:layout_constraintStart_toStartOf="@+id/editText6" />
+        app:layout_constraintBottom_toTopOf="@+id/cpName"
+        app:layout_constraintStart_toStartOf="@+id/cpName" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -88,7 +88,7 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
+        app:layout_constraintTop_toBottomOf="@+id/cpName" />
 
     <TextView
         android:id="@+id/textView16"

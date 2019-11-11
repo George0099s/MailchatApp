@@ -185,23 +185,23 @@ public class SecurityCodeBusiness extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
-//
-//                            String phoneNum = user.getPhoneNumber();
-//                            String uid = user.getUid();
-//
-//
-//                            HashMap<Object, String> userInfo = new HashMap<>();
-//
-//                            userInfo.put("phone number", phoneNum);
-//                            userInfo.put("uid", uid);
-//                            userInfo.put("first name", firsName); // передается из signUpbusiness puExtra
-//                            userInfo.put("last name", lastName);
-//
-//                            FirebaseDatabase database = FirebaseDatabase.getInstance();
-//
-//                            DatabaseReference reference = database.getReference("Users");
-//
-//                            reference.child(uid).setValue(userInfo);
+
+                            String phoneNum = user.getPhoneNumber();
+                            String uid = user.getUid();
+
+
+
+
+                            Users.businessUserInfo.put("phone number", phoneNum);
+                            Users.businessUserInfo.put("uid", uid);
+                            Users.businessUserInfo.put("first name", firsName); // передается из signUpbusiness puExtra
+                            Users.businessUserInfo.put("last name", lastName);
+
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+                            DatabaseReference reference = database.getReference("Business users");
+
+                            reference.child(uid).setValue(Users.businessUserInfo);
 
 //                            reference.addValueEventListener(new ValueEventListener() {
 //                                @Override
