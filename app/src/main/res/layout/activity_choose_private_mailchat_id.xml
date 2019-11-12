@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#FCFDFF"
     android:layout_height="match_parent"
     tools:context=".ChoosePrivateMailchatID">
 
 
     <TextView
         android:id="@+id/textView33"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="22dp"
         android:layout_gravity="center"
         android:layout_marginStart="39dp"
@@ -18,7 +19,7 @@
         android:layout_marginEnd="39dp"
         android:layout_marginRight="39dp"
         android:gravity="center"
-        android:letterSpacing="0.5"
+        android:letterSpacing="0.1"
         android:text="CHOOSE MAILCHAT ID"
         android:textColor="@android:color/black"
         android:textSize="18sp"
@@ -71,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView35" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/ourRec"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -94,27 +95,31 @@
         android:layout_height="30dp"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
+        android:layout_marginEnd="303dp"
+        android:layout_marginRight="303dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView37"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView37"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/info" />
 
     <TextView
         android:id="@+id/textView37"
-        android:layout_width="257dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="77dp"
+        android:layout_marginLeft="77dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
         android:text="Please note, you can choose Mailchat ID just once"
         android:textColor="#262626"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ourRec" />
 
     <Button
         android:id="@+id/goToCongrats"
@@ -134,4 +139,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView37" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

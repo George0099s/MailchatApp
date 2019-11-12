@@ -22,6 +22,18 @@
         <item>Oktober</item>
         <item>November</item>
     </array>
+    <array name="city">
+        <item>Moscow</item>
+        <item>St.Petersburg</item>
+        <item>Voronej</item>
+    </array>
+     <array name="category">
+        <item>IT</item>
+        <item>Audit</item>
+        <item>Other Services</item>
+    </array>
+
+
     <string name="title_activity_add_private_user_photo">AddPrivateUserPhoto</string>
     <string name="title_activity_choose_private_mailchat_id">CHOOSE MAILCHAT ID</string>
     <string name="howitworks"><u>how it works?</u></string>

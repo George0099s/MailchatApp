@@ -23,9 +23,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.CountDownTimer;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,9 +42,9 @@ public class SecurityCodeBusiness extends AppCompatActivity {
     EditText editTextCode;
     FirebaseAuth mAuth;
     private TextView sendAgain, phoneTV;
-
+    Button verify;
     private CountDownTimer countDownTimer;
-    String phone, codeSent, firsName, lastName;
+    String ed,phone, codeSent, firsName, lastName;
     private Boolean mTimerRunning;
     private long mTimeLeft = Constants.START_TIME;
 
@@ -54,13 +57,44 @@ public class SecurityCodeBusiness extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        verify = findViewById(R.id.btnVerifyCodeBusiness);
+        verify.getBackground().setAlpha(128);
+
+
         firsName = getIntent().getStringExtra("firstName");
         lastName = getIntent().getStringExtra("lastName");
         phone = getIntent().getStringExtra("phoneNumber");
         codeSent = getIntent().getStringExtra("codeSent");
         startTimer();
         editTextCode = findViewById(R.id.codeBusinessTV);
+        ed = editTextCode.getText().toString();
+        editTextCode.addTextChangedListener(new TextWatcher() {
 
+            public void afterTextChanged(Editable s) {
+
+
+                    verify.getBackground().setAlpha(255);
+
+//
+            }
+
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//                if (ed.length()>0 && ed.length() <6) {
+//
+//                    verify.getBackground().setAlpha(255);
+//                }
+            }
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                if (ed.length() < 6 && ed.length() > 0)
+//                {
+//                    verify.getBackground().setAlpha(128);
+//
+//                }
+//
+
+            }
+        });
 
         phoneTV = findViewById(R.id.phone_text_view);
         phoneTV.setText(phone);
@@ -92,6 +126,13 @@ public class SecurityCodeBusiness extends AppCompatActivity {
         findViewById(R.id.btnVerifyCodeBusiness).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+              if (phone.isEmpty())
+              {
+
+                  verify.getBackground().setAlpha(128);
+              }
+              if (phone.length() > 0)
+
                verifySignInCode();
             }
         });

@@ -22,7 +22,7 @@ android:background="#FCFDFF">
         android:text="Create account"
         android:textColor="#2592FB"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editText4"
+        app:layout_constraintEnd_toEndOf="@+id/loginED"
         app:layout_constraintStart_toStartOf="@+id/logINBTN" />
 
 <TextView
@@ -54,7 +54,7 @@ android:background="#FCFDFF">
     app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
 <EditText
-    android:id="@+id/editText4"
+    android:id="@+id/loginED"
     android:layout_width="match_parent"
     android:layout_height="41dp"
     android:layout_marginStart="30dp"
@@ -77,8 +77,8 @@ android:background="#FCFDFF">
     android:layout_marginTop="32dp"
     android:text="CheckBox"
     android:textColor="#262626"
-    app:layout_constraintStart_toStartOf="@+id/editText4"
-    app:layout_constraintTop_toBottomOf="@+id/editText4" />
+    app:layout_constraintStart_toStartOf="@+id/loginED"
+    app:layout_constraintTop_toBottomOf="@+id/loginED" />
 
 <TextView
     android:id="@+id/textView28"
@@ -87,7 +87,7 @@ android:background="#FCFDFF">
     android:text="Trouble loging in?"
     android:textColor="#262626"
     app:layout_constraintBottom_toBottomOf="@+id/checkBox2"
-    app:layout_constraintEnd_toEndOf="@+id/editText4"
+    app:layout_constraintEnd_toEndOf="@+id/loginED"
     app:layout_constraintTop_toTopOf="@+id/checkBox2" />
 
     <Button
@@ -100,14 +100,14 @@ android:background="#FCFDFF">
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
-        android:alpha="0.5"
         android:background="@drawable/okbtn"
         android:text="Next"
+
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/signUPBTN"
-        app:layout_constraintEnd_toEndOf="@+id/editText4"
+        app:layout_constraintEnd_toEndOf="@+id/loginED"
         app:layout_constraintHorizontal_bias="0.266"
-        app:layout_constraintStart_toStartOf="@+id/editText4"
+        app:layout_constraintStart_toStartOf="@+id/loginED"
         app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@ package com.example.mailchat;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.widget.Button;
 
 public class Functions {
 
@@ -25,5 +26,17 @@ public class Functions {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public static void isNotEmpty(String s, Button btn)
+    {
+
+            if (s.isEmpty()) {
+                btn.getBackground().setAlpha(128);
+            }
+            if (s.length() > 0) {
+                btn.getBackground().setAlpha(255);
+            }
+
     }
 }

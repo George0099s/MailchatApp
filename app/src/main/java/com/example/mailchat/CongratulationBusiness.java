@@ -1,5 +1,6 @@
 package com.example.mailchat;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -17,6 +18,13 @@ public class CongratulationBusiness extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_congratulation_business);
 
+        findViewById(R.id.ok).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(CongratulationBusiness.this, CompanyProfile.class));
+
+            }
+        });
     }
 
 }

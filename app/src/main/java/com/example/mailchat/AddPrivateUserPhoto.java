@@ -11,6 +11,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -37,7 +38,7 @@ public class AddPrivateUserPhoto extends AppCompatActivity {
     FirebaseAuth mAuth;
     ImageView userPhoto;
     private Uri filePath;
-    private Uri path;
+    String userID;
 
     private final int PICK_IMAGE_REQUEST = 71;
     FirebaseStorage storage;
@@ -49,7 +50,7 @@ public class AddPrivateUserPhoto extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-
+         mAuth = FirebaseAuth.getInstance();
 
         findViewById(R.id.chose_photo).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +62,8 @@ public class AddPrivateUserPhoto extends AppCompatActivity {
         findViewById(R.id.finish_private_registr).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(AddPrivateUserPhoto.this, ChoosePrivateMailchatID.class);
+                startActivity(intent);
                 uploadImage();
             }
         });
@@ -83,7 +86,17 @@ public class AddPrivateUserPhoto extends AppCompatActivity {
             filePath = data.getData();
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-//                userPhoto.setImageBitmap(bitmap);
+
+
+                userPhoto = findViewById(R.id.addUserPhoto);
+                userPhoto.setMinimumWidth(180);
+                int dimensionInPixel = 180;
+                int dimensionInDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dimensionInPixel, getResources().getDisplayMetrics());
+
+                userPhoto.getLayoutParams().height = dimensionInDp;
+                userPhoto.getLayoutParams().width = dimensionInDp;
+                userPhoto.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                userPhoto.setImageBitmap(bitmap);
             }
             catch (IOException e)
             {
@@ -93,51 +106,46 @@ public class AddPrivateUserPhoto extends AppCompatActivity {
     }
 
     private void uploadImage() {
+        FirebaseUser user = mAuth.getCurrentUser();
+        userID = user.getUid();
+
 
         if(filePath != null)
         {
-//            final ProgressDialog progressDialog = new ProgressDialog(this);
-//            progressDialog.setTitle("Uploading...");
-//            progressDialog.show();
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
 
-            StorageReference ref = storageReference.child("images/"+ "123");
-//            ref.putFile(filePath)
-//                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                        @Override
-//                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                            Log.d("123", "onSuccess: ");
-//                            progressDialog.dismiss();
-//                            Toast.makeText(AddPrivateUserPhoto.this, "Uploaded", Toast.LENGTH_SHORT).show();
-//                        }
-//                    })
-//                    .addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception e) {
-//                            Log.d("123", "onFailure: ");
-//                            progressDialog.dismiss();
-//                            Toast.makeText(AddPrivateUserPhoto.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
-//                        }
-//                    })
-//                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-//                        @Override
-//                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-//                            Log.d("123", "onProgress: ");
-//                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
-//                                    .getTotalByteCount());
-//                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
-//                        }
-//                    });
+            StorageReference ref = storageReference.child("images/"+ userID );
+            ref.putFile(filePath)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Log.d("123", "onSuccess: ");
+                            progressDialog.dismiss();
+                            Toast.makeText(AddPrivateUserPhoto.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.d("123", "onFailure: ");
+                            progressDialog.dismiss();
+                            Toast.makeText(AddPrivateUserPhoto.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            Log.d("123", "onProgress: ");
+                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                                    .getTotalByteCount());
+                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                        }
+                    });
         }
     }
 }
 //
 //
-// userPhoto = findViewById(R.id.addUserPhoto);
-//         userPhoto.setMinimumWidth(180);
-//         int dimensionInPixel = 180;
-//         int dimensionInDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dimensionInPixel, getResources().getDisplayMetrics());
-//
-//         userPhoto.getLayoutParams().height = dimensionInDp;
-//         userPhoto.getLayoutParams().width = dimensionInDp;
-//         userPhoto.setScaleType(ImageView.ScaleType.CENTER_CROP);
-//         userPhoto.setImageBitmap(bitmap);
+

@@ -16,10 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".tst"
-            android:label="@string/title_activity_tst"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
             android:name=".RepresentativeAdded"
             android:label="@string/title_activity_representative_added"
             android:theme="@style/AppTheme.NoActionBar" />

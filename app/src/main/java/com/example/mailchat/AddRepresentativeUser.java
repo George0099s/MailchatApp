@@ -65,11 +65,6 @@ public class AddRepresentativeUser extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
 
-        DatabaseReference reference = database.getReference("Business users");
-        Users.representativeUserInfo.put("first name", namefirst);
-        Users.representativeUserInfo.put("last name", nameLast);
-        Users.representativeUserInfo.put("mailchatID", mailchat);
-        Users.representativeUserInfo.put("phone number", number);
-        reference.child(uid).child("representative users").setValue(Users.representativeUserInfo);
+
     }
 }

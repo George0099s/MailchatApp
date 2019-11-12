@@ -8,7 +8,7 @@
 
     <Spinner
         android:id="@+id/daySpinner"
-        android:layout_width="118dp"
+        android:layout_width="90dp"
 
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
@@ -22,7 +22,7 @@
 
     <Spinner
         android:id="@+id/yearSpinner"
-        android:layout_width="118dp"
+        android:layout_width="90dp"
 
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
@@ -33,15 +33,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/daySpinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/daySpinner" />
-
-    <TextView
-        android:id="@+id/textView56"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text="Date of birth"
-        app:layout_constraintBottom_toTopOf="@+id/monthSspinner2"
-        app:layout_constraintStart_toStartOf="@+id/monthSspinner2" />
 
     <TextView
         android:id="@+id/textView29"
@@ -79,9 +70,10 @@
         android:layout_marginTop="75dp"
         android:layout_marginEnd="19dp"
         android:layout_marginRight="19dp"
-        android:background="@drawable/rect_okbtn"
+        android:background="@drawable/rect_okbtn_small"
         android:text="Male"
         android:textAllCaps="false"
+        android:textColor="#2592FB"
         app:layout_constraintEnd_toStartOf="@+id/btnFemale"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,16 +85,17 @@
         android:layout_height="40dp"
         android:layout_marginEnd="31dp"
         android:layout_marginRight="31dp"
-        android:background="@drawable/rect_okbtn"
+        android:background="@drawable/rect_okbtn_small"
         android:text="Female"
         android:textAllCaps="false"
+        android:textColor="#2592FB"
         app:layout_constraintBottom_toBottomOf="@+id/btnMale"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btnMale" />
 
     <Spinner
         android:id="@+id/monthSspinner"
-        android:layout_width="118dp"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
 
         android:dropDownWidth="match_parent"
@@ -140,6 +133,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerCity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/daySpinner" />
+
+    <TextView
+        android:id="@+id/textView53"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="City"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerCity"
+        app:layout_constraintStart_toStartOf="@+id/spinnerCity" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

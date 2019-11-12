@@ -39,8 +39,13 @@ public class SignUpBusiness extends AppCompatActivity {
 
          mAuth = FirebaseAuth.getInstance();
 
-
-        findViewById(R.id.btn123).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.logIn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SignUpBusiness.this, LogIn.class));
+            }
+        });
+        findViewById(R.id.btnOk).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sendVerificationCode();

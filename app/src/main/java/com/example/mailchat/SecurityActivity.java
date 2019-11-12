@@ -23,8 +23,11 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 import java.util.HashMap;
@@ -190,18 +193,20 @@ public class SecurityActivity extends AppCompatActivity {
                             String uid = user.getUid();
 
 
-                            HashMap<Object, String> userInfo = new HashMap<>();
 
-                            userInfo.put("phone number", phoneNum);
-                            userInfo.put("uid", uid);
-                            userInfo.put("first name", name);
-                            userInfo.put("last name", lastname);
+
+                            Users.userInfo.put("phone number", phoneNum);
+//                            Users.userInfo.put("uid", uid);
+                            Users.userInfo.put("first name", name);
+                            Users.userInfo.put("last name", lastname);
+
+//                            Users userProf = new Users(name, lastname, phone);
 
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
 
                             DatabaseReference reference = database.getReference("Users");
                             Log.d("MM", "onComplete: " + "message has sent");
-                            reference.child(uid).setValue(userInfo);
+                            reference.child(uid).setValue(Users.userInfo);
 //                            reference.setValue("hello world");
 //
 
@@ -224,6 +229,8 @@ public class SecurityActivity extends AppCompatActivity {
                         }
                     }
                 });
+
+
     }
 
 

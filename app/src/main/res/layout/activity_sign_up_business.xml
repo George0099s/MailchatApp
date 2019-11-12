@@ -8,23 +8,22 @@
     android:background="#F9FBFF">
 
     <Button
-        android:id="@+id/btn123"
+        android:id="@+id/btnOk"
         android:layout_width="match_parent"
         android:layout_height="38dp"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
-        android:background="#48C8DB"
+        android:background="@drawable/okbtn"
         android:text="Continue"
         android:textAllCaps="false"
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toTopOf="@+id/textView13"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxTerms" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <CheckBox
         android:id="@+id/checkBoxTerms"
@@ -36,9 +35,10 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
-        android:buttonTint="#48C8DB"
+        android:buttonTint="#A3AFC9"
 
         android:text="@string/terms"
+        android:textColor="#A3AFC9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -170,22 +170,25 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="104dp"
         android:layout_marginLeft="104dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="100dp"
         android:shadowColor="#999999"
         android:text="Already have an account?"
         android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/btnOk"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxTerms"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/button"
+        android:id="@+id/logIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="104dp"
         android:layout_marginRight="104dp"
         android:background="#F9FBFF"
         android:text="Log In"
-        android:textColor="#666666"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="@+id/textView13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

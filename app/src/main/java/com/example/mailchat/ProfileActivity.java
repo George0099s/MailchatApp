@@ -1,10 +1,15 @@
 package com.example.mailchat;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -21,8 +26,9 @@ import java.util.Calendar;
 
 public class ProfileActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    Spinner monthSpinner, daySpinner, yearSpinner;
+    Spinner monthSpinner, daySpinner, yearSpinner, citySpinner;
     Button male, female;
+    String date, city;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +37,7 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
         monthSpinner = findViewById(R.id.monthSspinner);
         yearSpinner = findViewById(R.id.yearSpinner);
         daySpinner = findViewById(R.id.daySpinner);
+        citySpinner = findViewById(R.id.spinnerCity);
 
         male = findViewById(R.id.btnMale);
         female = findViewById(R.id.btnFemale);
@@ -38,13 +45,24 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
         findViewById(R.id.btnMale).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                male.setBackgroundResource(R.drawable.okbtn);
+                male.setTextColor(Color.parseColor("#ffffff"));
+
+                female.setTextColor(Color.parseColor("#2592FB"));
+                female.setBackgroundResource(R.drawable.rect_okbtn);
+                Users.userInfo.put("gender", "male");
 
             }
         });
         findViewById(R.id.btnFemale).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                female.setBackgroundResource(R.drawable.okbtn);
+                female.setTextColor(Color.parseColor("#ffffff"));
 
+                male.setTextColor(Color.parseColor("#2592FB"));
+                male.setBackgroundResource(R.drawable.rect_okbtn);
+                Users.userInfo.put("gender", "female");
             }
         });
 
@@ -53,9 +71,12 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
        findViewById(R.id.btnNext).setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
+
+               addData();
                Intent intent = new Intent(ProfileActivity.this, AddPrivateUserPhoto.class);
 //               intent.putExtra("");
                startActivity(intent);
+
            }
        });
 
@@ -85,16 +106,53 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
         adapterMonth.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         monthSpinner.setAdapter(adapterMonth);
         monthSpinner.setOnItemSelectedListener(this);
-    }
 
+        ArrayAdapter<CharSequence> adapterCity = ArrayAdapter.createFromResource(this, R.array.city, android.R.layout.simple_spinner_item);
+        adapterMonth.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        citySpinner.setAdapter(adapterCity);
+        citySpinner.setOnItemSelectedListener(this);
+
+
+
+    }
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
         String t  = adapterView.getItemAtPosition(position).toString();
         Toast.makeText(adapterView.getContext(), t, Toast.LENGTH_LONG).show();
+
+       String y = yearSpinner.getItemAtPosition(yearSpinner.getSelectedItemPosition()).toString();
+       String d = daySpinner.getItemAtPosition(daySpinner.getSelectedItemPosition()).toString();
+       String m = monthSpinner.getItemAtPosition(monthSpinner.getSelectedItemPosition()).toString();
+       city = citySpinner.getItemAtPosition(citySpinner.getSelectedItemPosition()).toString();
+        date = d + "." + m + ". " + y;
+
+
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
+    public void addData()
+    {
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+
+
+        String uid = user.getUid();
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+
+
+        DatabaseReference reference = database.getReference("Users");
+        Users.userInfo.put("Date of birth",date);
+        Users.userInfo.put("City",city);
+
+        reference.child(uid).setValue(Users.userInfo);
+
+    }
+
+
 }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FCFDFF"
     tools:context=".AddNewCompany">
 
 
@@ -15,7 +16,7 @@
         android:layout_marginTop="30dp"
         android:gravity="center"
         android:letterSpacing="0.5"
-        android:text="VERIFY YOUR PHONE"
+        android:text="ADD NEW COMPANY"
         android:textColor="#262626"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -62,7 +63,7 @@
         app:layout_constraintStart_toStartOf="@+id/cpName" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerCategoty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -74,10 +75,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner5" />
+        app:layout_constraintTop_toBottomOf="@+id/citySpinner" />
 
     <Spinner
-        android:id="@+id/spinner5"
+        android:id="@+id/citySpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -100,7 +101,7 @@
         android:text="#MailChat links"
         android:textColor="#A3AFC9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCategoty" />
 
     <TextView
         android:id="@+id/textView34"
@@ -125,7 +126,6 @@
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
-        android:alpha="0.5"
         android:background="@drawable/okbtn"
         android:text="Next"
         android:textAllCaps="false"
@@ -167,6 +167,20 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText7" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:minHeight="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText7" />
 
