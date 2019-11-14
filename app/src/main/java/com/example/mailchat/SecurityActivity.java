@@ -4,9 +4,12 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,7 +41,7 @@ public class SecurityActivity extends AppCompatActivity {
     private EditText editTextCode;
     FirebaseAuth mAuth;
     private TextView sendAgain;
-
+    Button btn;
     private CountDownTimer countDownTimer;
     String phone, name, lastname;
     String codeSent;
@@ -84,6 +87,29 @@ public class SecurityActivity extends AppCompatActivity {
 
 
         editTextCode = findViewById(R.id.codeTV);
+
+
+        btn = findViewById(R.id.btnVerifyCode);
+        btn.getBackground().setAlpha(128);
+
+        editTextCode.addTextChangedListener(new TextWatcher() {
+
+           public void afterTextChanged(Editable s) {
+
+
+               btn.getBackground().setAlpha(255);
+
+
+           }
+
+           public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+             }
+
+           public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+           }
+       });
         mAuth = FirebaseAuth.getInstance();
         TextView phonetv = findViewById(R.id.phone_text_view);
         phonetv.setText(phone);

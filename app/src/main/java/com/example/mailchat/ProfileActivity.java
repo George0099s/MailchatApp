@@ -27,12 +27,15 @@ import java.util.Calendar;
 public class ProfileActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Spinner monthSpinner, daySpinner, yearSpinner, citySpinner;
-    Button male, female;
-    String date, city;
+    Button next, male, female;
+    String date, city, gender;
+    Boolean s = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+
 
         monthSpinner = findViewById(R.id.monthSspinner);
         yearSpinner = findViewById(R.id.yearSpinner);
@@ -41,6 +44,11 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
 
         male = findViewById(R.id.btnMale);
         female = findViewById(R.id.btnFemale);
+        next = findViewById(R.id.btnNext);
+        next.getBackground().setAlpha(128);
+
+
+        if(s){next.getBackground().setAlpha(255);}
 
         findViewById(R.id.btnMale).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,8 +57,10 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
                 male.setTextColor(Color.parseColor("#ffffff"));
 
                 female.setTextColor(Color.parseColor("#2592FB"));
-                female.setBackgroundResource(R.drawable.rect_okbtn);
-                Users.userInfo.put("gender", "male");
+                female.setBackgroundResource(R.drawable.rect_okbtn_small);
+                gender = "male";
+                s = true;
+                Users.userInfo.put("gender", gender);
 
             }
         });
@@ -61,8 +71,10 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
                 female.setTextColor(Color.parseColor("#ffffff"));
 
                 male.setTextColor(Color.parseColor("#2592FB"));
-                male.setBackgroundResource(R.drawable.rect_okbtn);
-                Users.userInfo.put("gender", "female");
+                male.setBackgroundResource(R.drawable.rect_okbtn_small);
+                s = true;
+                gender = "female";
+                Users.userInfo.put("gender", gender);
             }
         });
 
@@ -71,12 +83,18 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
        findViewById(R.id.btnNext).setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
+               if (s) {
+                   next.getBackground().setAlpha(255);
 
-               addData();
-               Intent intent = new Intent(ProfileActivity.this, AddPrivateUserPhoto.class);
-//               intent.putExtra("");
-               startActivity(intent);
-
+                   addData();
+                   Intent intent = new Intent(ProfileActivity.this, AddPrivateUserPhoto.class);
+                   startActivity(intent);
+               }
+               if (s == false)
+               {
+                   Toast.makeText(getApplicationContext(), "Choose gender", Toast.LENGTH_SHORT).show();
+                   next.getBackground().setAlpha(128);
+               }
            }
        });
 

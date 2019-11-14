@@ -5,10 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,11 +31,12 @@ import java.util.concurrent.TimeUnit;
     FirebaseAuth mAuth;
     String codeSent;
     CheckBox checkBox;
+
+    Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -40,16 +46,37 @@ import java.util.concurrent.TimeUnit;
         editTextPhone = findViewById(R.id.phoneTV);
         editTextName = findViewById(R.id.firstNameTV);
         checkBox = findViewById(R.id.checkBoxTerms);
+
+        btn = findViewById(R.id.btnGetCodePrivate);
+        btn.getBackground().setAlpha(128);
+
+
         findViewById(R.id.btnGetCodePrivate).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
 
                 sendVerificationCode();
-
             }
 
         });
 
+
+        editTextName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                btn.getBackground().setAlpha(255);
+            }
+        });
 
 
     }

@@ -6,8 +6,11 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -37,6 +40,9 @@ public class SignUpBusiness extends AppCompatActivity {
          lastName = findViewById(R.id.lastNameTV);
          phoneNumber = findViewById(R.id.phoneTV);
 
+        Button btn = findViewById(R.id.btnOk);
+        btn.getBackground().setAlpha(128);
+
          mAuth = FirebaseAuth.getInstance();
 
         findViewById(R.id.logIn).setOnClickListener(new View.OnClickListener() {
@@ -51,7 +57,29 @@ public class SignUpBusiness extends AppCompatActivity {
                 sendVerificationCode();
             }
         });
+
+
+
+        firsName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                Button btn = findViewById(R.id.btnOk);
+                btn.getBackground().setAlpha(255);
+            }
+        });
     }
+
+
 
     public void sendVerificationCode(){
     namefirst = firsName.getText().toString();

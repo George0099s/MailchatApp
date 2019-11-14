@@ -17,7 +17,6 @@
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
-        android:alpha="0.5"
         android:background="@drawable/okbtn"
         android:text="Continue"
         android:textAllCaps="false"
@@ -38,7 +37,9 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
-        android:buttonTint="#A3AFC9"
+        android:buttonTint="#999999"
+        android:shadowColor="#999999"
+        android:textColor="#999999"
 
         android:text="@string/terms"
         app:layout_constraintEnd_toEndOf="parent"
@@ -166,7 +167,8 @@
         android:layout_height="wrap_content"
         android:background="#F9FBFF"
         android:text="Log In"
-        android:textColor="#666666"
+        android:textColor="@android:color/black"
+
         app:layout_constraintBottom_toBottomOf="@+id/textView13"
         app:layout_constraintEnd_toEndOf="@+id/checkBoxTerms"
         app:layout_constraintHorizontal_bias="0.209"

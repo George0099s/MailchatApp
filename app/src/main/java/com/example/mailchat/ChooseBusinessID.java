@@ -15,6 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class ChooseBusinessID extends AppCompatActivity {
     EditText mailchatID;
@@ -31,6 +32,15 @@ public class ChooseBusinessID extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
+                mailchat = mailchatID.getText().toString().replaceAll("#","");
+                mailchat = mailchatID.getText().toString().replaceAll("\\s","_");
+
+                String rec = mailchat +"#";
+
+                mailchatID.setText(rec);
+                addData();
+                Toast.makeText(getApplicationContext(),"Your mailchatID added",Toast.LENGTH_SHORT);
                 addData();
 
 

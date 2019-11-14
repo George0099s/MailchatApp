@@ -1,13 +1,19 @@
 package com.example.mailchat;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,30 +23,52 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class AddNewCompany extends AppCompatActivity  implements AdapterView.OnItemSelectedListener{
-
     Spinner spinnerCity, spinnerCategory;
     String city, category;
     FirebaseAuth mAuth;
-    EditText companyName;
+    EditText companyName, link;
     String cpName;
+    TextView  linkss;
     Button next;
+    ListView list;
+    ImageView add;
+    private ArrayAdapter<String> adapter;
+    private ArrayList<String> arrayList;
+    int i = 2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_company);
 
+//        tv1 = findViewById(R.id.tv1);
+//        tv2 = findViewById(R.id.tv2);
+//        tv3 = findViewById(R.id.tv3);
+        add = findViewById(R.id.addLink);
 
+        linkss = findViewById(R.id.textView38);
         spinnerCategory = findViewById(R.id.spinnerCategoty);
         spinnerCity = findViewById(R.id.citySpinner);
         mAuth = FirebaseAuth.getInstance();
-
+        list =  findViewById(R.id.list);
         companyName = findViewById(R.id.cpName);
+        link = findViewById(R.id.editText7);
+
+
 
         next = findViewById(R.id.goToChoooseCompanyID);
         next.getBackground().setAlpha(128);
+
+        arrayList = new ArrayList<String>(3);
+
+        adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList);
+
+        list.setAdapter(adapter);
+
+
+
         ArrayAdapter<CharSequence> adapterCity= ArrayAdapter.createFromResource(this, R.array.city, android.R.layout.simple_spinner_item);
         adapterCity.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinnerCity.setAdapter(adapterCity);
@@ -53,6 +81,66 @@ public class AddNewCompany extends AppCompatActivity  implements AdapterView.OnI
 
 
 
+
+        companyName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                next.getBackground().setAlpha(255);
+            }
+        });
+        findViewById(R.id.addLink).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (i >= 0) {
+//                String link1 = link.getText().toString();
+//                links[i] ="#" + link1;
+//
+//                tv1.setText(links[i]);
+//                tv1.setVisibility(View.VISIBLE);
+//                i++;
+
+                    arrayList.add("#" + link.getText().toString());
+                    // next thing you have to do is check if your adapter has changed
+                    adapter.notifyDataSetChanged();
+                    linkss.setText("Add at least " + i + " links");
+                    i--;
+
+                } else {
+                    add.setVisibility(View.INVISIBLE);
+                    linkss.setVisibility(View.INVISIBLE);
+                    Toast.makeText(getApplicationContext(),"123", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int si, long l) {
+                i++;
+                arrayList.remove(0);
+                linkss.setText("Add at least " + i + " links");
+
+//
+                if (i >=0)
+                {
+                    linkss.setText("Add at least " + i + " links");
+                    add.setVisibility(View.VISIBLE);
+                    linkss.setVisibility(View.VISIBLE);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        });
 
         findViewById(R.id.goToChoooseCompanyID).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,10 +159,6 @@ public class AddNewCompany extends AppCompatActivity  implements AdapterView.OnI
 
          city = spinnerCity.getItemAtPosition(spinnerCity.getSelectedItemPosition()).toString();
          category = spinnerCategory.getItemAtPosition(spinnerCategory.getSelectedItemPosition()).toString();
-//        String m = monthSpinner.getItemAtPosition(monthSpinner.getSelectedItemPosition()).toString();
-//        city = citySpinner.getItemAtPosition(citySpinner.getSelectedItemPosition()).toString();
-//        date = d + "." + m + ". " + y;
-
 
     }
 
@@ -97,6 +181,7 @@ public class AddNewCompany extends AppCompatActivity  implements AdapterView.OnI
         Users.businessCompanyInfo.put("City",city);
         Users.businessCompanyInfo.put("Category",category);
         Users.businessCompanyInfo.put("Company name",cpName);
+        Users.businessCompanyInfo.put("links",arrayList.get(0) + ", " + arrayList.get(1) + ", " + arrayList.get(2));
         if (cpName.isEmpty())
         {
             companyName.setError("Fill the field");
@@ -104,9 +189,13 @@ public class AddNewCompany extends AppCompatActivity  implements AdapterView.OnI
             next.getBackground().setAlpha(128);
         } else {
             reference.child(cpName).setValue(Users.businessCompanyInfo);
-            next.getBackground().setAlpha(255);
+
             Intent intent = new Intent(AddNewCompany.this, ChooseBusinessID.class);
             startActivity(intent);
         }
     }
+
+
+
+
 }

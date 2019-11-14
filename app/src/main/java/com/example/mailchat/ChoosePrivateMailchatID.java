@@ -26,6 +26,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +39,7 @@ public class ChoosePrivateMailchatID extends AppCompatActivity {
     EditText recomendationED;
     String recomendation;
     String rec;
+    DatabaseReference ref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +48,8 @@ public class ChoosePrivateMailchatID extends AppCompatActivity {
         userNameTV = findViewById(R.id.nameUser);
 
         mAuth = FirebaseAuth.getInstance();
-//        FirebaseUser user = mAuth.getCurrentUser();
-        DatabaseReference ref;
+
+
         String name = Users.userInfo.get("first name");
         userNameTV.setText(name);
 
@@ -56,12 +58,14 @@ public class ChoosePrivateMailchatID extends AppCompatActivity {
         findViewById(R.id.goToCongrats).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                recomendation = recomendationED.getText().toString().replaceAll("#","");
                 recomendation = recomendationED.getText().toString().replaceAll("\\s","_");
 
-                recomendationED.setText(recomendation+"#");
                 rec = recomendation +"#";
+
+                recomendationED.setText(rec);
                 addData();
+                Toast.makeText(getApplicationContext(),"Your mailchatID added",Toast.LENGTH_SHORT);
             }
         });
     }
@@ -69,7 +73,7 @@ public class ChoosePrivateMailchatID extends AppCompatActivity {
 
     public void addData(){
 
-//        Users.userInfo.put("maichatID", rec);
+        Users.userInfo.put("maichatID", rec);
         FirebaseUser user = mAuth.getCurrentUser();
         String userId = user.getUid();
 
@@ -77,24 +81,10 @@ public class ChoosePrivateMailchatID extends AppCompatActivity {
        FirebaseDatabase db =  FirebaseDatabase.getInstance();
         DatabaseReference ref =   db.getReference("Users");
 
+        ref.child(userId).setValue(Users.userInfo);
+        Button btn = findViewById(R.id.goToCongrats);
+        btn.setEnabled(false);
 
-
-
-//        ref.child(userId).addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//
-//                Users user = dataSnapshot.getValue(Users.class);
-//
-//                Log.d("123", "User name: " + user.getName() + ", email " + user.getEmail());
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError error) {
-//// Failed to read value
-//                Log.w("123", "Failed to read value.", error.toException());
-//            }
-//        });
     }
 
 }
