@@ -149,7 +149,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:hint="Work hours"
-        android:inputType="time"
+        android:inputType="datetime"
         android:textColor="#999999"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

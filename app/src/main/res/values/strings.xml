@@ -27,7 +27,7 @@
         <item>St.Petersburg</item>
         <item>Voronej</item>
     </array>
-     <array name="category">
+    <array name="category">
         <item>IT</item>
         <item>Audit</item>
         <item>Other Services</item>
@@ -43,4 +43,8 @@
     <string name="title_activity_representative_added">RepresentativeAdded</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_tst">tst</string>
+    <string name="title_activity_reservation">Reservation</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

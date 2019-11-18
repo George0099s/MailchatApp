@@ -44,7 +44,7 @@ public class start extends AppCompatActivity{
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(start.this, RegistrationActivity.class);
+                Intent intent = new Intent(start.this, CompanyProfile.class);
                 startActivity(intent);
             }
         });

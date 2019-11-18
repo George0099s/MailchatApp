@@ -16,13 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".RepresentativeAdded"
-            android:label="@string/title_activity_representative_added"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".AddRepresentativeUser"
-            android:label="@string/title_activity_add_representative_user"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".Reservation"
+            android:label="@string/title_activity_reservation"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".CongratulationBusiness"
             android:label="@string/title_activity_congratulation_business"
@@ -40,16 +36,8 @@
             android:label="@string/title_activity_add_private_user_photo"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AddUser2"
-            android:label="@string/title_activity_add_user2"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".CompanyProfile"
             android:label="@string/title_activity_company_profile"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".AddUser"
-            android:label="@string/title_activity_add_user"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AddNewCompany"
@@ -77,10 +65,6 @@
             android:label="@string/title_activity_log_in"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".LoaderActivity"
-            android:label="@string/title_activity_loader"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".RegistrationActivity"
             android:label="@string/title_activity_registration"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -98,10 +82,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-
+        <activity
+            android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
