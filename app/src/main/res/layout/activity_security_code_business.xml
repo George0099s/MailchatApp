@@ -57,16 +57,17 @@
         android:layout_marginTop="40dp"
         android:fontFamily=""
         android:gravity="center"
-        android:text="Security code send by SMS \n please enter code"
+        android:text="Security code send by SMS  please enter code"
         android:textColor="#262626"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
+        android:maxEms="11"
+        android:theme="@style/CustomEditText"
         android:id="@+id/codeBusinessTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -117,6 +118,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/send_again_business_btn"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/quantity_tries"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 from 3"
+        android:textColor="#262626"
+        app:layout_constraintEnd_toEndOf="@+id/codeBusinessTV"
+        app:layout_constraintStart_toStartOf="@+id/codeBusinessTV"
+        app:layout_constraintTop_toBottomOf="@+id/codeBusinessTV" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

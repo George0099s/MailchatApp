@@ -21,10 +21,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class start extends AppCompatActivity{
-
+    ImageView isChecked;
     EditText logED;
     String login;
     Button log;
@@ -32,7 +33,7 @@ public class start extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
 
 
@@ -40,11 +41,12 @@ public class start extends AppCompatActivity{
         log = findViewById(R.id.logINBTN);
         log.getBackground().setAlpha(128);
 
+
         findViewById(R.id.signUPBTN).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(start.this, CompanyProfile.class);
+                Intent intent = new Intent(start.this, RegistrationActivity.class);
                 startActivity(intent);
             }
         });
@@ -69,25 +71,7 @@ public class start extends AppCompatActivity{
 
 
 
-        logED.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-               log.getBackground().setAlpha(255);
-               log.setEnabled(true);
-
-            }
-        });
+        Functions.isChecked(logED, log);
 
     }
 

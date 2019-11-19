@@ -42,7 +42,7 @@ public class AddNewCompany extends AppCompatActivity  implements AdapterView.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_company);
-
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 //        tv1 = findViewById(R.id.tv1);
 //        tv2 = findViewById(R.id.tv2);
 //        tv3 = findViewById(R.id.tv3);
@@ -82,22 +82,8 @@ public class AddNewCompany extends AppCompatActivity  implements AdapterView.OnI
 
 
 
-        companyName.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        Functions.isChecked(companyName, next);
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                next.getBackground().setAlpha(255);
-            }
-        });
         findViewById(R.id.addLink).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,7 +95,7 @@ public class AddNewCompany extends AppCompatActivity  implements AdapterView.OnI
 //                tv1.setVisibility(View.VISIBLE);
 //                i++;
 
-                    arrayList.add("#" + link.getText().toString());
+                    arrayList.add("#" + link.getText().toString().replaceAll("\\s","_"));
                     // next thing you have to do is check if your adapter has changed
                     adapter.notifyDataSetChanged();
                     linkss.setText("Add at least " + i + " links");
@@ -122,7 +108,6 @@ public class AddNewCompany extends AppCompatActivity  implements AdapterView.OnI
                 }
             }
         });
-
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

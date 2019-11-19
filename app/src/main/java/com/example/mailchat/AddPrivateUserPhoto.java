@@ -47,6 +47,7 @@ public class AddPrivateUserPhoto extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_private_user_photo);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
@@ -145,6 +146,7 @@ public class AddPrivateUserPhoto extends AppCompatActivity {
                     });
         }
     }
+
 }
 //
 //

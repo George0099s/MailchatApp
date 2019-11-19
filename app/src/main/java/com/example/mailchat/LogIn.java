@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,14 +32,14 @@ public class LogIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
-
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         mAuth = FirebaseAuth.getInstance();
 
         editTextPhone = findViewById(R.id.lastNameTV);
          validNum = findViewById(R.id.validNumTV);
         validNum.setVisibility(View.INVISIBLE);
          weWill = findViewById(R.id.weWillSendTV);
-
+        Button btn =  findViewById(R.id.btnlogIn);
 
         findViewById(R.id.back).setOnClickListener(new View.OnClickListener(){
             @Override
@@ -54,6 +55,8 @@ public class LogIn extends AppCompatActivity {
               sendVerificationCode();
             }
         });
+        Functions.isChecked(editTextPhone, btn);
+
 
     }
 

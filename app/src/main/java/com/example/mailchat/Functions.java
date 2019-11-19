@@ -3,7 +3,10 @@ package com.example.mailchat;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class Functions {
 
@@ -39,4 +42,34 @@ public class Functions {
             }
 
     }
+
+    public static void isChecked(final EditText editText, final Button btn)
+    {
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() > 0) {
+                    btn.getBackground().setAlpha(255);
+                    btn.setEnabled(true);
+                    editText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_check, 0);
+                } else {
+                    btn.getBackground().setAlpha(128);
+                    btn.setEnabled(false);
+                    editText.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+
+                }
+            }
+        });
+    }
+
 }

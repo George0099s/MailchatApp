@@ -45,16 +45,17 @@ public class SecurityCodeBusiness extends AppCompatActivity {
     Button verify;
     private CountDownTimer countDownTimer;
     String ed,phone, codeSent, firsName, lastName;
+    TextView tries;
     private Boolean mTimerRunning;
     private long mTimeLeft = Constants.START_TIME;
-
-
+    int q = 1;
+    int i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_security_code_business);
-
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         mAuth = FirebaseAuth.getInstance();
 
         verify = findViewById(R.id.btnVerifyCodeBusiness);
@@ -68,54 +69,35 @@ public class SecurityCodeBusiness extends AppCompatActivity {
         startTimer();
         editTextCode = findViewById(R.id.codeBusinessTV);
         ed = editTextCode.getText().toString();
-        editTextCode.addTextChangedListener(new TextWatcher() {
-
-            public void afterTextChanged(Editable s) {
-
-
-                    verify.getBackground().setAlpha(255);
-
-//
-            }
-
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//                if (ed.length()>0 && ed.length() <6) {
-//
-//                    verify.getBackground().setAlpha(255);
-//                }
-            }
-
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                if (ed.length() < 6 && ed.length() > 0)
-//                {
-//                    verify.getBackground().setAlpha(128);
-//
-//                }
-//
-
-            }
-        });
-
         phoneTV = findViewById(R.id.phone_text_view);
         phoneTV.setText(phone);
+        Functions.isChecked(editTextCode, verify);
+        tries = findViewById(R.id.quantity_tries);
+
+
 
         sendAgain = findViewById(R.id.send_again_business_btn);
         sendAgain.setOnClickListener(new View.OnClickListener() {
                                          @Override
                                          public void onClick(View v){
+                                             int i = 1;
                                              if (mTimerRunning)
                                              {
                                                  Toast toast = Toast.makeText(SecurityCodeBusiness.this, "Please wait", Toast.LENGTH_SHORT);
                                                  toast.setGravity(Gravity.CENTER, 0, 0);
-                                             } else {
+                                             }
+                                                else{
+                                                    if (i  < 3) {
+                                                        verify(phone);
+                                                        Toast toast = Toast.makeText(SecurityCodeBusiness.this, "Verification Code has sent", Toast.LENGTH_SHORT);
+                                                        toast.setGravity(Gravity.CENTER, 0, 0);
+                                                        resetTimer();
+                                                        mTimerRunning = false;
+                                                        startTimer();
+                                                        i++;
+                                                        tries.setText(i + " from 3");
 
-                                                 verify(phone);
-                                                 Toast toast = Toast.makeText(SecurityCodeBusiness.this, "Verification Code has sent", Toast.LENGTH_SHORT);
-                                                 toast.setGravity(Gravity.CENTER, 0, 0);
-                                                 resetTimer();
-                                                 mTimerRunning = false;
-                                                 startTimer();
-
+                                                    }
                                              }
 
                                          }
@@ -126,12 +108,6 @@ public class SecurityCodeBusiness extends AppCompatActivity {
         findViewById(R.id.btnVerifyCodeBusiness).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              if (phone.isEmpty())
-              {
-
-                  verify.getBackground().setAlpha(128);
-              }
-              if (phone.length() > 0)
 
                verifySignInCode();
             }
@@ -298,4 +274,5 @@ public class SecurityCodeBusiness extends AppCompatActivity {
 
                             reference.child(uid).setValue(userInfo);
     }
+
 }

@@ -28,14 +28,15 @@ public class SignUpBusiness extends AppCompatActivity {
     private String namefirst, nameLast, phone, codeSent;
     CheckBox checkBox;
     private FirebaseAuth mAuth;
-
+    Button login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_business);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
-
-        checkBox = findViewById(R.id.checkBoxTerms);
+         login = findViewById(R.id.btnOk);
+         checkBox = findViewById(R.id.checkBoxTerms);
          firsName = findViewById(R.id.firstNameTV);
          lastName = findViewById(R.id.lastNameTV);
          phoneNumber = findViewById(R.id.phoneTV);
@@ -60,23 +61,10 @@ public class SignUpBusiness extends AppCompatActivity {
 
 
 
-        firsName.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        Functions.isChecked(firsName,login);
+        Functions.isChecked(lastName, login);
+        Functions.isChecked(phoneNumber, login);
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                Button btn = findViewById(R.id.btnOk);
-                btn.getBackground().setAlpha(255);
-            }
-        });
     }
 
 

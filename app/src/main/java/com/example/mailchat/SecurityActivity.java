@@ -59,7 +59,7 @@ public class SecurityActivity extends AppCompatActivity {
         name = getIntent().getStringExtra("firstName");
         lastname = getIntent().getStringExtra("lastName");
 
-
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         startTimer();
        sendAgain = findViewById(R.id.send_again_btn);
@@ -92,24 +92,7 @@ public class SecurityActivity extends AppCompatActivity {
         btn = findViewById(R.id.btnVerifyCode);
         btn.getBackground().setAlpha(128);
 
-        editTextCode.addTextChangedListener(new TextWatcher() {
-
-           public void afterTextChanged(Editable s) {
-
-
-               btn.getBackground().setAlpha(255);
-
-
-           }
-
-           public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-             }
-
-           public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-           }
-       });
+        Functions.isChecked(editTextCode, btn);
         mAuth = FirebaseAuth.getInstance();
         TextView phonetv = findViewById(R.id.phone_text_view);
         phonetv.setText(phone);

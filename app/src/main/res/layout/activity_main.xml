@@ -48,6 +48,7 @@
         app:layout_constraintTop_toBottomOf="@+id/phoneTV" />
 
     <EditText
+        android:theme="@style/CustomEditText"
         android:id="@+id/lastNameTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -95,6 +96,7 @@
     </LinearLayout>
 
     <EditText
+        android:theme="@style/CustomEditText"
         android:id="@+id/firstNameTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -112,6 +114,7 @@
     </EditText>
 
     <EditText
+        android:theme="@style/CustomEditText"
         android:id="@+id/phoneTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -166,7 +169,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#F9FBFF"
-        android:text="Log In"
+        android:text="@string/log_in"
         android:textColor="@android:color/black"
 
         app:layout_constraintBottom_toBottomOf="@+id/textView13"

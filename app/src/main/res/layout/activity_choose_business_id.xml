@@ -72,6 +72,8 @@
         app:layout_constraintTop_toBottomOf="@+id/textView35" />
 
     <EditText
+        android:theme="@style/CustomEditText"
+
         android:id="@+id/editText5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

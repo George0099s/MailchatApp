@@ -44,7 +44,7 @@ public class ChoosePrivateMailchatID extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_private_mailchat_id);
-
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         userNameTV = findViewById(R.id.nameUser);
 
         mAuth = FirebaseAuth.getInstance();
@@ -54,7 +54,7 @@ public class ChoosePrivateMailchatID extends AppCompatActivity {
         userNameTV.setText(name);
 
         recomendationED = findViewById(R.id.ourRec);
-
+        recomendationED.setText(Users.userInfo.get("first name")+"#");
         findViewById(R.id.goToCongrats).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

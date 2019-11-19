@@ -37,7 +37,7 @@ import java.util.concurrent.TimeUnit;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -61,23 +61,9 @@ import java.util.concurrent.TimeUnit;
         });
 
 
-        editTextName.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                btn.getBackground().setAlpha(255);
-            }
-        });
-
+        Functions.isChecked(editTextName, btn);
+        Functions.isChecked(editTextLastName, btn);
+        Functions.isChecked(editTextPhone, btn);
 
     }
 

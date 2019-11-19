@@ -17,7 +17,7 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         findViewById(R.id.back_btn).setOnClickListener(new View.OnClickListener() {
             @Override

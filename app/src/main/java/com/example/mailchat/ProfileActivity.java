@@ -34,7 +34,7 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
 
         monthSpinner = findViewById(R.id.monthSspinner);

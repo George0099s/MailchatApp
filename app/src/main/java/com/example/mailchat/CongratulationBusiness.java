@@ -17,7 +17,7 @@ public class CongratulationBusiness extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_congratulation_business);
-
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         findViewById(R.id.ok).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

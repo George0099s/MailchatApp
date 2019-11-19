@@ -14,19 +14,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CompanyProfile extends AppCompatActivity {
     EditText webSite, cpNumber,address, workhours, aboutCompany;
     String web, companyNumber, companyAddress, companyWorkHours, about;
     FirebaseAuth mAuth;
     TextView skip;
+    Button next;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_profile);
-
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         webSite = findViewById(R.id.webSite);
         cpNumber = findViewById(R.id.companyPhoneNumber);
@@ -34,15 +37,20 @@ public class CompanyProfile extends AppCompatActivity {
         workhours = findViewById(R.id.workHours);
         aboutCompany = findViewById(R.id.aboutCompany);
         skip = findViewById(R.id.skip);
-
+        next = findViewById(R.id.GoToAddUser);
 
 
         mAuth = FirebaseAuth.getInstance();
-
+        Functions.isChecked(webSite, next);
+        Functions.isChecked(cpNumber, next);
+        Functions.isChecked(address, next);
+        Functions.isChecked(workhours, next);
+        Functions.isChecked(aboutCompany, next);
         findViewById(R.id.GoToAddUser).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 addData();
+                Toast.makeText(getApplicationContext(), "data added", Toast.LENGTH_SHORT).show();
 //                Intent intent = new Intent(CompanyProfile.this, AddUser.class);
 //                startActivity(intent);
             }
@@ -100,4 +108,5 @@ public class CompanyProfile extends AppCompatActivity {
             reference.child(Users.businessCompanyInfo.get("Company name")).setValue(Users.businessCompanyInfo);
             }
         }
+
 }

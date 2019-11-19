@@ -55,6 +55,7 @@ android:background="#FCFDFF">
 
 <EditText
     android:id="@+id/loginED"
+    android:theme="@style/CustomEditText"
     android:layout_width="match_parent"
     android:layout_height="41dp"
     android:layout_marginStart="30dp"
@@ -65,12 +66,14 @@ android:background="#FCFDFF">
     android:ems="10"
     android:gravity="start|top"
     android:hint="Mailchat ID or Phone number"
-    android:inputType="textMultiLine"
+    android:inputType="textNoSuggestions"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
-<CheckBox
+
+
+    <CheckBox
     android:id="@+id/checkBox2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

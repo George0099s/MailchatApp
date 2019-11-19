@@ -26,8 +26,9 @@ public class ChooseBusinessID extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_business_id);
         mailchatID = findViewById(R.id.editText5);
+        mailchatID.setText(Users.businessCompanyInfo.get("Company name"));
         mAuth = FirebaseAuth.getInstance();
-
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         findViewById(R.id.goToCongrats).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
