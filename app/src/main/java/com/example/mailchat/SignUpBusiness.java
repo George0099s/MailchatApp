@@ -1,5 +1,6 @@
 package com.example.mailchat;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -9,10 +10,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseException;
@@ -20,11 +24,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import org.w3c.dom.Text;
+
 import java.util.concurrent.TimeUnit;
 
 public class SignUpBusiness extends AppCompatActivity {
 
     EditText firsName, lastName, phoneNumber;
+    TextView firstNameTV, lastNameTV, phoneNumberTV;
     private String namefirst, nameLast, phone, codeSent;
     CheckBox checkBox;
     private FirebaseAuth mAuth;
@@ -40,11 +47,19 @@ public class SignUpBusiness extends AppCompatActivity {
          firsName = findViewById(R.id.firstNameTV);
          lastName = findViewById(R.id.lastNameTV);
          phoneNumber = findViewById(R.id.phoneTV);
+         firstNameTV = findViewById(R.id.first_name_tv);
+         lastNameTV = findViewById(R.id.last_name_tv);
+         phoneNumberTV = findViewById(R.id.phone_number_tv);
 
         Button btn = findViewById(R.id.btnOk);
         btn.getBackground().setAlpha(128);
-
+        btn.setEnabled(false);
          mAuth = FirebaseAuth.getInstance();
+
+
+//        Functions.textAppearence(firsName, firstNameTV);
+//        Functions.textAppearence(lastName, lastNameTV);
+//        Functions.textAppearence(phoneNumber, phoneNumberTV);
 
         findViewById(R.id.logIn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,11 +74,10 @@ public class SignUpBusiness extends AppCompatActivity {
             }
         });
 
+        Functions.isChecked2(firsName,login,firstNameTV);
+        Functions.isChecked2(lastName, login, lastNameTV);
+        Functions.isChecked2(phoneNumber, login, phoneNumberTV);
 
-
-        Functions.isChecked(firsName,login);
-        Functions.isChecked(lastName, login);
-        Functions.isChecked(phoneNumber, login);
 
     }
 
@@ -153,5 +167,18 @@ public class SignUpBusiness extends AppCompatActivity {
         }
 
     };
+    @Override
+    public boolean dispatchTouchEvent(@NonNull MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = getCurrentFocus();
+            if (v instanceof EditText) {
+                v.clearFocus();
+                InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
+            }
+        }
+
+        return super.dispatchTouchEvent(event);
+    }
 }

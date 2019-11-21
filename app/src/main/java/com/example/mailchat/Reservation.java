@@ -1,7 +1,12 @@
 package com.example.mailchat;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,5 +53,18 @@ public class Reservation extends AppCompatActivity {
         BottomNavigationView navigation =  findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
+    @Override
+    public boolean dispatchTouchEvent(@NonNull MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = getCurrentFocus();
+            if (v instanceof EditText) {
+                v.clearFocus();
+                InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
+            }
+        }
+
+        return super.dispatchTouchEvent(event);
+    }
 }

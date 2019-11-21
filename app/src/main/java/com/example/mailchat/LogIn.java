@@ -1,5 +1,6 @@
 package com.example.mailchat;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -12,7 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -59,7 +62,20 @@ public class LogIn extends AppCompatActivity {
 
 
     }
+    @Override
+    public boolean dispatchTouchEvent(@NonNull MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = getCurrentFocus();
+            if (v instanceof EditText) {
+                v.clearFocus();
+                InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
+            }
+        }
+
+        return super.dispatchTouchEvent(event);
+    }
     @Override
     public void onBackPressed()
     {

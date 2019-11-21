@@ -1,5 +1,6 @@
 package com.example.mailchat;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -10,10 +11,13 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -26,7 +30,8 @@ public class ChooseBusinessID extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_business_id);
         mailchatID = findViewById(R.id.editText5);
-        mailchatID.setText(Users.businessCompanyInfo.get("Company name"));
+
+        mailchatID.setText(Functions.firstUpperCase(Users.businessCompanyInfo.get("Company name")));
         mAuth = FirebaseAuth.getInstance();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         findViewById(R.id.goToCongrats).setOnClickListener(new View.OnClickListener() {
@@ -83,5 +88,18 @@ public class ChooseBusinessID extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean dispatchTouchEvent(@NonNull MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = getCurrentFocus();
+            if (v instanceof EditText) {
+                v.clearFocus();
+                InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
+            }
+        }
+
+        return super.dispatchTouchEvent(event);
+    }
 }

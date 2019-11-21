@@ -192,5 +192,30 @@
         app:layout_constraintTop_toTopOf="@+id/textView13"
         app:layout_constraintVertical_bias="0.0" />
 
+    <TextView
+        android:id="@+id/first_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/first_name_tv"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/firstNameTV"
+        app:layout_constraintStart_toStartOf="@+id/firstNameTV" />
+
+    <TextView
+        android:id="@+id/last_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/last_name_tv"
+        app:layout_constraintBottom_toTopOf="@+id/lastNameTV"
+        app:layout_constraintStart_toStartOf="@+id/lastNameTV" />
+
+    <TextView
+        android:id="@+id/phone_number_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/phone_number_tv"
+        app:layout_constraintBottom_toTopOf="@+id/phoneTV"
+        app:layout_constraintStart_toStartOf="@+id/phoneTV" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

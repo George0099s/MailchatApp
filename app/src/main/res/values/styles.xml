@@ -19,7 +19,6 @@
         <item name="android:windowEnterAnimation">@style/AppTheme.WindowTransition</item>
 
 
-
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -37,9 +36,11 @@
         <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
+
     <style name="statusBarStyle" parent="@android:style/Theme.DeviceDefault.Light">
 
     </style>
+
     <style name="CustomEditText" parent="Widget.AppCompat.EditText">
         <item name="android:maxLines">1</item>
         <item name="colorControlNormal">#CCD5E8</item>

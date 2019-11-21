@@ -5,8 +5,14 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 public class Functions {
 
@@ -45,6 +51,7 @@ public class Functions {
 
     public static void isChecked(final EditText editText, final Button btn)
     {
+
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -59,6 +66,7 @@ public class Functions {
             @Override
             public void afterTextChanged(Editable editable) {
                 if (editable.length() > 0) {
+
                     btn.getBackground().setAlpha(255);
                     btn.setEnabled(true);
                     editText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_check, 0);
@@ -70,6 +78,51 @@ public class Functions {
                 }
             }
         });
+    }
+    public static void isChecked2(final EditText editText, final Button btn, final TextView textView)
+    {
+        textView.setVisibility(View.INVISIBLE);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() > 0) {
+                    textView.setVisibility(View.VISIBLE);
+                    btn.getBackground().setAlpha(255);
+                    btn.setEnabled(true);
+                    editText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_check, 0);
+                } else {
+                    textView.setVisibility(View.INVISIBLE);
+                    btn.getBackground().setAlpha(128);
+                    btn.setEnabled(false);
+                    editText.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+
+                }
+            }
+        });
+    }
+
+    public static String firstUpperCase(String word){
+        if (word == null || word.isEmpty()){
+            return "String is empty";
+        }
+        return word.substring(0,1).toUpperCase()+word.substring(1);
+    }
+
+    public static void textAppearence(EditText ed, TextView tv){
+        tv.setVisibility(View.INVISIBLE);
+        if (ed.length() > 0){
+            tv.setVisibility(View.VISIBLE);
+        }
     }
 
 }

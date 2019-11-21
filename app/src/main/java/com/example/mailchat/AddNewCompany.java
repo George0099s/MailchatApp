@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,13 +34,13 @@ public class AddNewCompany extends AppCompatActivity  implements AdapterView.OnI
     FirebaseAuth mAuth;
     EditText companyName, link;
     String cpName;
-    TextView  linkss;
+    TextView  linkss, cpNameTV;
     Button next;
     ListView list;
     ImageView add;
     private ArrayAdapter<String> adapter;
     private ArrayList<String> arrayList;
-    int i = 2;
+    int i = 3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +58,7 @@ public class AddNewCompany extends AppCompatActivity  implements AdapterView.OnI
         list =  findViewById(R.id.list);
         companyName = findViewById(R.id.cpName);
         link = findViewById(R.id.editText7);
-
+        cpNameTV = findViewById(R.id.company_name_tv);
 
 
         next = findViewById(R.id.goToChoooseCompanyID);
@@ -82,26 +85,30 @@ public class AddNewCompany extends AppCompatActivity  implements AdapterView.OnI
 
 
 
-        Functions.isChecked(companyName, next);
+        Functions.isChecked2(companyName, next, cpNameTV);
 
         findViewById(R.id.addLink).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (i >= 0) {
+                if (i >= 2) {
 //                String link1 = link.getText().toString();
 //                links[i] ="#" + link1;
 //
 //                tv1.setText(links[i]);
 //                tv1.setVisibility(View.VISIBLE);
 //                i++;
-
+                    i--;
                     arrayList.add("#" + link.getText().toString().replaceAll("\\s","_"));
                     // next thing you have to do is check if your adapter has changed
                     adapter.notifyDataSetChanged();
                     linkss.setText("Add at least " + i + " links");
-                    i--;
+
 
                 } else {
+                    arrayList.add("#" + link.getText().toString().replaceAll("\\s","_"));
+                    // next thing you have to do is check if your adapter has changed
+                    adapter.notifyDataSetChanged();
+                    linkss.setText("Add at least " + i + " links");
                     add.setVisibility(View.INVISIBLE);
                     linkss.setVisibility(View.INVISIBLE);
                     Toast.makeText(getApplicationContext(),"123", Toast.LENGTH_SHORT).show();
@@ -181,6 +188,19 @@ public class AddNewCompany extends AppCompatActivity  implements AdapterView.OnI
     }
 
 
+    @Override
+    public boolean dispatchTouchEvent(@NonNull MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            View v = getCurrentFocus();
+            if (v instanceof EditText) {
+                v.clearFocus();
+                InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
+            }
+        }
+
+        return super.dispatchTouchEvent(event);
+    }
 
 }

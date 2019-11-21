@@ -3,12 +3,16 @@
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -27,6 +31,7 @@ import java.util.concurrent.TimeUnit;
     public class MainActivity extends AppCompatActivity {
 
     private EditText editTextPhone, editTextName, editTextLastName;
+    TextView firstNameTV, lastNameTV, phoneNumberTV;
     private final String TAG = "Sign Up Private user";
     FirebaseAuth mAuth;
     String codeSent;
@@ -41,7 +46,9 @@ import java.util.concurrent.TimeUnit;
 
         mAuth = FirebaseAuth.getInstance();
 
-
+        firstNameTV = findViewById(R.id.first_name_tv);
+        lastNameTV = findViewById(R.id.last_name_tv);
+        phoneNumberTV = findViewById(R.id.phone_number_tv);
         editTextLastName = findViewById(R.id.lastNameTV);
         editTextPhone = findViewById(R.id.phoneTV);
         editTextName = findViewById(R.id.firstNameTV);
@@ -61,9 +68,9 @@ import java.util.concurrent.TimeUnit;
         });
 
 
-        Functions.isChecked(editTextName, btn);
-        Functions.isChecked(editTextLastName, btn);
-        Functions.isChecked(editTextPhone, btn);
+        Functions.isChecked2(editTextName, btn, firstNameTV);
+        Functions.isChecked2(editTextLastName, btn, lastNameTV);
+        Functions.isChecked2(editTextPhone, btn, phoneNumberTV);
 
     }
 
@@ -187,5 +194,18 @@ import java.util.concurrent.TimeUnit;
 //                        }
 //                    });
 //        }
+@Override
+public boolean dispatchTouchEvent(@NonNull MotionEvent event) {
+    if (event.getAction() == MotionEvent.ACTION_DOWN) {
+        View v = getCurrentFocus();
+        if (v instanceof EditText) {
+            v.clearFocus();
+            InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
+        }
+    }
+
+    return super.dispatchTouchEvent(event);
+}
     }

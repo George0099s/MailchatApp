@@ -5,7 +5,7 @@
     <string name="title_activity_security">SECURITY CODE</string>
     <string name="title_activity_registration">RegistrationActivity</string>
     <string name="title_activity_loader">LoaderActivity</string>
-    <string name="terms">By clicking "Continue", you agree to the <u>Terms</u> and <u>Privacy Policy</u>></string>
+    <string name="terms">By clicking "Continue", you agree to the <u>Terms</u> and <u>Privacy Policy</u></string>
     <string name="title_activity_log_in">LogIn</string>
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="title_activity_security_log_in">SecurityLogInActivity</string>
@@ -18,9 +18,18 @@
     <string name="title_activity_add_user2">ADD USERS</string>
 
     <array name="months">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
         <item>September</item>
-        <item>Oktober</item>
+        <item>October</item>
         <item>November</item>
+        <item>December</item>
     </array>
     <array name="city">
         <item>Moscow</item>
@@ -31,6 +40,19 @@
         <item>IT</item>
         <item>Audit</item>
         <item>Other Services</item>
+        <item>Audit</item>
+        <item>Banking</item>
+        <item>Volunteering</item>
+        <item>Development</item>
+        <item>Design</item>
+        <item>Client Service</item>
+        <item>Consulting</item>
+        <item>Cosmetics</item>
+        <item>Media</item>
+        <item>Medicine</item>
+        <item>Education</item>
+
+
     </array>
 
 
@@ -48,4 +70,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="log_in"><u>Log In</u></string>
+    <string name="first_name_tv">First name</string>
+    <string name="last_name_tv">Last name</string>
+    <string name="phone_number_tv">Telephone number</string>
+    <string name="skip_it"><u>Skip it</u></string>
+    <string name="title_activity_main2">Main2Activity</string>
 </resources>

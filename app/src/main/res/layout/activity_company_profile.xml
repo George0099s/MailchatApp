@@ -11,6 +11,7 @@
     android:scrollbars="vertical">
 
     <EditText
+        android:theme="@style/CustomEditText"
         android:id="@+id/aboutCompany"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,10 +54,11 @@
     </ImageView>
 
     <ImageView
+        android:id="@+id/company_img"
         android:layout_width="36dp"
+
         android:layout_height="32dp"
         android:src="@drawable/photoprofilecompaty"
-
         app:layout_constraintBottom_toBottomOf="@+id/imageView11"
         app:layout_constraintEnd_toEndOf="@+id/imageView11"
         app:layout_constraintStart_toStartOf="@+id/imageView11"
@@ -207,7 +209,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="102dp"
         android:layout_marginRight="102dp"
-        android:text="Skip it"
+        android:text="@string/skip_it"
         android:textColor="#666666"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView17"
@@ -216,6 +218,46 @@
         app:layout_constraintStart_toEndOf="@+id/textView17"
         app:layout_constraintTop_toTopOf="@+id/textView17"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/web_site_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Web site"
+        app:layout_constraintBottom_toTopOf="@+id/webSite"
+        app:layout_constraintStart_toStartOf="@+id/webSite" />
+
+    <TextView
+        android:id="@+id/phone_number_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/phone_number_tv"
+        app:layout_constraintBottom_toTopOf="@+id/companyPhoneNumber"
+        app:layout_constraintStart_toStartOf="@+id/companyPhoneNumber" />
+
+    <TextView
+        android:id="@+id/address_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        app:layout_constraintBottom_toTopOf="@+id/address"
+        app:layout_constraintStart_toStartOf="@+id/address" />
+
+    <TextView
+        android:id="@+id/work_hours_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Work hours"
+        app:layout_constraintBottom_toTopOf="@+id/workHours"
+        app:layout_constraintStart_toStartOf="@+id/workHours" />
+
+    <TextView
+        android:id="@+id/about_company_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About_company"
+        app:layout_constraintBottom_toTopOf="@+id/aboutCompany"
+        app:layout_constraintStart_toStartOf="@+id/aboutCompany" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
