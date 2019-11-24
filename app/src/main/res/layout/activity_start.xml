@@ -84,15 +84,15 @@ android:background="#FCFDFF">
     app:layout_constraintStart_toStartOf="@+id/loginED"
     app:layout_constraintTop_toBottomOf="@+id/loginED" />
 
-<TextView
-    android:id="@+id/textView28"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Trouble loging in?"
-    android:textColor="#262626"
-    app:layout_constraintBottom_toBottomOf="@+id/checkBox2"
-    app:layout_constraintEnd_toEndOf="@+id/loginED"
-    app:layout_constraintTop_toTopOf="@+id/checkBox2" />
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/trouble_login"
+        android:textColor="#262626"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBox2"
+        app:layout_constraintEnd_toEndOf="@+id/loginED"
+        app:layout_constraintTop_toTopOf="@+id/checkBox2" />
 
     <Button
         android:id="@+id/logINBTN"

@@ -186,8 +186,8 @@ public class CompanyProfile extends AppCompatActivity {
 
 
                 userPhoto = findViewById(R.id.company_img);
-                userPhoto.setMinimumWidth(180);
-                int dimensionInPixel = 180;
+                userPhoto.setMinimumWidth(100);
+                int dimensionInPixel = 100;
                 int dimensionInDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dimensionInPixel, getResources().getDisplayMetrics());
 
                 userPhoto.getLayoutParams().height = dimensionInDp;

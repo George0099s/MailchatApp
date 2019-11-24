@@ -11,7 +11,6 @@
     android:scrollbars="vertical">
 
     <EditText
-        android:theme="@style/CustomEditText"
         android:id="@+id/aboutCompany"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,9 +18,11 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="30dp"
         android:hint="About Company"
-        android:maxLines="1"
         android:inputType="text"
-        android:textColor="#999999"
+        android:maxLines="1"
+        android:textColor="#262626"
+        android:textColorHint="@color/grey_text"
+        android:theme="@style/CustomEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,19 +89,17 @@
         app:layout_constraintVertical_bias="0.0"></TextView>
 
 
-
     <EditText
-        android:theme="@style/CustomEditText"
         android:id="@+id/webSite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:hint="Web site"
-        android:textColor="#999999"
+        android:textColor="#262626"
+        android:textColorHint="@color/grey_text"
+        android:theme="@style/CustomEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,17 +108,16 @@
     </EditText>
 
     <EditText
-        android:theme="@style/CustomEditText"
         android:id="@+id/companyPhoneNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="35dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:hint="Company Telephone number"
-        android:textColor="#999999"
+        android:textColor="#262626"
+        android:textColorHint="@color/grey_text"
+        android:theme="@style/CustomEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/webSite">
@@ -127,17 +125,16 @@
     </EditText>
 
     <EditText
-        android:theme="@style/CustomEditText"
         android:id="@+id/address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="35dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:hint="Address"
-        android:textColor="#999999"
+        android:textColor="#262626"
+        android:textColorHint="@color/grey_text"
+        android:theme="@style/CustomEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/companyPhoneNumber">
@@ -145,18 +142,17 @@
     </EditText>
 
     <EditText
-        android:theme="@style/CustomEditText"
         android:id="@+id/workHours"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="35dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:hint="Work hours"
         android:inputType="datetime"
-        android:textColor="#999999"
+        android:textColor="#262626"
+        android:textColorHint="@color/grey_text"
+        android:theme="@style/CustomEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/address">
@@ -188,18 +184,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="103dp"
-        android:layout_marginLeft="103dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="102dp"
 
-        android:layout_marginRight="102dp"
-
         android:text="I want finish later"
-        android:textColor="#999999"
+        android:textColor="@color/grey_text"
         android:textSize="16sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.394"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aboutCompany" />
 
@@ -208,13 +201,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="102dp"
-        android:layout_marginRight="102dp"
         android:text="@string/skip_it"
-        android:textColor="#666666"
+        android:textColor="#262626"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView17"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.534"
         app:layout_constraintStart_toEndOf="@+id/textView17"
         app:layout_constraintTop_toTopOf="@+id/textView17"
         app:layout_constraintVertical_bias="0.0" />
@@ -224,6 +216,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Web site"
+        android:textColor="@color/grey_text"
         app:layout_constraintBottom_toTopOf="@+id/webSite"
         app:layout_constraintStart_toStartOf="@+id/webSite" />
 
@@ -232,6 +225,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/phone_number_tv"
+        android:textColor="@color/grey_text"
         app:layout_constraintBottom_toTopOf="@+id/companyPhoneNumber"
         app:layout_constraintStart_toStartOf="@+id/companyPhoneNumber" />
 
@@ -240,6 +234,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Address"
+        android:textColor="@color/grey_text"
         app:layout_constraintBottom_toTopOf="@+id/address"
         app:layout_constraintStart_toStartOf="@+id/address" />
 
@@ -248,6 +243,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Work hours"
+        android:textColor="@color/grey_text"
         app:layout_constraintBottom_toTopOf="@+id/workHours"
         app:layout_constraintStart_toStartOf="@+id/workHours" />
 
@@ -256,6 +252,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="About_company"
+        android:textColor="@color/grey_text"
+        android:textColorHint="@color/grey_text"
         app:layout_constraintBottom_toTopOf="@+id/aboutCompany"
         app:layout_constraintStart_toStartOf="@+id/aboutCompany" />
 

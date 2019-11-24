@@ -58,6 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:text="Gender"
+        android:textColor="@color/grey_text"
         app:layout_constraintBottom_toTopOf="@+id/btnMale"
         app:layout_constraintStart_toStartOf="@+id/btnMale" />
 
@@ -112,6 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:text="Date of birth"
+        android:textColor="@color/grey_text"
         app:layout_constraintBottom_toTopOf="@+id/daySpinner"
         app:layout_constraintStart_toStartOf="@+id/daySpinner" />
 
@@ -153,6 +155,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:text="City"
+        android:textColor="@color/grey_text"
         app:layout_constraintBottom_toTopOf="@+id/spinnerCity"
         app:layout_constraintStart_toStartOf="@+id/spinnerCity" />
 

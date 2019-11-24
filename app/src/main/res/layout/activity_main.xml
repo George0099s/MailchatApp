@@ -33,31 +33,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:buttonTint="#999999"
-        android:shadowColor="#999999"
-        android:textColor="#999999"
-
+        android:shadowColor="@color/grey_text"
         android:text="@string/terms"
+
+        android:textColor="@color/grey_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneTV" />
 
     <EditText
-        android:theme="@style/CustomEditText"
         android:id="@+id/lastNameTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:hint="Last name"
+        android:textColorHint="@color/grey_text"
+        android:theme="@style/CustomEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,16 +93,15 @@
     </LinearLayout>
 
     <EditText
-        android:theme="@style/CustomEditText"
         android:id="@+id/firstNameTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:hint="First name"
+        android:textColorHint="@color/grey_text"
+        android:theme="@style/CustomEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -114,17 +110,18 @@
     </EditText>
 
     <EditText
-        android:theme="@style/CustomEditText"
         android:id="@+id/phoneTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:hint="Telephone number"
         android:inputType="phone"
+        android:textColorHighlight="@color/grey_text"
+        android:textColorHint="@color/grey_text"
+        android:textColorLink="@color/grey_text"
+        android:theme="@style/CustomEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -156,8 +153,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:shadowColor="#999999"
+        android:shadowColor="@color/grey_text"
         android:text="Already have an account?"
+        android:textColor="@color/grey_text"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="@+id/checkBoxTerms"
         app:layout_constraintHorizontal_bias="0.415"
@@ -184,6 +182,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/first_name_tv"
+        android:textColor="@color/grey_text"
         app:layout_constraintBottom_toTopOf="@+id/firstNameTV"
         app:layout_constraintStart_toStartOf="@+id/firstNameTV" />
 
@@ -192,6 +191,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/last_name_tv"
+        android:textColor="@color/grey_text"
         app:layout_constraintBottom_toTopOf="@+id/lastNameTV"
         app:layout_constraintStart_toStartOf="@+id/lastNameTV" />
 
@@ -200,6 +200,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/phone_number_tv"
+        android:textColor="@color/grey_text"
         app:layout_constraintBottom_toTopOf="@+id/phoneTV"
         app:layout_constraintStart_toStartOf="@+id/phoneTV" />
 

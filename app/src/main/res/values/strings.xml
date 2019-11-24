@@ -75,4 +75,7 @@
     <string name="phone_number_tv">Telephone number</string>
     <string name="skip_it"><u>Skip it</u></string>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="trouble_login"><u>Trouble loging in?</u></string>
+    <string name="learn_mor"><u>Learn more about accounts</u></string>
+    <string name="category_string">Category</string>
 </resources>

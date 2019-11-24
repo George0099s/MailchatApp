@@ -54,13 +54,14 @@
     </ImageView>
 
     <EditText
-        android:theme="@style/CustomEditText"
         android:id="@+id/lastNameTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:hint="Enter phone number"
         android:inputType="phone"
+        android:textColor="@color/grey_text"
+        android:theme="@style/CustomEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView">

@@ -36,14 +36,13 @@
         android:buttonTint="#A3AFC9"
 
         android:text="@string/terms"
-        android:textColor="#A3AFC9"
+        android:textColor="@color/grey_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneTV" />
 
     <EditText
-        android:theme="@style/CustomEditText"
         android:id="@+id/lastNameTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,6 +50,9 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="30dp"
         android:hint="Last name"
+        android:textColorHint="#CCD5E8"
+        android:textColorLink="#CCD5E8"
+        android:theme="@style/CustomEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,6 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
+            android:layout_marginRight="5dp"
             android:text="Account owner"
             android:textColor="#262626"
             android:textSize="18sp"
@@ -89,17 +92,16 @@
     </LinearLayout>
 
     <EditText
-        android:theme="@style/CustomEditText"
         android:id="@+id/firstNameTV"
-        android:inputType="textNoSuggestions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:hint="First name"
+        android:inputType="textNoSuggestions"
+        android:textColorHint="#CCD5E8"
+        android:theme="@style/CustomEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -108,7 +110,6 @@
     </EditText>
 
     <EditText
-        android:theme="@style/CustomEditText"
         android:id="@+id/phoneTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -117,6 +118,10 @@
         android:layout_marginEnd="30dp"
         android:hint="Telephone number"
         android:inputType="phone"
+        android:textColorHighlight="#CCD5E8"
+        android:textColorHint="#CCD5E8"
+        android:textColorLink="#CCD5E8"
+        android:theme="@style/CustomEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -169,8 +174,9 @@
         android:layout_marginStart="68dp"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="100dp"
-        android:shadowColor="#999999"
+        android:shadowColor="#CCD5E8"
         android:text="Already have an account?"
+        android:textColor="#CCD5E8"
         android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/btnOk"
         app:layout_constraintStart_toStartOf="parent"
@@ -197,6 +203,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/first_name_tv"
+        android:textColor="#CCD5E8"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/firstNameTV"
         app:layout_constraintStart_toStartOf="@+id/firstNameTV" />
@@ -206,6 +213,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/last_name_tv"
+        android:textColor="#CCD5E8"
         app:layout_constraintBottom_toTopOf="@+id/lastNameTV"
         app:layout_constraintStart_toStartOf="@+id/lastNameTV" />
 
@@ -214,6 +222,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/phone_number_tv"
+        android:textColor="#CCD5E8"
+        android:textColorHint="#CCD5E8"
+        android:textColorLink="#CCD5E8"
         app:layout_constraintBottom_toTopOf="@+id/phoneTV"
         app:layout_constraintStart_toStartOf="@+id/phoneTV" />
 

@@ -43,19 +43,19 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:theme="@style/CustomEditText"
-
         android:id="@+id/cpName"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="57dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
+        android:textColorHighlight="@color/grey_text"
+        android:textColorHint="@color/grey_text"
+        android:theme="@style/CustomEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
@@ -65,6 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Company name"
+        android:textColor="@color/grey_text"
         app:layout_constraintBottom_toTopOf="@+id/cpName"
         app:layout_constraintStart_toStartOf="@+id/cpName" />
 
@@ -102,10 +103,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="25dp"
         android:text="#MailChat links"
-        android:textColor="#A3AFC9"
+        android:textColor="@color/grey_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerCategoty" />
 
@@ -142,22 +142,22 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:theme="@style/CustomEditText"
-
         android:id="@+id/editText7"
+
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:background="@drawable/shape_links"
         android:ems="10"
         android:gravity="start|top"
         android:hint="for example: #best_cakes"
         android:inputType="textMultiLine"
+        android:textColor="@color/grey_text"
+        android:textColorHint="@color/grey_text"
         android:textStyle="italic"
+        android:theme="@style/CustomEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -168,9 +168,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="45dp"
-        android:layout_marginLeft="45dp"
         android:layout_marginBottom="30dp"
         android:text="Add at least 3 links"
+        android:textColor="@color/grey_text"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/goToChoooseCompanyID"
         app:layout_constraintEnd_toEndOf="parent"
@@ -203,6 +203,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText7" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="City"
+        android:textColor="@color/grey_text"
+        app:layout_constraintBottom_toTopOf="@+id/citySpinner"
+        app:layout_constraintStart_toStartOf="@+id/citySpinner" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/category_string"
+        android:textColor="@color/grey_text"
+        android:textColorHint="@color/grey_text"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerCategoty"
+        app:layout_constraintStart_toStartOf="@+id/spinnerCategoty" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

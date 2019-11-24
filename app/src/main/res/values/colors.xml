@@ -4,5 +4,5 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="bgMaleOnClick" >#2592FB</color >
-
+    <color name="grey_text">#CCD5E8</color>
 </resources>
