@@ -15,7 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 public class Functions {
-
+   public static String[] nums_arr = {"+7", "+1", "+1", "+4"};
 //    private boolean isNetworkAvailable() {
 //        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 //        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();

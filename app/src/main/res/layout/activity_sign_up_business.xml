@@ -12,12 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="38dp"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/okbtn"
-        android:text="Continue"
+        android:text="@string/continue_string"
         android:textAllCaps="false"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -49,7 +47,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="30dp"
-        android:hint="Last name"
+        android:hint="@string/last_name_tv"
         android:textColorHint="#CCD5E8"
         android:textColorLink="#CCD5E8"
         android:theme="@style/CustomEditText"
@@ -75,8 +73,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_marginRight="5dp"
-            android:text="Account owner"
+            android:layout_marginRight="10dp"
+            android:text="@string/account_owner"
             android:textColor="#262626"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -86,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="(confidentional)"
+            android:text="@string/confidentional"
             android:textColor="#262626"
             android:textSize="16sp"></TextView>
     </LinearLayout>
@@ -98,7 +96,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="30dp"
-        android:hint="First name"
+        android:hint="@string/first_name_tv"
         android:inputType="textNoSuggestions"
         android:textColorHint="#CCD5E8"
         android:theme="@style/CustomEditText"
@@ -111,20 +109,21 @@
 
     <EditText
         android:id="@+id/phoneTV"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="30dp"
-        android:hint="Telephone number"
+        android:hint="@string/phone_number_tv"
         android:inputType="phone"
+        android:maxEms="9"
+        android:maxLength="9"
         android:textColorHighlight="#CCD5E8"
         android:textColorHint="#CCD5E8"
         android:textColorLink="#CCD5E8"
         android:theme="@style/CustomEditText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/spinner_nums"
         app:layout_constraintTop_toBottomOf="@+id/lastNameTV">
 
     </EditText>
@@ -175,7 +174,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginBottom="100dp"
         android:shadowColor="#CCD5E8"
-        android:text="Already have an account?"
+        android:text="@string/already_have_an_acc_string"
         android:textColor="#CCD5E8"
         android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/btnOk"
@@ -189,7 +188,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="84dp"
         android:background="#F9FBFF"
-        android:text="@string/log_in"
+        android:text="@string/log_in_underline"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="@+id/textView13"
         app:layout_constraintEnd_toEndOf="parent"
@@ -221,12 +220,23 @@
         android:id="@+id/phone_number_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="232dp"
         android:text="@string/phone_number_tv"
         android:textColor="#CCD5E8"
         android:textColorHint="#CCD5E8"
         android:textColorLink="#CCD5E8"
         app:layout_constraintBottom_toTopOf="@+id/phoneTV"
-        app:layout_constraintStart_toStartOf="@+id/phoneTV" />
+        app:layout_constraintEnd_toEndOf="@+id/phoneTV"
+        app:layout_constraintStart_toStartOf="@+id/spinner" />
+
+    <Spinner
+        android:id="@+id/spinner_nums"
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/phoneTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/phoneTV" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

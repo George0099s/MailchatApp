@@ -5,4 +5,55 @@
     <string name="phone_number_tv">Telephone number</string>
     <string name="skip_it"><u>Skip it</u></string>
     <string name="learn_mor"><![CDATA[<u>Learn more about accounts</u>]]></string>
+    <string name="compan_name">Comany name</string>
+    <string name="city_string">City</string>
+    <string name="mailchatlinks_string">#Mailchat links</string>
+    <string name="example_links">for example: #best_cakes</string>
+    <string name="add_at_least_3_links_string">Add at lesat 3 links</string>
+    <string name="next_btn_string">Next</string>
+    <string name="add_profile_photo_title">ADD A PROFILE PHOTO</string>
+    <string name="choose_photo_btn">Choose a photo</string>
+    <string name="finish_btn">Finish</string>
+    <string name="chooose_mailchat_id_title">CHOOSE MAILCHAT ID</string>
+    <string name="company_name_lowercase">company name</string>
+    <string name="our_recomendation_string">our recomendation:</string>
+    <string name="choose_mailchatid_once">Please note, you can choose Mailchat ID just once</string>
+    <string name="confirm_btn_string">Confirm</string>
+    <string name="user_name_string">user name</string>
+    <string name="company_profile_title">COMPANY PROFILE</string>
+    <string name="web_site_string">Web site</string>
+    <string name="address_string">Address</string>
+    <string name="work_hours_string">Work hours</string>
+    <string name="about_company_string">About company</string>
+    <string name="finish_later">i want finish later</string>
+    <string name="company_created">company created</string>
+    <string name="fill_details_about_company">Please , fill profile company, clients want to know more details about your company</string>
+    <string name="ok_btn_string">Ok</string>
+    <string name="login_title">LOG IN</string>
+    <string name="create_private_acc_title">CREATE A PRIVATE ACCOUNT</string>
+    <string name="account_owner">Account owner</string>
+    <string name="confidentional">(confidentional)</string>
+    <string name="already_have_an_acc_string">Already have an account?</string>
+    <string name="continue_string">Continue</string>
+    <string name="user_profile_title">USER PROFILE</string>
+    <string name="gender_srtring">GENDER</string>
+    <string name="male_string">MALE</string>
+    <string name="female_string">Female</string>
+    <string name="date_of_birth_string">Date of birth</string>
+    <string name="mailchat_title">MAILCHAT</string>
+    <string name="create_acc_string">Create account</string>
+    <string name="private_string">Private</string>
+    <string name="business_string">Business</string>
+    <string name="verify_your_phone_title">VERIFY YOUR PHONE</string>
+    <string name="security_code_sent_string">Security code send by SMS  please enter code</string>
+    <string name="quantity_tries">1 from 3</string>
+    <string name="verify_btn">Verify</string>
+    <string name="stay_login_string">Stay log In</string>
+    <string name="mailchatid_or_phone">Mailchat ID or Phone number</string>
+
+
+    <array name="nums_spinner">
+        <item>+7</item>
+        <item>+1</item>
+    </array>
 </resources>

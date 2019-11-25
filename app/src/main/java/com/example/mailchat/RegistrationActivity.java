@@ -55,14 +55,14 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
 
-                if(Functions.internetIsConnected())
-                {
+//                if(Functions.internetIsConnected())
+//                {
                     Intent intent = new Intent(RegistrationActivity.this, SignUpBusiness.class);
                     startActivity(intent);
-                } else {
-                    Intent intent = new Intent(RegistrationActivity.this, FailedConnection.class);
-                    startActivity(intent);
-                }
+//                } else {
+//                    Intent intent = new Intent(RegistrationActivity.this, FailedConnection.class);
+//                    startActivity(intent);
+//                }
 
             }
 

@@ -53,7 +53,7 @@ public class start extends AppCompatActivity{
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(start.this, SecurityActivity.class);
+                Intent intent = new Intent(start.this, RegistrationActivity.class);
                 startActivity(intent);
             }
         });

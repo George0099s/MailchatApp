@@ -13,9 +13,12 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,19 +31,35 @@ import org.w3c.dom.Text;
 
 import java.util.concurrent.TimeUnit;
 
-public class SignUpBusiness extends AppCompatActivity {
+public class SignUpBusiness extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
+    Spinner numsSpinner;
     EditText firsName, lastName, phoneNumber;
     TextView firstNameTV, lastNameTV, phoneNumberTV;
     private String namefirst, nameLast, phone, codeSent;
     CheckBox checkBox;
     private FirebaseAuth mAuth;
     Button login;
+    String t;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_business);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        String[] nums_arr = {"+7", "+1", "+1", "+4"};
+
+        numsSpinner = findViewById(R.id.spinner_nums);
+
+
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner_nums);
+        // Создаем адаптер ArrayAdapter с помощью массива строк и стандартной разметки элемета spinner
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, nums_arr);
+        // Определяем разметку для использования при выборе элемента
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Применяем адаптер к элементу spinner
+        spinner.setAdapter(adapter);
+
 
          login = findViewById(R.id.btnOk);
          checkBox = findViewById(R.id.checkBoxTerms);
@@ -56,10 +75,6 @@ public class SignUpBusiness extends AppCompatActivity {
         btn.setEnabled(false);
          mAuth = FirebaseAuth.getInstance();
 
-
-//        Functions.textAppearence(firsName, firstNameTV);
-//        Functions.textAppearence(lastName, lastNameTV);
-//        Functions.textAppearence(phoneNumber, phoneNumberTV);
 
         findViewById(R.id.logIn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,10 +93,28 @@ public class SignUpBusiness extends AppCompatActivity {
         Functions.isChecked2(lastName, login, lastNameTV);
         Functions.isChecked2(phoneNumber, login, phoneNumberTV);
 
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.nums_spinner, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+//
+//
+//        numsSpinner.setAdapter(adapter);
+//        numsSpinner.setOnItemSelectedListener(this);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+        t  = adapterView.getItemAtPosition(i).toString();
+
+
 
     }
 
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
 
     public void sendVerificationCode(){
     namefirst = firsName.getText().toString();
@@ -124,7 +157,7 @@ public class SignUpBusiness extends AppCompatActivity {
 
         if (namefirst !=null && nameLast !=null && phone != null && checkBox.isChecked()) {
             PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                    phone,        // Phone number to verify
+                    t+phone,        // Phone number to verify
                     60,                 // Timeout duration
                     TimeUnit.SECONDS,   // Unit of timeout
                     this,               // Activity (for callback binding)
@@ -181,4 +214,6 @@ public class SignUpBusiness extends AppCompatActivity {
 
         return super.dispatchTouchEvent(event);
     }
+
+
 }

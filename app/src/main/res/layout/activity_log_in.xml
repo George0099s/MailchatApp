@@ -29,7 +29,7 @@
         android:layout_height="22dp"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="LOG IN"
+        android:text="@string/login_title"
         android:textColor="@android:color/black"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -37,8 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-    </TextView>
+        app:layout_constraintVertical_bias="0.0"></TextView>
 
     <ImageView
         android:id="@+id/imageView"
@@ -60,7 +59,8 @@
         android:layout_marginTop="44dp"
         android:hint="Enter phone number"
         android:inputType="phone"
-        android:textColor="@color/grey_text"
+        android:textColor="#262626"
+        android:textColorHint="@color/grey_text"
         android:theme="@style/CustomEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +94,7 @@
         android:layout_height="40dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/foregroundsignup"
-        android:text="Log In"
+        android:text="Log in"
         android:textAllCaps="false"
         android:textColor="#48C8DB"
         android:textStyle="normal"

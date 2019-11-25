@@ -13,11 +13,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,13 +31,13 @@ import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
 
-    public class MainActivity extends AppCompatActivity {
+    public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private EditText editTextPhone, editTextName, editTextLastName;
     TextView firstNameTV, lastNameTV, phoneNumberTV;
     private final String TAG = "Sign Up Private user";
     FirebaseAuth mAuth;
-    String codeSent;
+    String codeSent, t;
     CheckBox checkBox;
 
     Button btn;
@@ -58,6 +61,15 @@ import java.util.concurrent.TimeUnit;
         btn.getBackground().setAlpha(128);
 
 
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner_nums2);
+        // Создаем адаптер ArrayAdapter с помощью массива строк и стандартной разметки элемета spinner
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,Functions.nums_arr);
+        // Определяем разметку для использования при выборе элемента
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Применяем адаптер к элементу spinner
+        spinner.setAdapter(adapter);
+
         findViewById(R.id.btnGetCodePrivate).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
@@ -74,7 +86,20 @@ import java.util.concurrent.TimeUnit;
 
     }
 
+        @Override
+        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
+
+            t  = adapterView.getItemAtPosition(i).toString();
+
+
+
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> adapterView) {
+
+        }
 
         String phone;
         String lastName;
@@ -121,7 +146,7 @@ import java.util.concurrent.TimeUnit;
 
         if (name != null && phone !=null && checkBox.isChecked() ) {
             PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                    phone,        // Phone number to verify
+                    t + phone,        // Phone number to verify
                     60,                 // Timeout duration
                     TimeUnit.SECONDS,   // Unit of timeout
                     this,               // Activity (for callback binding)
