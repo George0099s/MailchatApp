@@ -44,7 +44,7 @@
 
     <EditText
         android:id="@+id/cpName"
-
+        android:hint="@string/compan_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -189,13 +189,14 @@
         app:srcCompat="@drawable/add" />
 
     <ListView
+        android:dividerHeight="10dp"
+        android:divider="#FCFDFF"
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
-        android:divider="#fff"
         android:paddingBottom="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

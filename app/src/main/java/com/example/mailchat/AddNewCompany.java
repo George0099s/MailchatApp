@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -29,6 +30,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 public class AddNewCompany extends AppCompatActivity  implements AdapterView.OnItemSelectedListener{
+
+   private final String TAG = getClass().toString();
     Spinner spinnerCity, spinnerCategory;
     String city, category;
     FirebaseAuth mAuth;
@@ -90,7 +93,7 @@ public class AddNewCompany extends AppCompatActivity  implements AdapterView.OnI
         findViewById(R.id.addLink).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (i >= 2) {
+                if (i > 1) {
 //                String link1 = link.getText().toString();
 //                links[i] ="#" + link1;
 //
@@ -102,15 +105,18 @@ public class AddNewCompany extends AppCompatActivity  implements AdapterView.OnI
                     // next thing you have to do is check if your adapter has changed
                     adapter.notifyDataSetChanged();
                     linkss.setText("Add at least " + i + " links");
-
+                    link.setText("");
+                    Log.d(TAG, "onClick: " + i);
 
                 } else {
                     arrayList.add("#" + link.getText().toString().replaceAll("\\s","_"));
                     // next thing you have to do is check if your adapter has changed
                     adapter.notifyDataSetChanged();
                     linkss.setText("Add at least " + i + " links");
+                    Log.d(TAG, "onClick: " + i);
                     add.setVisibility(View.INVISIBLE);
                     linkss.setVisibility(View.INVISIBLE);
+                    i = 0;
                     Toast.makeText(getApplicationContext(),"123", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -119,14 +125,16 @@ public class AddNewCompany extends AppCompatActivity  implements AdapterView.OnI
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int si, long l) {
+
                 i++;
-                arrayList.remove(0);
+                arrayList.remove(si);
                 linkss.setText("Add at least " + i + " links");
 
 //
-                if (i >=0)
+                if (i >= 1)
                 {
                     linkss.setText("Add at least " + i + " links");
+                    Log.d(TAG, "onItemClick: " + i);
                     add.setVisibility(View.VISIBLE);
                     linkss.setVisibility(View.VISIBLE);
                     adapter.notifyDataSetChanged();

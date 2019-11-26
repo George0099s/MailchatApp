@@ -18,8 +18,8 @@ public class Users {
     private String LastName;
 
 
-    public Users(String mailchatID){
-        MailchatID = mailchatID;
+    public Users(){
+
     }
     public String getName() {
         return Name;

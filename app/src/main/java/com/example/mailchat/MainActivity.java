@@ -69,7 +69,7 @@ import java.util.concurrent.TimeUnit;
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Применяем адаптер к элементу spinner
         spinner.setAdapter(adapter);
-
+        spinner.setOnItemSelectedListener(this);
         findViewById(R.id.btnGetCodePrivate).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
@@ -106,7 +106,7 @@ import java.util.concurrent.TimeUnit;
         String name;
         private void sendVerificationCode(){
 
-        phone = editTextPhone.getText().toString();
+        phone = t + editTextPhone.getText().toString();
         name = editTextName.getText().toString();
         lastName = editTextLastName.getText().toString();
 
@@ -131,7 +131,7 @@ import java.util.concurrent.TimeUnit;
             editTextName.requestFocus();
         }
 
-        if (phone.length() < 11 )
+        if (phone.length() < 10 )
 
         {
             editTextPhone.setError("введите правильно номер");
@@ -146,7 +146,7 @@ import java.util.concurrent.TimeUnit;
 
         if (name != null && phone !=null && checkBox.isChecked() ) {
             PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                    t + phone,        // Phone number to verify
+                    phone,        // Phone number to verify
                     60,                 // Timeout duration
                     TimeUnit.SECONDS,   // Unit of timeout
                     this,               // Activity (for callback binding)
@@ -182,7 +182,7 @@ import java.util.concurrent.TimeUnit;
                 super.onCodeSent(s, forceResendingToken);
                 codeSent = s;
                 Intent intent = new Intent(MainActivity.this, SecurityActivity.class);
-                intent.putExtra("phone", phone);
+                intent.putExtra("phone",t+ phone);
                  intent.putExtra("firstName",name );
                 intent.putExtra("lastName",lastName );
                 intent.putExtra("codeSent", codeSent);

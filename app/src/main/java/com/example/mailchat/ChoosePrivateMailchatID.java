@@ -85,6 +85,7 @@ public class ChoosePrivateMailchatID extends AppCompatActivity {
         DatabaseReference ref =   db.getReference("Users");
 
         ref.child(userId).setValue(Users.userInfo);
+        ref.push();
         Button btn = findViewById(R.id.goToCongrats);
         btn.setEnabled(false);
 

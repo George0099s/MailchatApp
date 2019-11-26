@@ -2,11 +2,10 @@ package com.example.mailchat;
 
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,10 +24,10 @@ import java.util.ArrayList;
 public class MessageFragment extends Fragment {
     ArrayList<String> mNames;
     ArrayList<String> mPrice;
-    ArrayList<String> mImg;
+    ArrayList<android.graphics.drawable.Drawable> mImg;
     ArrayList<String> mJob;
     ArrayList<String> mType;
-    ArrayList<String> mDate;
+   ArrayList<String> mDate;
     ArrayList<String> mDate2;
     Context context;
     RecyclerView mRecyclerView;
@@ -52,8 +51,11 @@ public class MessageFragment extends Fragment {
         context = getActivity().getApplicationContext();
         mLayoutManger = new LinearLayoutManager(context);
       mNames = new ArrayList<>();
-       mNames.add("ssss");
-
+      mDate = new ArrayList<String>();
+      mImg = new ArrayList<android.graphics.drawable.Drawable>();
+      mImg.add(getResources().getDrawable(R.drawable.admin));
+      mNames.add("Artem" + " Ryabinkin");
+      mDate.add("16 июня") ;
 
 
 

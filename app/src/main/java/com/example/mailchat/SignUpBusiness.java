@@ -29,6 +29,7 @@ import com.google.firebase.auth.PhoneAuthProvider;
 
 import org.w3c.dom.Text;
 
+import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.TimeUnit;
 
 public class SignUpBusiness extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
@@ -41,6 +42,7 @@ public class SignUpBusiness extends AppCompatActivity implements AdapterView.OnI
     private FirebaseAuth mAuth;
     Button login;
     String t;
+    Spinner spinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,13 +54,7 @@ public class SignUpBusiness extends AppCompatActivity implements AdapterView.OnI
 
 
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner_nums);
-        // Создаем адаптер ArrayAdapter с помощью массива строк и стандартной разметки элемета spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, nums_arr);
-        // Определяем разметку для использования при выборе элемента
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Применяем адаптер к элементу spinner
-        spinner.setAdapter(adapter);
+
 
 
          login = findViewById(R.id.btnOk);
@@ -99,28 +95,32 @@ public class SignUpBusiness extends AppCompatActivity implements AdapterView.OnI
 //
 //        numsSpinner.setAdapter(adapter);
 //        numsSpinner.setOnItemSelectedListener(this);
+
+         spinner = (Spinner) findViewById(R.id.spinner_nums);
+        // Создаем адаптер ArrayAdapter с помощью массива строк и стандартной разметки элемета spinner
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, nums_arr);
+        // Определяем разметку для использования при выборе элемента
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Применяем адаптер к элементу spinner
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+    }
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+         t  = parent.getItemAtPosition(position).toString();
+
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-
-        t  = adapterView.getItemAtPosition(i).toString();
-
-
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
 
     public void sendVerificationCode(){
     namefirst = firsName.getText().toString();
     nameLast = lastName.getText().toString();
-    phone = phoneNumber.getText().toString();
-
+    phone = t + phoneNumber.getText().toString();
 
 
 
@@ -157,7 +157,7 @@ public class SignUpBusiness extends AppCompatActivity implements AdapterView.OnI
 
         if (namefirst !=null && nameLast !=null && phone != null && checkBox.isChecked()) {
             PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                    t+phone,        // Phone number to verify
+                    phone,        // Phone number to verify
                     60,                 // Timeout duration
                     TimeUnit.SECONDS,   // Unit of timeout
                     this,               // Activity (for callback binding)
@@ -183,6 +183,7 @@ public class SignUpBusiness extends AppCompatActivity implements AdapterView.OnI
             Log.d("ABCD","Verification failed"+e.getMessage());
             Toast.makeText(getApplicationContext(), "Incorrect verification code",
                     Toast.LENGTH_SHORT).show();
+            Log.d("!23", "onVerificationFailed: " + phone);
         }
 
         @Override
@@ -214,6 +215,7 @@ public class SignUpBusiness extends AppCompatActivity implements AdapterView.OnI
 
         return super.dispatchTouchEvent(event);
     }
+
 
 
 }

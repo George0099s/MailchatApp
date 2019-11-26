@@ -4,7 +4,7 @@
     <string name="first_name_tv">First name</string>
     <string name="phone_number_tv">Telephone number</string>
     <string name="skip_it"><u>Skip it</u></string>
-    <string name="learn_mor"><![CDATA[<u>Learn more about accounts</u>]]></string>
+    <string name="learn_mor"><u>Learn more about accounts</u></string>
     <string name="compan_name">Comany name</string>
     <string name="city_string">City</string>
     <string name="mailchatlinks_string">#Mailchat links</string>

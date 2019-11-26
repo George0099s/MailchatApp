@@ -20,14 +20,14 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
 
     ArrayList<String> mNames;
     ArrayList<String> mPrice;
-    ArrayList<String> mImg;
+    ArrayList<android.graphics.drawable.Drawable> mImg;
     ArrayList<String> mJob;
     ArrayList<String> mType;
     ArrayList<String> mDate;
     ArrayList<String> mDate2;
     Context context;
 
-    public MainAdapter(ArrayList<String> names,ArrayList<String> price,ArrayList<String> img,ArrayList<String> job, ArrayList<String> type,ArrayList<String> date,ArrayList<String> date2, Context c){
+    public MainAdapter(ArrayList<String> names,ArrayList<String> price,ArrayList<android.graphics.drawable.Drawable> img,ArrayList<String> job, ArrayList<String> type,ArrayList<String> date,ArrayList<String> date2, Context c){
 
         mNames = names;
         mPrice = price;
@@ -52,9 +52,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
         holder.userName.setText(mNames.get(position));
 //        holder.price.setText(mPrice.get(position));
 //        holder.type.setText(mType.get(position));
-//        holder.date.setText(mDate.get(position));
+        holder.date.setText(mDate.get(position));
 //        holder.date2.setText(mDate2.get(position));
-
+//        holder.image.setImageBitmap(mImg.get(position));
 
 
     }

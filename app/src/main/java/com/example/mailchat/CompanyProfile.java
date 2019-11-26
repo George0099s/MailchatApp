@@ -30,20 +30,24 @@ import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
 
-public class CompanyProfile extends AppCompatActivity {
+public class CompanyProfile extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     EditText webSite, cpNumber,address, workhours, aboutCompany;
-    String web, companyNumber, companyAddress, companyWorkHours, about;
+    String web, companyNumber, companyAddress, companyWorkHours, about, t;
     FirebaseAuth mAuth;
     TextView skip,  webSiteTV, cpNumberTV,addressTV, workhoursTV, aboutCompanyTV;
     Button next, chooseImgbtn;
+    Spinner spinerNums;
 
 
     ImageView userPhoto;
@@ -76,6 +80,15 @@ public class CompanyProfile extends AppCompatActivity {
         aboutCompany = findViewById(R.id.aboutCompany);
         skip = findViewById(R.id.skip);
         next = findViewById(R.id.GoToAddUser);
+        spinerNums = findViewById(R.id.spinner_nums);
+        Spinner spinner = (Spinner) findViewById(R.id.spinner_nums);
+        // Создаем адаптер ArrayAdapter с помощью массива строк и стандартной разметки элемета spinner
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,Functions.nums_arr);
+        // Определяем разметку для использования при выборе элемента
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Применяем адаптер к элементу spinner
+        spinner.setAdapter(adapter);
+
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -103,6 +116,20 @@ public class CompanyProfile extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+        t  = adapterView.getItemAtPosition(i).toString();
+
+
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
     public void addData(){
 
         FirebaseUser user = mAuth.getCurrentUser();
@@ -114,10 +141,12 @@ public class CompanyProfile extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
         web = webSite.getText().toString();
-        companyNumber = cpNumber.getText().toString();
+        companyNumber = cpNumber.getText().toString() + t;
         companyAddress = address.getText().toString();
         companyWorkHours = workhours.getText().toString();
         about = aboutCompany.getText().toString();
+
+
         if (web != null && companyNumber != null && companyAddress != null && companyWorkHours != null && about !=null) {
             if (web.isEmpty()) {
                 webSite.setError("fill the field");

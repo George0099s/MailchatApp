@@ -41,6 +41,8 @@
         app:layout_constraintTop_toBottomOf="@+id/phoneTV" />
 
     <EditText
+        android:inputType="textCapWords|textNoSuggestions|textPersonName"
+
         android:id="@+id/lastNameTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -97,7 +99,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="30dp"
         android:hint="@string/first_name_tv"
-        android:inputType="textNoSuggestions"
+        android:inputType="textCapWords|textNoSuggestions|textPersonName"
         android:textColorHint="#CCD5E8"
         android:theme="@style/CustomEditText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,13 +113,12 @@
         android:id="@+id/phoneTV"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="30dp"
         android:hint="@string/phone_number_tv"
         android:inputType="phone"
-        android:maxEms="9"
-        android:maxLength="9"
+        android:maxEms="10"
+        android:maxLength="10"
         android:textColorHighlight="#CCD5E8"
         android:textColorHint="#CCD5E8"
         android:textColorLink="#CCD5E8"
@@ -218,25 +219,40 @@
 
     <TextView
         android:id="@+id/phone_number_tv"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="232dp"
+        android:layout_marginStart="30dp"
         android:text="@string/phone_number_tv"
         android:textColor="#CCD5E8"
         android:textColorHint="#CCD5E8"
         android:textColorLink="#CCD5E8"
         app:layout_constraintBottom_toTopOf="@+id/phoneTV"
         app:layout_constraintEnd_toEndOf="@+id/phoneTV"
-        app:layout_constraintStart_toStartOf="@+id/spinner" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
         android:id="@+id/spinner_nums"
-        android:layout_width="40dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/phoneTV"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/phoneTV" />
+        app:layout_constraintTop_toTopOf="@+id/phoneTV"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="29dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/grey_text"
+        app:layout_constraintBottom_toBottomOf="@+id/phoneTV"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_nums"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="@+id/spinner_nums"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_nums" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

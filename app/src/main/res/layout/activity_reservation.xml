@@ -69,6 +69,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:itemBackground="@drawable/shape_bg_navabar"
         app:labelVisibilityMode="unlabeled"
+        app:itemIconTint="#fff"
         app:menu="@menu/menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
