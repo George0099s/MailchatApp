@@ -51,6 +51,8 @@ public class SecurityCodeBusiness extends AppCompatActivity {
     int q = 1;
     int i;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +70,7 @@ public class SecurityCodeBusiness extends AppCompatActivity {
         codeSent = getIntent().getStringExtra("codeSent");
         startTimer();
         editTextCode = findViewById(R.id.codeBusinessTV);
+        editTextCode.setText("");
         ed = editTextCode.getText().toString();
         phoneTV = findViewById(R.id.phone_text_view);
         phoneTV.setText(phone);
@@ -254,6 +257,16 @@ public class SecurityCodeBusiness extends AppCompatActivity {
                 });
     }
 
+    @Override
+    protected void onStart() {
+        if (editTextCode.length() > 0) {
+
+            verify.getBackground().setAlpha(255);
+            verify.setEnabled(true);
+            editTextCode.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_check, 0);
+        }
+        super.onStart();
+    }
 
     public void addData(){
         FirebaseUser user = mAuth.getCurrentUser();

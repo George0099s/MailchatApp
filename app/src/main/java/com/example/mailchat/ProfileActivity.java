@@ -1,6 +1,7 @@
 package com.example.mailchat;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -69,37 +70,31 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
 
             }
         });
-        findViewById(R.id.btnFemale).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                female.setBackgroundResource(R.drawable.okbtn);
-                female.setTextColor(Color.parseColor("#ffffff"));
+        findViewById(R.id.btnFemale).setOnClickListener(view -> {
+            female.setBackgroundResource(R.drawable.okbtn);
+            female.setTextColor(Color.parseColor("#ffffff"));
 
-                male.setTextColor(Color.parseColor("#2592FB"));
-                male.setBackgroundResource(R.drawable.rect_okbtn_small);
-                s = true;
-                gender = "female";
-                Users.userInfo.put("gender", gender);
-            }
+            male.setTextColor(Color.parseColor("#2592FB"));
+            male.setBackgroundResource(R.drawable.rect_okbtn_small);
+            s = true;
+            gender = "female";
+            Users.userInfo.put("gender", gender);
         });
 
 
 
-       findViewById(R.id.btnNext).setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               if (s) {
-                   next.getBackground().setAlpha(255);
+       findViewById(R.id.btnNext).setOnClickListener(v -> {
+           if (s) {
+               next.getBackground().setAlpha(255);
 
-                   addData();
-                   Intent intent = new Intent(ProfileActivity.this, AddPrivateUserPhoto.class);
-                   startActivity(intent);
-               }
-               if (s == false)
-               {
-                   Toast.makeText(getApplicationContext(), "Choose gender", Toast.LENGTH_SHORT).show();
-                   next.getBackground().setAlpha(128);
-               }
+               addData();
+               Intent intent = new Intent(ProfileActivity.this, AddPrivateUserPhoto.class);
+               startActivity(intent);
+           }
+           if (s == false)
+           {
+               Toast.makeText(getApplicationContext(), "Choose gender", Toast.LENGTH_SHORT).show();
+               next.getBackground().setAlpha(128);
            }
        });
 
@@ -136,8 +131,9 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
         citySpinner.setOnItemSelectedListener(this);
 
 
-
     }
+
+
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
         String t  = adapterView.getItemAtPosition(position).toString();

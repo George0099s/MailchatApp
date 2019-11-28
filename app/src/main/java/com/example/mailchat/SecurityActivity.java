@@ -255,7 +255,16 @@ public class SecurityActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
+    @Override
+    protected void onStart() {
+        if (editTextCode.length() > 0) {
 
+            btn.getBackground().setAlpha(255);
+            btn.setEnabled(true);
+            editTextCode.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_check, 0);
+        }
+        super.onStart();
+    }
     @Override
     public boolean dispatchTouchEvent(@NonNull MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {

@@ -182,7 +182,7 @@ import java.util.concurrent.TimeUnit;
                 super.onCodeSent(s, forceResendingToken);
                 codeSent = s;
                 Intent intent = new Intent(MainActivity.this, SecurityActivity.class);
-                intent.putExtra("phone",t+ phone);
+                intent.putExtra("phone",phone);
                  intent.putExtra("firstName",name );
                 intent.putExtra("lastName",lastName );
                 intent.putExtra("codeSent", codeSent);
