@@ -54,27 +54,14 @@ public class AddPrivateUserPhoto extends AppCompatActivity {
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+        mAuth = FirebaseAuth.getInstance();
 
-         mAuth = FirebaseAuth.getInstance();
-
-        findViewById(R.id.chose_photo).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                chooseImage();
-            }
+        findViewById(R.id.chose_photo).setOnClickListener(v -> chooseImage());
+        findViewById(R.id.finish_private_registr).setOnClickListener(v -> {
+            Intent intent = new Intent(AddPrivateUserPhoto.this, ChoosePrivateMailchatID.class);
+            startActivity(intent);
+            uploadImage();
         });
-
-        findViewById(R.id.finish_private_registr).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AddPrivateUserPhoto.this, ChoosePrivateMailchatID.class);
-                startActivity(intent);
-                uploadImage();
-            }
-        });
-
-
-
     }
     private void chooseImage() {
         Intent intent = new Intent();
@@ -91,13 +78,10 @@ public class AddPrivateUserPhoto extends AppCompatActivity {
             filePath = data.getData();
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-
-
                 userPhoto = findViewById(R.id.addUserPhoto);
                 userPhoto.setMinimumWidth(180);
                 int dimensionInPixel = 180;
                 int dimensionInDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dimensionInPixel, getResources().getDisplayMetrics());
-
                 userPhoto.getLayoutParams().height = dimensionInDp;
                 userPhoto.getLayoutParams().width = dimensionInDp;
                 userPhoto.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -114,7 +98,6 @@ public class AddPrivateUserPhoto extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
         userID = user.getUid();
 
-
         if(filePath != null)
         {
             final ProgressDialog progressDialog = new ProgressDialog(this);
@@ -123,30 +106,23 @@ public class AddPrivateUserPhoto extends AppCompatActivity {
 
             StorageReference ref = storageReference.child("images/"+ userID );
             ref.putFile(filePath)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Log.d("123", "onSuccess: ");
-                            progressDialog.dismiss();
-                            Toast.makeText(AddPrivateUserPhoto.this, "Uploaded", Toast.LENGTH_SHORT).show();
-                        }
+                    .addOnSuccessListener(taskSnapshot -> {
+                        Log.d("123", "onSuccess: ");
+                        progressDialog.dismiss();
+                        Toast.makeText(AddPrivateUserPhoto.this, "Uploaded", Toast.LENGTH_SHORT).show();
                     })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.d("123", "onFailure: ");
-                            progressDialog.dismiss();
-                            Toast.makeText(AddPrivateUserPhoto.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
+
+                    .addOnFailureListener(e -> {
+                        Log.d("123", "onFailure: ");
+                        progressDialog.dismiss();
+                        Toast.makeText(AddPrivateUserPhoto.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
                     })
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            Log.d("123", "onProgress: ");
-                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
-                                    .getTotalByteCount());
-                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
-                        }
+
+                    .addOnProgressListener(taskSnapshot -> {
+                        Log.d("123", "onProgress: ");
+                        double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                                .getTotalByteCount());
+                        progressDialog.setMessage("Uploaded "+(int)progress+"%");
                     });
         }
     }
@@ -158,13 +134,10 @@ public class AddPrivateUserPhoto extends AppCompatActivity {
                 v.clearFocus();
                 InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-
             }
         }
-
         return super.dispatchTouchEvent(event);
     }
 }
-//
-//
+
 

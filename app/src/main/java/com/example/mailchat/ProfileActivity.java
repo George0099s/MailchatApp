@@ -42,46 +42,35 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
         setContentView(R.layout.activity_profile);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
-
         monthSpinner = findViewById(R.id.monthSspinner);
         yearSpinner = findViewById(R.id.yearSpinner);
         daySpinner = findViewById(R.id.daySpinner);
         citySpinner = findViewById(R.id.spinnerCity);
-
         male = findViewById(R.id.btnMale);
         female = findViewById(R.id.btnFemale);
         next = findViewById(R.id.btnNext);
         next.getBackground().setAlpha(128);
 
-
         if(s){next.getBackground().setAlpha(255);}
 
-        findViewById(R.id.btnMale).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                male.setBackgroundResource(R.drawable.okbtn);
-                male.setTextColor(Color.parseColor("#ffffff"));
-
-                female.setTextColor(Color.parseColor("#2592FB"));
-                female.setBackgroundResource(R.drawable.rect_okbtn_small);
-                gender = "male";
-                s = true;
-                Users.userInfo.put("gender", gender);
-
-            }
+        findViewById(R.id.btnMale).setOnClickListener(view -> {
+            male.setBackgroundResource(R.drawable.okbtn);
+            male.setTextColor(Color.parseColor("#ffffff"));
+            female.setTextColor(Color.parseColor("#2592FB"));
+            female.setBackgroundResource(R.drawable.rect_okbtn_small);
+            gender = "male";
+            s = true;
+            Users.userInfo.put("gender", gender);
         });
         findViewById(R.id.btnFemale).setOnClickListener(view -> {
             female.setBackgroundResource(R.drawable.okbtn);
             female.setTextColor(Color.parseColor("#ffffff"));
-
             male.setTextColor(Color.parseColor("#2592FB"));
             male.setBackgroundResource(R.drawable.rect_okbtn_small);
             s = true;
             gender = "female";
             Users.userInfo.put("gender", gender);
         });
-
-
 
        findViewById(R.id.btnNext).setOnClickListener(v -> {
            if (s) {
@@ -138,32 +127,23 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
         String t  = adapterView.getItemAtPosition(position).toString();
         Toast.makeText(adapterView.getContext(), t, Toast.LENGTH_LONG).show();
-
-       String y = yearSpinner.getItemAtPosition(yearSpinner.getSelectedItemPosition()).toString();
-       String d = daySpinner.getItemAtPosition(daySpinner.getSelectedItemPosition()).toString();
-       String m = monthSpinner.getItemAtPosition(monthSpinner.getSelectedItemPosition()).toString();
-       city = citySpinner.getItemAtPosition(citySpinner.getSelectedItemPosition()).toString();
+        String y = yearSpinner.getItemAtPosition(yearSpinner.getSelectedItemPosition()).toString();
+        String d = daySpinner.getItemAtPosition(daySpinner.getSelectedItemPosition()).toString();
+        String m = monthSpinner.getItemAtPosition(monthSpinner.getSelectedItemPosition()).toString();
+        city = citySpinner.getItemAtPosition(citySpinner.getSelectedItemPosition()).toString();
         date = d + "." + m + ". " + y;
-
-
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
 
     public void addData()
     {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
-
-
         String uid = user.getUid();
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-
 
         DatabaseReference reference = database.getReference("Users");
         Users.userInfo.put("Date of birth",date);
@@ -181,10 +161,8 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
                 v.clearFocus();
                 InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-
             }
         }
-
         return super.dispatchTouchEvent(event);
     }
 }

@@ -81,15 +81,11 @@ public class CompanyProfile extends AppCompatActivity implements AdapterView.OnI
         skip = findViewById(R.id.skip);
         next = findViewById(R.id.GoToAddUser);
         spinerNums = findViewById(R.id.spinner_nums);
+
         Spinner spinner = (Spinner) findViewById(R.id.spinner_nums);
-        // Создаем адаптер ArrayAdapter с помощью массива строк и стандартной разметки элемета spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,Functions.nums_arr);
-        // Определяем разметку для использования при выборе элемента
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Применяем адаптер к элементу spinner
         spinner.setAdapter(adapter);
-
-
 
         mAuth = FirebaseAuth.getInstance();
         Functions.isChecked2(webSite, next,webSiteTV);
@@ -97,33 +93,20 @@ public class CompanyProfile extends AppCompatActivity implements AdapterView.OnI
         Functions.isChecked2(address, next,addressTV);
         Functions.isChecked2(workhours, next,workhoursTV);
         Functions.isChecked2(aboutCompany, next,aboutCompanyTV);
-        findViewById(R.id.company_img).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                chooseImage();
-            }
-        });
-        findViewById(R.id.GoToAddUser).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addData();
-                Toast.makeText(getApplicationContext(), "data added", Toast.LENGTH_SHORT).show();
-                uploadImage();
-//                Intent intent = new Intent(CompanyProfile.this, AddUser.class);
-//                startActivity(intent);
-            }
+        findViewById(R.id.company_img).setOnClickListener(view -> chooseImage());
+        findViewById(R.id.GoToAddUser).setOnClickListener(view -> {
+            addData();
+            Toast.makeText(getApplicationContext(), "data added", Toast.LENGTH_SHORT).show();
+
+            uploadImage();
+
         });
     }
 
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-
         t  = adapterView.getItemAtPosition(i).toString();
-
-
-
     }
 
     @Override
@@ -133,11 +116,7 @@ public class CompanyProfile extends AppCompatActivity implements AdapterView.OnI
     public void addData(){
 
         FirebaseUser user = mAuth.getCurrentUser();
-
-
-
         String uid = user.getUid();
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
         web = webSite.getText().toString();
@@ -145,7 +124,6 @@ public class CompanyProfile extends AppCompatActivity implements AdapterView.OnI
         companyAddress = address.getText().toString();
         companyWorkHours = workhours.getText().toString();
         about = aboutCompany.getText().toString();
-
 
         if (web != null && companyNumber != null && companyAddress != null && companyWorkHours != null && about !=null) {
             if (web.isEmpty()) {
@@ -169,10 +147,7 @@ public class CompanyProfile extends AppCompatActivity implements AdapterView.OnI
                 aboutCompany.requestFocus();
             }
 
-
             DatabaseReference reference = database.getReference("Business users/" + uid + "/Company");
-
-
             Users.businessCompanyInfo.put("web site", web);
             Users.businessCompanyInfo.put("company number", companyNumber);
             Users.businessCompanyInfo.put("company address", companyAddress);
@@ -190,7 +165,6 @@ public class CompanyProfile extends AppCompatActivity implements AdapterView.OnI
                 v.clearFocus();
                 InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-
             }
         }
 
@@ -218,7 +192,6 @@ public class CompanyProfile extends AppCompatActivity implements AdapterView.OnI
                 userPhoto.setMinimumWidth(100);
                 int dimensionInPixel = 100;
                 int dimensionInDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dimensionInPixel, getResources().getDisplayMetrics());
-
                 userPhoto.getLayoutParams().height = dimensionInDp;
                 userPhoto.getLayoutParams().width = dimensionInDp;
                 userPhoto.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -235,7 +208,6 @@ public class CompanyProfile extends AppCompatActivity implements AdapterView.OnI
         FirebaseUser user = mAuth.getCurrentUser();
         userID = user.getUid();
 
-
         if(filePath != null)
         {
             final ProgressDialog progressDialog = new ProgressDialog(this);
@@ -244,30 +216,21 @@ public class CompanyProfile extends AppCompatActivity implements AdapterView.OnI
 
             StorageReference ref = storageReference.child("images/"+ userID );
             ref.putFile(filePath)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Log.d("123", "onSuccess: ");
-                            progressDialog.dismiss();
-                            Toast.makeText(CompanyProfile.this, "Uploaded", Toast.LENGTH_SHORT).show();
-                        }
+                    .addOnSuccessListener(taskSnapshot -> {
+                        Log.d("123", "onSuccess: ");
+                        progressDialog.dismiss();
+                        Toast.makeText(CompanyProfile.this, "Uploaded", Toast.LENGTH_SHORT).show();
                     })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.d("123", "onFailure: ");
-                            progressDialog.dismiss();
-                            Toast.makeText(CompanyProfile.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
+                    .addOnFailureListener(e -> {
+                        Log.d("123", "onFailure: ");
+                        progressDialog.dismiss();
+                        Toast.makeText(CompanyProfile.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
                     })
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            Log.d("123", "onProgress: ");
-                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
-                                    .getTotalByteCount());
-                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
-                        }
+                    .addOnProgressListener(taskSnapshot -> {
+                        Log.d("123", "onProgress: ");
+                        double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                                .getTotalByteCount());
+                        progressDialog.setMessage("Uploaded "+(int)progress+"%");
                     });
         }
     }

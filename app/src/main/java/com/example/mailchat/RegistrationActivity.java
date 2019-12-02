@@ -24,48 +24,31 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
-        findViewById(R.id.back_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                onBackPressed();
+        findViewById(R.id.back_btn).setOnClickListener(v -> onBackPressed());
 
+
+        findViewById(R.id.private_userBTN).setOnClickListener(v -> {
+
+            if(Functions.internetIsConnected())
+            {
+            initActivity();
+            } else {
+                Intent intent = new Intent(RegistrationActivity.this, FailedConnection.class);
+                startActivity(intent);
             }
 
         });
 
 
-        findViewById(R.id.private_userBTN).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-
-                if(Functions.internetIsConnected())
-                {
-                initActivity();
-                } else {
-                    Intent intent = new Intent(RegistrationActivity.this, FailedConnection.class);
-                    startActivity(intent);
-                }
-
-            }
-
-        });
-
-
-        findViewById(R.id.BusinessBTN).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-
+        findViewById(R.id.BusinessBTN).setOnClickListener(v -> {
 //                if(Functions.internetIsConnected())
 //                {
-                    Intent intent = new Intent(RegistrationActivity.this, SignUpBusiness.class);
-                    startActivity(intent);
+                Intent intent = new Intent(RegistrationActivity.this, SignUpBusiness.class);
+                startActivity(intent);
 //                } else {
 //                    Intent intent = new Intent(RegistrationActivity.this, FailedConnection.class);
 //                    startActivity(intent);
 //                }
-
-            }
-
         });
     }
 
@@ -73,6 +56,7 @@ public class RegistrationActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
     @Override
     public void onBackPressed(){
         super.onBackPressed();
@@ -86,7 +70,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 v.clearFocus();
                 InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-
             }
         }
 

@@ -76,47 +76,34 @@ public class SecurityCodeBusiness extends AppCompatActivity {
         phoneTV.setText(phone);
         Functions.isChecked(editTextCode, verify);
         tries = findViewById(R.id.quantity_tries);
-
-
-
         sendAgain = findViewById(R.id.send_again_business_btn);
-        sendAgain.setOnClickListener(new View.OnClickListener() {
-                                         @Override
-                                         public void onClick(View v){
-                                             int i = 1;
-                                             if (mTimerRunning)
-                                             {
-                                                 Toast toast = Toast.makeText(SecurityCodeBusiness.this, "Please wait", Toast.LENGTH_SHORT);
-                                                 toast.setGravity(Gravity.CENTER, 0, 0);
-                                             }
-                                                else{
-                                                    if (i  < 3) {
-                                                        verify(phone);
-                                                        Toast toast = Toast.makeText(SecurityCodeBusiness.this, "Verification Code has sent", Toast.LENGTH_SHORT);
-                                                        toast.setGravity(Gravity.CENTER, 0, 0);
-                                                        resetTimer();
-                                                        mTimerRunning = false;
-                                                        startTimer();
-                                                        i++;
-                                                        tries.setText(i + " from 3");
+        sendAgain.setOnClickListener(v -> {
+            int i = 1;
+            if (mTimerRunning)
+            {
+                Toast toast = Toast.makeText(SecurityCodeBusiness.this, "Please wait", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+            }
+               else{
+                   if (i  < 3) {
+                       verify(phone);
+                       Toast toast = Toast.makeText(SecurityCodeBusiness.this, "Verification Code has sent", Toast.LENGTH_SHORT);
+                       toast.setGravity(Gravity.CENTER, 0, 0);
+                       resetTimer();
+                       mTimerRunning = false;
+                       startTimer();
+                       i++;
+                       tries.setText(i + " from 3");
 
-                                                    }
-                                             }
+                   }
+            }
 
-                                         }
-                                     }
+        }
         );
 
 
-        findViewById(R.id.btnVerifyCodeBusiness).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-               verifySignInCode();
-            }
-        });
+        findViewById(R.id.btnVerifyCodeBusiness).setOnClickListener(view -> verifySignInCode());
     }
-    //send again
     public void verify(String phone) {
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 phone,        // Phone number to verify
@@ -200,59 +187,36 @@ public class SecurityCodeBusiness extends AppCompatActivity {
     }
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser();
 
-                            String phoneNum = user.getPhoneNumber();
-                            String uid = user.getUid();
+                        String phoneNum = user.getPhoneNumber();
+                        String uid = user.getUid();
 
 
 
 
-                            Users.businessUserInfo.put("phone number", phoneNum);
-                            Users.businessUserInfo.put("uid", uid);
-                            Users.businessUserInfo.put("first name", firsName); // передается из signUpbusiness puExtra
-                            Users.businessUserInfo.put("last name", lastName);
+                        Users.businessUserInfo.put("phone number", phoneNum);
+                        Users.businessUserInfo.put("uid", uid);
+                        Users.businessUserInfo.put("first name", firsName); // передается из signUpbusiness puExtra
+                        Users.businessUserInfo.put("last name", lastName);
 
-                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference reference = database.getReference("Business users");
+                        reference.child(uid).setValue(Users.businessUserInfo);
+                        addData();
+                        Toast.makeText(getApplicationContext(), "number" + user.getPhoneNumber(),
+                                Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(SecurityCodeBusiness.this, AddNewCompany.class));
 
-                            DatabaseReference reference = database.getReference("Business users");
+                    } else {
 
-                            reference.child(uid).setValue(Users.businessUserInfo);
-
-//                            reference.addValueEventListener(new ValueEventListener() {
-//                                @Override
-//                                public void onDataChange(DataSnapshot dataSnapshot) {
-//                                    // This method is called once with the initial value and again
-//                                    // whenever data at this location is updated.
-//                                    String value = dataSnapshot.getValue(String.class);
-//                                    Log.d("database", "Value is: " + value);
-//                                }
-//
-//                                @Override
-//                                public void onCancelled(DatabaseError error) {
-//                                    // Failed to read value
-//                                    Log.w("database", "Failed to read value.", error.toException());
-//                                }
-//                            });
-
-                            addData();
-                            Toast.makeText(getApplicationContext(), "number" + user.getPhoneNumber(),
+                        if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+                            Toast.makeText(getApplicationContext(), "Incorrect verification code",
                                     Toast.LENGTH_SHORT).show();
-
-                            startActivity(new Intent(SecurityCodeBusiness.this, AddNewCompany.class));
-
-                        } else {
-
-                            if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                                Toast.makeText(getApplicationContext(), "Incorrect verification code",
-                                        Toast.LENGTH_SHORT).show();
-                            }
-
                         }
+
                     }
                 });
     }
@@ -260,7 +224,6 @@ public class SecurityCodeBusiness extends AppCompatActivity {
     @Override
     protected void onStart() {
         if (editTextCode.length() > 0) {
-
             verify.getBackground().setAlpha(255);
             verify.setEnabled(true);
             editTextCode.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_check, 0);
@@ -278,13 +241,11 @@ public class SecurityCodeBusiness extends AppCompatActivity {
 
                             userInfo.put("phone number", phoneNum);
                             userInfo.put("uid", uid);
-                            userInfo.put("first name", firsName); // передается из signUpbusiness puExtra
+                            userInfo.put("first name", firsName);
                             userInfo.put("last name", lastName);
 
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
-
                             DatabaseReference reference = database.getReference("Users");
-
                             reference.child(uid).setValue(userInfo);
     }
 

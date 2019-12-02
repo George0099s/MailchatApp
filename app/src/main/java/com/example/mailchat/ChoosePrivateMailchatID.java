@@ -49,27 +49,20 @@ public class ChoosePrivateMailchatID extends AppCompatActivity {
         setContentView(R.layout.activity_choose_private_mailchat_id);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         userNameTV = findViewById(R.id.nameUser);
-
         mAuth = FirebaseAuth.getInstance();
-
-
         String name = Users.userInfo.get("first name");
         userNameTV.setText(name);
-
         recomendationED = findViewById(R.id.ourRec);
         recomendationED.setText(Functions.firstUpperCase(Users.userInfo.get("first name")+Functions.firstUpperCase(Users.userInfo.get("last name"))));
-        findViewById(R.id.goToCongrats).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                recomendation = recomendationED.getText().toString().replaceAll("#","");
-                recomendation = recomendationED.getText().toString().replaceAll("\\s","_");
+        findViewById(R.id.goToCongrats).setOnClickListener(view -> {
+            recomendation = recomendationED.getText().toString().replaceAll("#","");
+            recomendation = recomendationED.getText().toString().replaceAll("\\s","_");
 
-                rec = recomendation +"#";
+            rec = recomendation +"#";
 
-                recomendationED.setText(rec);
-                addData();
-                Toast.makeText(getApplicationContext(),"Your mailchatID added",Toast.LENGTH_SHORT);
-            }
+            recomendationED.setText(rec);
+            addData();
+            Toast.makeText(getApplicationContext(),"Your mailchatID added",Toast.LENGTH_SHORT);
         });
     }
 

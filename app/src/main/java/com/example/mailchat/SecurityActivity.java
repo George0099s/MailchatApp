@@ -51,8 +51,6 @@ public class SecurityActivity extends AppCompatActivity {
     private Boolean mTimerRunning;
     private long mTimeLeft = Constants.START_TIME;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,55 +59,36 @@ public class SecurityActivity extends AppCompatActivity {
         codeSent = getIntent().getStringExtra("codeSent");
         name = getIntent().getStringExtra("firstName");
         lastname = getIntent().getStringExtra("lastName");
-
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         startTimer();
-       sendAgain = findViewById(R.id.send_again_btn);
-        sendAgain.setOnClickListener(new View.OnClickListener() {
-                                      @Override
-                                      public void onClick(View v){
-                                          if (mTimerRunning)
-                                          {
-                                              Toast toast = Toast.makeText(SecurityActivity.this, "Please wait", Toast.LENGTH_SHORT);
-                                              toast.setGravity(Gravity.CENTER, 0, 0);
-                                          } else {
+        sendAgain = findViewById(R.id.send_again_btn);
+        sendAgain.setOnClickListener(v -> {
+            if (mTimerRunning)
+            {
+                Toast toast = Toast.makeText(SecurityActivity.this, "Please wait", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+            } else {
+                verify(phone);
+                Toast toast = Toast.makeText(SecurityActivity.this, "Verification Code has sent", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                resetTimer();
+                mTimerRunning = false;
+                startTimer();
 
-                                              verify(phone);
-                                              Toast toast = Toast.makeText(SecurityActivity.this, "Verification Code has sent", Toast.LENGTH_SHORT);
-                                              toast.setGravity(Gravity.CENTER, 0, 0);
-                                              resetTimer();
-                                              mTimerRunning = false;
-                                              startTimer();
+            }
 
-                                          }
-
-                                      }
-                                     }
+        }
         );
 
-
         editTextCode = findViewById(R.id.codeTV);
-
-
         btn = findViewById(R.id.btnVerifyCode);
         btn.getBackground().setAlpha(128);
-
         Functions.isChecked(editTextCode, btn);
         mAuth = FirebaseAuth.getInstance();
         TextView phonetv = findViewById(R.id.phone_text_view);
         phonetv.setText(phone);
-
-
-        findViewById(R.id.btnVerifyCode).setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                verifySignInCode();
-            }
-        });
-
-
+        findViewById(R.id.btnVerifyCode).setOnClickListener(v -> verifySignInCode());
     }
 
     public void verify(String phone) {
@@ -128,22 +107,19 @@ public class SecurityActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Verification completed",
                     Toast.LENGTH_SHORT).show();
         }
-
-
         @Override
         public void onVerificationFailed(@NonNull FirebaseException e) {
             Log.d("ABCD","Verification failed"+e.getMessage());
             Toast.makeText(getApplicationContext(), "Incorrect verification code",
                     Toast.LENGTH_SHORT).show();
         }
-
         @Override
         public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             Log.d("ABCD","Code sent "+s);
             super.onCodeSent(s, forceResendingToken);
         }
-
     };
+
     private void startTimer()  {
         countDownTimer = new CountDownTimer(mTimeLeft, 1000) {
             @Override
@@ -160,9 +136,7 @@ public class SecurityActivity extends AppCompatActivity {
             }
         }.start();
     mTimerRunning = true;
-
     }
-
 
     private void resetTimer()  {
         mTimeLeft = Constants.START_TIME;
@@ -194,60 +168,32 @@ public class SecurityActivity extends AppCompatActivity {
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                             FirebaseUser user = mAuth.getCurrentUser();
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                         FirebaseUser user = mAuth.getCurrentUser();
+                        String phoneNum = user.getPhoneNumber();
+                        String uid = user.getUid();
 
+                        Users.userInfo.put("phone number", phoneNum);
+                        Users.userInfo.put("first name", name);
+                        Users.userInfo.put("last name", lastname);
 
-                            String phoneNum = user.getPhoneNumber();
-                            String uid = user.getUid();
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference reference = database.getReference("Users");
+                        reference.child(uid).setValue(Users.userInfo);
 
+                        Toast.makeText(getApplicationContext(), "number" + user.getPhoneNumber(),
+                                Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(SecurityActivity.this, ProfileActivity.class));
+                    } else {
 
-
-
-                            Users.userInfo.put("phone number", phoneNum);
-//                            Users.userInfo.put("uid", uid);
-                            Users.userInfo.put("first name", name);
-                            Users.userInfo.put("last name", lastname);
-
-//                            Users userProf = new Users(name, lastname, phone);
-
-                            FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-                            DatabaseReference reference = database.getReference("Users");
-                            Log.d("MM", "onComplete: " + "message has sent");
-                            reference.child(uid).setValue(Users.userInfo);
-//                            reference.setValue("hello world");
-//
-
-
-
-                            Toast.makeText(getApplicationContext(), "number" + user.getPhoneNumber(),
+                        if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+                            Toast.makeText(getApplicationContext(), "Incorrect verification code",
                                     Toast.LENGTH_SHORT).show();
-
-
-
-                            startActivity(new Intent(SecurityActivity.this, ProfileActivity.class));
-
-                        } else {
-
-                            if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                                Toast.makeText(getApplicationContext(), "Incorrect verification code",
-                                        Toast.LENGTH_SHORT).show();
-                            }
-
                         }
                     }
                 });
-
-
     }
-
-
-
-
 
     @Override
     public void onBackPressed()
@@ -258,13 +204,13 @@ public class SecurityActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         if (editTextCode.length() > 0) {
-
             btn.getBackground().setAlpha(255);
             btn.setEnabled(true);
             editTextCode.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_check, 0);
         }
         super.onStart();
     }
+
     @Override
     public boolean dispatchTouchEvent(@NonNull MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {

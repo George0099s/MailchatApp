@@ -50,13 +50,7 @@ public class SignUpBusiness extends AppCompatActivity implements AdapterView.OnI
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         String[] nums_arr = {"+7", "+1", "+1", "+4"};
 
-        numsSpinner = findViewById(R.id.spinner_nums);
-
-
-
-
-
-
+         numsSpinner = findViewById(R.id.spinner_nums);
          login = findViewById(R.id.btnOk);
          checkBox = findViewById(R.id.checkBoxTerms);
          firsName = findViewById(R.id.firstNameTV);
@@ -72,36 +66,16 @@ public class SignUpBusiness extends AppCompatActivity implements AdapterView.OnI
          mAuth = FirebaseAuth.getInstance();
 
 
-        findViewById(R.id.logIn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(SignUpBusiness.this, LogIn.class));
-            }
-        });
-        findViewById(R.id.btnOk).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sendVerificationCode();
-            }
-        });
+        findViewById(R.id.logIn).setOnClickListener(view -> startActivity(new Intent(SignUpBusiness.this, LogIn.class)));
+        findViewById(R.id.btnOk).setOnClickListener(view -> sendVerificationCode());
 
         Functions.isChecked2(firsName,login,firstNameTV);
         Functions.isChecked2(lastName, login, lastNameTV);
         Functions.isChecked2(phoneNumber, login, phoneNumberTV);
 
-//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.nums_spinner, android.R.layout.simple_spinner_item);
-//        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-//
-//
-//        numsSpinner.setAdapter(adapter);
-//        numsSpinner.setOnItemSelectedListener(this);
-
-         spinner = (Spinner) findViewById(R.id.spinner_nums);
-        // Создаем адаптер ArrayAdapter с помощью массива строк и стандартной разметки элемета spinner
+        spinner = findViewById(R.id.spinner_nums);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, nums_arr);
-        // Определяем разметку для использования при выборе элемента
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Применяем адаптер к элементу spinner
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
     }

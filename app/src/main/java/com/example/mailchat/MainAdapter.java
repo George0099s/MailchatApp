@@ -28,7 +28,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     Context context;
 
     public MainAdapter(ArrayList<String> names,ArrayList<String> price,ArrayList<android.graphics.drawable.Drawable> img,ArrayList<String> job, ArrayList<String> type,ArrayList<String> date,ArrayList<String> date2, Context c){
-
         mNames = names;
         mPrice = price;
         mImg = img;

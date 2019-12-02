@@ -5,21 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,8 +35,8 @@ import java.util.concurrent.TimeUnit;
     FirebaseAuth mAuth;
     String codeSent, t;
     CheckBox checkBox;
-
     Button btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +44,6 @@ import java.util.concurrent.TimeUnit;
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         mAuth = FirebaseAuth.getInstance();
-
         firstNameTV = findViewById(R.id.first_name_tv);
         lastNameTV = findViewById(R.id.last_name_tv);
         phoneNumberTV = findViewById(R.id.phone_number_tv);
@@ -56,29 +51,15 @@ import java.util.concurrent.TimeUnit;
         editTextPhone = findViewById(R.id.phoneTV);
         editTextName = findViewById(R.id.firstNameTV);
         checkBox = findViewById(R.id.checkBoxTerms);
-
         btn = findViewById(R.id.btnGetCodePrivate);
         btn.getBackground().setAlpha(128);
 
-
-
-        Spinner spinner = (Spinner) findViewById(R.id.spinner_nums2);
-        // Создаем адаптер ArrayAdapter с помощью массива строк и стандартной разметки элемета spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,Functions.nums_arr);
-        // Определяем разметку для использования при выборе элемента
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Применяем адаптер к элементу spinner
+        Spinner spinner = findViewById(R.id.spinner_nums2);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Functions.nums_arr);
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-        findViewById(R.id.btnGetCodePrivate).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-
-                sendVerificationCode();
-            }
-
-        });
-
+        findViewById(R.id.btnGetCodePrivate).setOnClickListener(v -> sendVerificationCode());
 
         Functions.isChecked2(editTextName, btn, firstNameTV);
         Functions.isChecked2(editTextLastName, btn, lastNameTV);
@@ -88,12 +69,7 @@ import java.util.concurrent.TimeUnit;
 
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-
             t  = adapterView.getItemAtPosition(i).toString();
-
-
-
         }
 
         @Override
@@ -152,9 +128,6 @@ import java.util.concurrent.TimeUnit;
                     this,               // Activity (for callback binding)
                     mCallbacks);        // OnVerificationStateChangedCallbacks
 
-
-
-
         }
 
     }
@@ -191,46 +164,35 @@ import java.util.concurrent.TimeUnit;
 
         };
 
-//        private void verifySignInCode()
-//        {
-//
-//            String code = editTextCode.getText().toString();
-//            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(codeSent, code);
-//            Log.d("ABCD",credential.toString());
-//            signInWithPhoneAuthCredential(credential);
-//        }
-//        private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
-//            mAuth.signInWithCredential(credential)
-//                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<AuthResult> task) {
-//                            if (task.isSuccessful()) {
-//                                Toast.makeText(getApplicationContext(), "log success",
-//                                        Toast.LENGTH_SHORT).show();
-//                            } else {
-//
-//                                if (task.getException() instanceof  FirebaseAuthInvalidCredentialsException)
-//                                {
-//                                    Toast.makeText(getApplicationContext(), "Incorrect verification code",
-//                                            Toast.LENGTH_SHORT).show();
-//                                }
-//
-//                            }
-//                        }
-//                    });
-//        }
-@Override
-public boolean dispatchTouchEvent(@NonNull MotionEvent event) {
-    if (event.getAction() == MotionEvent.ACTION_DOWN) {
-        View v = getCurrentFocus();
-        if (v instanceof EditText) {
-            v.clearFocus();
-            InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
+            @Override
+            public boolean dispatchTouchEvent(@NonNull MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    View v = getCurrentFocus();
+                    if (v instanceof EditText) {
+                        v.clearFocus();
+                        InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+
+                    }
+                }
+
+                return super.dispatchTouchEvent(event);
+            }
+
+
+        private class MyTask extends AsyncTask<Void, Void, String> {
+
+            @Override
+            protected String doInBackground(Void... voids) {
+
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                super.onPostExecute(result);
+            }
         }
-    }
-
-    return super.dispatchTouchEvent(event);
-}
     }

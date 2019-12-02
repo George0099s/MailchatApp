@@ -23,13 +23,7 @@ public class CongratulationBusiness extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_congratulation_business);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        findViewById(R.id.ok).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(CongratulationBusiness.this, CompanyProfile.class));
-
-            }
-        });
+        findViewById(R.id.ok).setOnClickListener(view -> startActivity(new Intent(CongratulationBusiness.this, CompanyProfile.class)));
     }
     @Override
     public boolean dispatchTouchEvent(@NonNull MotionEvent event) {

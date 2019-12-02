@@ -31,33 +31,21 @@ public class LogIn extends AppCompatActivity {
     TextView weWill;
     TextView validNum;
     private final String TAG = "Login Activity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         mAuth = FirebaseAuth.getInstance();
-
         editTextPhone = findViewById(R.id.lastNameTV);
-         validNum = findViewById(R.id.validNumTV);
+        validNum = findViewById(R.id.validNumTV);
         validNum.setVisibility(View.INVISIBLE);
-         weWill = findViewById(R.id.weWillSendTV);
+        weWill = findViewById(R.id.weWillSendTV);
         Button btn =  findViewById(R.id.btnlogIn);
 
-        findViewById(R.id.back).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v)
-            {
-                onBackPressed();
-            }
-        });
-        findViewById(R.id.btnlogIn).setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-              sendVerificationCode();
-            }
-        });
+        findViewById(R.id.back).setOnClickListener(v -> onBackPressed());
+        findViewById(R.id.btnlogIn).setOnClickListener(v -> sendVerificationCode());
         Functions.isChecked(editTextPhone, btn);
 
 
@@ -70,7 +58,6 @@ public class LogIn extends AppCompatActivity {
                 v.clearFocus();
                 InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-
             }
         }
 
@@ -102,17 +89,6 @@ public class LogIn extends AppCompatActivity {
                     mCallbacks);        // OnVerificationStateChangedCallbacks
 
             TextView s = findViewById(R.id.phone_text_view);
-//            Button login = findViewById(R.id.btnlogIn);
-//
-//            login.setTextAppearance(this, R.style.btnLogOn);
-//            login.setBackground(#48C8DB);
-
-
-//            Intent intent = new Intent(this, SecurityActivity.class);
-//            intent.putExtra("phone",phone);
-//            startActivity(intent);
-
-
         }
 
     }
@@ -125,7 +101,6 @@ public class LogIn extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Verification completed",
                     Toast.LENGTH_SHORT).show();
         }
-
 
         @Override
         public void onVerificationFailed(@NonNull FirebaseException e) {
@@ -145,10 +120,4 @@ public class LogIn extends AppCompatActivity {
         }
 
     };
-
-
-
-
-
-
 }

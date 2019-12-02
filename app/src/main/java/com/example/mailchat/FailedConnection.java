@@ -21,17 +21,14 @@ public class FailedConnection extends AppCompatActivity {
         setContentView(R.layout.activity_failed_connection);
 
 
-        findViewById(R.id.btnOk).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(Functions.internetIsConnected())
-                {
-                    Intent intent = new Intent(FailedConnection.this, MainActivity.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(getApplicationContext(), "Failed connection, try again",
-                            Toast.LENGTH_SHORT).show();
-                }
+        findViewById(R.id.btnOk).setOnClickListener(v -> {
+            if(Functions.internetIsConnected())
+            {
+                Intent intent = new Intent(FailedConnection.this, MainActivity.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(getApplicationContext(), "Failed connection, try again",
+                        Toast.LENGTH_SHORT).show();
             }
         });
 

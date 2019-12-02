@@ -18,33 +18,30 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class Reservation extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.nav_message:
-                    loadFragment(MessageFragment.newInstance());
-                    return true;
-                case R.id.navigation_search:
-                    loadFragment(SearchFragment.newInstance());
-                    return true;
-                case R.id.nav_mailchat:
-                    loadFragment(MailchatFragment.newInstance());
-                    return true;
-                case R.id.nav_profile:
-                    loadFragment(ProfileFragment.newInstance());
-                    return true;
-            }
-            return false;
-        }
-    };
+            = item -> {
+                switch (item.getItemId()) {
+                    case R.id.nav_message:
+                        loadFragment(MessageFragment.newInstance());
+                        return true;
+                    case R.id.navigation_search:
+                        loadFragment(SearchFragment.newInstance());
+                        return true;
+                    case R.id.nav_mailchat:
+                        loadFragment(MailchatFragment.newInstance());
+                        return true;
+                    case R.id.nav_profile:
+                        loadFragment(ProfileFragment.newInstance());
+                        return true;
+                }
+                return false;
+            };
 
     private void loadFragment(Fragment fragment) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fl_content, fragment);
         ft.commit();
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +51,7 @@ public class Reservation extends AppCompatActivity {
         BottomNavigationView navigation =  findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
+
     @Override
     public boolean dispatchTouchEvent(@NonNull MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -65,7 +63,6 @@ public class Reservation extends AppCompatActivity {
 
             }
         }
-
         return super.dispatchTouchEvent(event);
     }
 }
