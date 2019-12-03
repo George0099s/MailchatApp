@@ -39,14 +39,12 @@ public class LogIn extends AppCompatActivity {
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         mAuth = FirebaseAuth.getInstance();
         editTextPhone = findViewById(R.id.lastNameTV);
-        validNum = findViewById(R.id.validNumTV);
-        validNum.setVisibility(View.INVISIBLE);
-        weWill = findViewById(R.id.weWillSendTV);
+
+
         Button btn =  findViewById(R.id.btnlogIn);
 
-        findViewById(R.id.back).setOnClickListener(v -> onBackPressed());
+
         findViewById(R.id.btnlogIn).setOnClickListener(v -> sendVerificationCode());
-        Functions.isChecked(editTextPhone, btn);
 
 
     }

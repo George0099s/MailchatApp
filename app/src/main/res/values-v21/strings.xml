@@ -50,6 +50,8 @@
     <string name="verify_btn">Verify</string>
     <string name="stay_login_string">Stay log In</string>
     <string name="mailchatid_or_phone">Mailchat ID or Phone number</string>
+    <string name="not_you"><u>Not you</u></string>
+    <string name="forgot_pass"><u>Forgot passord</u>?</string>
 
 
     <array name="nums_spinner">

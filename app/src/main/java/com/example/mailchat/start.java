@@ -26,6 +26,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,9 +37,10 @@ public class start extends AppCompatActivity{
     String login, userID;
     private Button log;
     private Button signUpBtn;
-
+    ArrayList<String> usersNames = new ArrayList<>();
     private final String TAG = getClass().toString();
     DatabaseReference reference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,23 +54,12 @@ public class start extends AppCompatActivity{
         log.setOnClickListener(this::goToLogIn);
           Functions.isChecked(logED, log);
 
-
-
-
-        FirebaseAuth.getInstance().signInAnonymously().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isComplete() && task.isSuccessful()){
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    reference = database.getReference("Users"); // reference is 'chat' because we created the database at /chat
-                }
+        FirebaseAuth.getInstance().signInAnonymously().addOnCompleteListener(task -> {
+            if (task.isComplete() && task.isSuccessful()){
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                reference = database.getReference("Users"); // reference is 'chat' because we created the database at /chat
             }
         });
-
-        MyTask myTask = new MyTask();
-        myTask.execute("gp");
-//        sendData();
-
     }
 
    private void goToRegistration(View view) {
@@ -77,14 +69,44 @@ public class start extends AppCompatActivity{
 
     private void goToLogIn(View view) {
         login = logED.getText().toString();
-
         if (login.isEmpty()) {
 
             Toast.makeText(getApplicationContext(), "Fill your login",
                     Toast.LENGTH_SHORT).show();
         } else {
-            Intent intent = new Intent(start.this, LogIn.class);
-            startActivity(intent);
+
+            FirebaseAuth mAuth = FirebaseAuth.getInstance();
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            reference = database.getReference("Users"); // reference is 'chat' because we created the database at /chat
+
+            reference.addValueEventListener(new ValueEventListener() {
+                String name;
+
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
+                        name = (String) messageSnapshot.child("first name").getValue();
+                        usersNames.add(name);
+                }
+                    for (int i = 0; i < usersNames.size(); i++) {
+                        Log.d(TAG, "onDataChange: " +usersNames.get(i));
+                        Log.d(TAG, "onDataChange: " +login);
+                        if (login.equals(usersNames.get(i))){
+                            Intent intent = new Intent(start.this, LogIn.class);
+                            startActivity(intent);
+
+                        }
+                        if (login != usersNames.get(i)){
+                           Toast.makeText(getApplicationContext(),"Incorrect user name", Toast.LENGTH_SHORT);
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
   @Override
@@ -100,74 +122,5 @@ public class start extends AppCompatActivity{
 
         return super.dispatchTouchEvent(event);
     }
-
-
-//    public void sendData(){
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        reference = database.getReference("Users"); // reference is 'chat' because we created the database at /chat
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                // This method is called once with the initial value and again
-//                // whenever data at this location is updated.
-////                String value = dataSnapshot.getValue(String.class);
-//                Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
-//                Log.d("123", "Value is: " + map);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError error) {
-//                // Failed to read value
-//                Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
-//    }
-
-
-    private class MyTask extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected String doInBackground(String... params) {
-            FirebaseAuth mAuth = FirebaseAuth.getInstance();
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            reference = database.getReference("Users"); // reference is 'chat' because we created the database at /chat
-            reference.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    // This method is called once with the initial value and again
-                    // whenever data at this location is updated.
-//                String value = dataSnapshot.getValue(String.class);
-                    Map<String, Object> info = (Map<String, Object>) dataSnapshot.getValue();
-                    Map<String, Object> infouser = new HashMap<>();
-
-                    for (int i = 0; i < info.size(); i++) {
-                    }
-                    String id = mAuth.getCurrentUser().getUid();
-
-                    String s = "abc";
-
-
-//                       String f = (String) info.get("");
-                       Log.d(TAG, "onDataChange: " + info);
-//                      Log.d("123", "Value is: " + map);
-
-                }
-
-                @Override
-                public void onCancelled(DatabaseError error) {
-                    // Failed to read value
-                    Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_SHORT).show();
-                }
-            });
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-        }
-    }
-
   }
 

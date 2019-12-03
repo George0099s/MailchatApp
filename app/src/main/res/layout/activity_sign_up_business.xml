@@ -130,6 +130,7 @@
     </EditText>
 
     <TextView
+        style="@style/titleString"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="22dp"
@@ -137,10 +138,6 @@
         android:layout_marginTop="32dp"
         android:gravity="center"
         android:text="SIGN UP"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
