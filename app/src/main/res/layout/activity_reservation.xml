@@ -67,6 +67,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:itemBackground="@drawable/shape_bg_navabar"
         app:labelVisibilityMode="unlabeled"
+        android:backgroundTintMode="add"
+        android:backgroundTint="@color/colorAccent"
         app:itemIconTint="#fff"
         app:menu="@menu/menu" />
 

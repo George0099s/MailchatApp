@@ -52,12 +52,12 @@ public class start extends AppCompatActivity{
         signUpBtn = findViewById(R.id.signUPBTN);
         signUpBtn.setOnClickListener(this::goToRegistration);
         log.setOnClickListener(this::goToLogIn);
-          Functions.isChecked(logED, log);
+        Functions.isChecked(logED, log);
 
         FirebaseAuth.getInstance().signInAnonymously().addOnCompleteListener(task -> {
             if (task.isComplete() && task.isSuccessful()){
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                reference = database.getReference("Users"); // reference is 'chat' because we created the database at /chat
+                reference = database.getReference("Users");
             }
         });
     }
@@ -67,10 +67,9 @@ public class start extends AppCompatActivity{
         startActivity(intent);
     }
 
-    private void goToLogIn(View view) {
+   private void goToLogIn(View view) {
         login = logED.getText().toString();
         if (login.isEmpty()) {
-
             Toast.makeText(getApplicationContext(), "Fill your login",
                     Toast.LENGTH_SHORT).show();
         } else {
@@ -81,7 +80,6 @@ public class start extends AppCompatActivity{
 
             reference.addValueEventListener(new ValueEventListener() {
                 String name;
-
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
@@ -109,7 +107,7 @@ public class start extends AppCompatActivity{
             });
         }
     }
-  @Override
+   @Override
     public boolean dispatchTouchEvent(@NonNull MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             View v = getCurrentFocus();
@@ -121,6 +119,6 @@ public class start extends AppCompatActivity{
         }
 
         return super.dispatchTouchEvent(event);
+      }
     }
-  }
 

@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.firebase.auth.UserInfo;
 
 import java.util.ArrayList;
@@ -18,23 +20,23 @@ import java.util.Map;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
 
-    ArrayList<String> mNames;
-    ArrayList<String> mPrice;
-    ArrayList<android.graphics.drawable.Drawable> mImg;
-    ArrayList<String> mJob;
-    ArrayList<String> mType;
-    ArrayList<String> mDate;
-    ArrayList<String> mDate2;
+    ArrayList<String> mNamesList;
+    ArrayList<String> mPriceList;
+    ArrayList<String> mImgList;
+    ArrayList<String> mJobList;
+    ArrayList<String> mTypeList;
+    ArrayList<String> mDateList;
+    ArrayList<String> mStartTime;
     Context context;
 
-    public MainAdapter(ArrayList<String> names,ArrayList<String> price,ArrayList<android.graphics.drawable.Drawable> img,ArrayList<String> job, ArrayList<String> type,ArrayList<String> date,ArrayList<String> date2, Context c){
-        mNames = names;
-        mPrice = price;
-        mImg = img;
-        mJob = job;
-        mType = type;
-        mDate = date;
-        mDate2 = date2;
+    public MainAdapter(ArrayList<String> names,ArrayList<String> price,ArrayList<String> img,ArrayList<String> job, ArrayList<String> type,ArrayList<String> date,ArrayList<String> startTime, Context c){
+        mNamesList = names;
+        mPriceList = price;
+        mImgList = img;
+        mJobList = job;
+        mTypeList = type;
+        mDateList = date;
+        mStartTime = startTime;
         this.context = c;
     }
 
@@ -48,19 +50,23 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull MainAdapter.ViewHolder holder, int position) {
 
-        holder.userName.setText(mNames.get(position));
-//        holder.price.setText(mPrice.get(position));
+        holder.userName.setText(mNamesList.get(position));
+        holder.price.setText(mPriceList.get(position));
 //        holder.type.setText(mType.get(position));
-        holder.date.setText(mDate.get(position));
+        holder.date.setText(mDateList.get(position));
 //        holder.date2.setText(mDate2.get(position));
 //        holder.image.setImageBitmap(mImg.get(position));
 
-
+        Glide.with(this.context)
+                .load(mImgList.get(position))
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(holder.image);
     }
 
     @Override
     public int getItemCount() {
-        return mNames.size();    }
+        return mNamesList.size();
+    }
 
     public class ViewHolder  extends RecyclerView.ViewHolder{
 
