@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="terms">By clicking "Continue", you agree to the <font fgcolor="#000"><u>Terms</u></font> and  <font fgcolor="#000"><u>Privacy Policy</u></font></string>
+
     <string name="howitworks">how it works?</string>
     <string name="first_name_tv">First name</string>
     <string name="phone_number_tv">Telephone number</string>

@@ -5,7 +5,8 @@
     <string name="title_activity_security">SECURITY CODE</string>
     <string name="title_activity_registration">RegistrationActivity</string>
     <string name="title_activity_loader">LoaderActivity</string>
-    <string name="terms">By clicking "Continue", you agree to the <u>Terms</u> and <u>Privacy Policy</u></string>
+    <string name="terms">By clicking "Continue", you agree to the <font fgcolor="#000"><u>Terms</u></font> and <u>Privacy Policy</u></string>
+
     <string name="title_activity_log_in">LogIn</string>
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="title_activity_security_log_in">SecurityLogInActivity</string>

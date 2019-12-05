@@ -49,13 +49,13 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
         male = findViewById(R.id.btnMale);
         female = findViewById(R.id.btnFemale);
         next = findViewById(R.id.btnNext);
-        next.getBackground().setAlpha(128);
 
         if(s){next.getBackground().setAlpha(255);}
 
         findViewById(R.id.btnMale).setOnClickListener(view -> {
             male.setBackgroundResource(R.drawable.okbtn);
             male.setTextColor(Color.parseColor("#ffffff"));
+
             female.setTextColor(Color.parseColor("#2592FB"));
             female.setBackgroundResource(R.drawable.rect_okbtn_small);
             gender = "male";
