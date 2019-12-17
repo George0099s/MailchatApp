@@ -1,4 +1,4 @@
-package com.example.mailchat;
+package com.example.mailchat.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,20 +7,19 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.mailchat.R;
 
 
-public class SearchFragment extends Fragment {
+public class ProfileFragment extends Fragment {
 
-
-    public SearchFragment() {
+    public ProfileFragment() {
         // Required empty public constructor
     }
 
+    public static ProfileFragment newInstance() {
 
-    public static SearchFragment newInstance() {
-        return new SearchFragment();
-        }
-
+        return new ProfileFragment();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,7 +31,10 @@ public class SearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false);
+        return inflater.inflate(R.layout.fragment_profile, container, false);
     }
+
+
+
 
 }

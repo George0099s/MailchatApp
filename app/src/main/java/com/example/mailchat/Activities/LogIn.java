@@ -1,17 +1,8 @@
-package com.example.mailchat;
+package com.example.mailchat.Activities;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthProvider;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,6 +11,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.mailchat.R;
+import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
 

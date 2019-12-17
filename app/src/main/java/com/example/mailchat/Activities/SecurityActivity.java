@@ -1,12 +1,9 @@
-package com.example.mailchat;
+package com.example.mailchat.Activities;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -20,23 +17,18 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.example.mailchat.Functions;
+import com.example.mailchat.Models.Users;
+import com.example.mailchat.R;
 import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-
-import java.util.HashMap;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
@@ -84,7 +76,7 @@ public class SecurityActivity extends AppCompatActivity {
         editTextCode = findViewById(R.id.codeTV);
         btn = findViewById(R.id.btnVerifyCode);
         btn.getBackground().setAlpha(128);
-        Functions.isChecked(editTextCode, btn);
+        Functions.isCheckedNums(editTextCode, btn, 6);
         mAuth = FirebaseAuth.getInstance();
         TextView phonetv = findViewById(R.id.phone_text_view);
         phonetv.setText(phone);

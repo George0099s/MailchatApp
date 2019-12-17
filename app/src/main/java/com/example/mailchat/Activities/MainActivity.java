@@ -1,7 +1,4 @@
-    package com.example.mailchat;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.mailchat.Activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +17,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.mailchat.Functions;
+import com.example.mailchat.R;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
@@ -63,7 +65,7 @@ import java.util.concurrent.TimeUnit;
 
         Functions.isChecked2(editTextName, btn, firstNameTV);
         Functions.isChecked2(editTextLastName, btn, lastNameTV);
-        Functions.isChecked2(editTextPhone, btn, phoneNumberTV);
+        Functions.isCheckedPhone(editTextPhone, btn, phoneNumberTV);
 
     }
 

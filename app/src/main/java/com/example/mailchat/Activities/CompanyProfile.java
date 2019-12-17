@@ -1,4 +1,4 @@
-package com.example.mailchat;
+package com.example.mailchat.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -6,24 +6,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.provider.MediaStore;
 import android.util.Log;
 import android.util.TypedValue;
@@ -38,6 +20,19 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.mailchat.Functions;
+import com.example.mailchat.Models.Users;
+import com.example.mailchat.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
 
@@ -83,7 +78,7 @@ public class CompanyProfile extends AppCompatActivity implements AdapterView.OnI
         spinerNums = findViewById(R.id.spinner_nums);
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner_nums);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,Functions.nums_arr);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Functions.nums_arr);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 

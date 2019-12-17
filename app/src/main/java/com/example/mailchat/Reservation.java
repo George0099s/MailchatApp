@@ -2,7 +2,6 @@ package com.example.mailchat;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -13,6 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.mailchat.Activities.MailchatFragment;
+import com.example.mailchat.Fragments.MessageFragment;
+import com.example.mailchat.Fragments.ProfileFragment;
+import com.example.mailchat.Fragments.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Reservation extends AppCompatActivity {

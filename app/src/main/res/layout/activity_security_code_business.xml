@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#F9FBFF"
     android:padding="20dp"
-    tools:context=".SecurityCodeBusiness">
+    tools:context=".Activities.SecurityCodeBusiness">
 
 
     <TextView

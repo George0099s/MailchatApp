@@ -1,8 +1,7 @@
-package com.example.mailchat;
+package com.example.mailchat.Activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -16,9 +15,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import com.example.mailchat.Functions;
+import com.example.mailchat.InboxActivity;
+import com.example.mailchat.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,10 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class start extends AppCompatActivity{
     ImageView isChecked;
@@ -54,6 +50,7 @@ public class start extends AppCompatActivity{
         log.setOnClickListener(this::goToLogIn);
         Functions.isChecked(logED, log);
 
+
         FirebaseAuth.getInstance().signInAnonymously().addOnCompleteListener(task -> {
             if (task.isComplete() && task.isSuccessful()){
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -63,7 +60,7 @@ public class start extends AppCompatActivity{
     }
 
    private void goToRegistration(View view) {
-        Intent intent = new Intent(start.this, RegistrationActivity.class);
+       Intent intent = new Intent(start.this, InboxActivity.class);
         startActivity(intent);
     }
 

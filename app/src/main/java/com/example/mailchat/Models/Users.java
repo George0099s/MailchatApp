@@ -1,13 +1,13 @@
-package com.example.mailchat;
+package com.example.mailchat.Models;
 
 import java.util.HashMap;
 
 public class Users {
 
-    static HashMap<Object, String> userInfo = new HashMap<>();
-    static HashMap<Object, String> businessUserInfo = new HashMap<>();
+    public static HashMap<Object, String> userInfo = new HashMap<>();
+    public static HashMap<Object, String> businessUserInfo = new HashMap<>();
 
-    static HashMap<Object, String> businessCompanyInfo = new HashMap<>();
+    public static HashMap<Object, String> businessCompanyInfo = new HashMap<>();
 
     private String Name;
     private String Gender;

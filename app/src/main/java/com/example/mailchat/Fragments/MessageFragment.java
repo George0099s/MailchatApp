@@ -1,19 +1,16 @@
-package com.example.mailchat;
+package com.example.mailchat.Fragments;
 
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.textclassifier.TextLinks;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -21,6 +18,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.mailchat.Adapters.MainAdapter;
+import com.example.mailchat.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

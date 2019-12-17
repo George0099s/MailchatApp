@@ -131,4 +131,7 @@
     <string name="mailchatid_or_phone">Mailchat ID or Phone number</string>
     <string name="not_you"><u>Not you</u></string>
     <string name="forgot_pass"><u>Forgot passord</u>?</string>
+    <string name="inbox_title">Inbox</string>
+    <string name="search_string">Search</string>
+    <string name="user_img">User img</string>
 </resources>

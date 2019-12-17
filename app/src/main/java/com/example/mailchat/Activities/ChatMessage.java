@@ -1,4 +1,4 @@
-package com.example.mailchat;
+package com.example.mailchat.Activities;
 
 public class ChatMessage {
     private String username;

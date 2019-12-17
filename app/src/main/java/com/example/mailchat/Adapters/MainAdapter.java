@@ -1,4 +1,4 @@
-package com.example.mailchat;
+package com.example.mailchat.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,11 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.google.firebase.auth.UserInfo;
+import com.example.mailchat.R;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
 

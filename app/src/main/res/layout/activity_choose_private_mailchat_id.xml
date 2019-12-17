@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="#FCFDFF"
     android:layout_height="match_parent"
-    tools:context=".ChoosePrivateMailchatID">
+    tools:context=".Activities.ChoosePrivateMailchatID">
 
 
     <TextView
