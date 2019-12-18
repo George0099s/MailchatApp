@@ -44,7 +44,7 @@ public class InboxActivity extends AppCompatActivity {
 
         mRecyclerView = findViewById(R.id.chats_recycler_view);
 
-        mChatsAdapter = new ChatsAdapter(mChatNameList, mSubjectMsgList, mTextMsgList, mRecievedTimeList);
+        mChatsAdapter = new ChatsAdapter(mChatNameList, mSubjectMsgList, mTextMsgList, mRecievedTimeList, this);
         mRecyclerView.setAdapter(mChatsAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 

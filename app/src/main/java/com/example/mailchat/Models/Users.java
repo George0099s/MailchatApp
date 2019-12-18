@@ -16,6 +16,7 @@ public class Users {
     private String Email;
     private String Phone;
     private String LastName;
+    private String userId;
 
 
     public Users(){
@@ -90,6 +91,14 @@ public class Users {
 
     public void setLastName(String lastName) {
         LastName = lastName;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }
 
