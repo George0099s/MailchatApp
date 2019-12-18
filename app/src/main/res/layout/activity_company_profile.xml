@@ -7,7 +7,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CompanyProfile"
+    tools:context=".Activities.CompanyProfile"
     android:scrollbars="vertical">
 
     <EditText
@@ -17,10 +17,11 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="30dp"
-        android:hint="About Company"
-        android:inputType="text"
-        android:maxLines="1"
+        android:hint="@string/about_company_string"
+
+        android:maxLines="3"
         android:textColor="#262626"
+        android:inputType="textMultiLine"
         android:textColorHint="@color/grey_text"
         android:theme="@style/CustomEditText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,25 +69,21 @@
     </ImageView>
 
     <TextView
+        style="@style/titleString"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="22dp"
         android:layout_gravity="center"
         android:layout_marginStart="39dp"
-        android:layout_marginLeft="39dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="39dp"
-        android:layout_marginRight="39dp"
         android:gravity="center"
-        android:text="COMPANY PROFILE"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:textStyle="normal"
+        android:text="@string/company_profile_title"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"></TextView>
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <EditText
@@ -96,7 +93,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
-        android:hint="Web site"
+        android:hint="@string/web_site_string"
         android:textColor="#262626"
         android:textColorHint="@color/grey_text"
         android:theme="@style/CustomEditText"
@@ -109,17 +106,17 @@
 
     <EditText
         android:id="@+id/companyPhoneNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_width="0dp"
+        android:layout_height="49dp"
         android:layout_marginTop="35dp"
         android:layout_marginEnd="30dp"
-        android:hint="Company Telephone number"
+        android:hint="@string/phone_number_tv"
+        android:inputType="number"
         android:textColor="#262626"
         android:textColorHint="@color/grey_text"
         android:theme="@style/CustomEditText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/spinner_nums"
         app:layout_constraintTop_toBottomOf="@+id/webSite">
 
     </EditText>
@@ -131,7 +128,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="35dp"
         android:layout_marginEnd="30dp"
-        android:hint="Address"
+        android:hint="@string/address_string"
         android:textColor="#262626"
         android:textColorHint="@color/grey_text"
         android:theme="@style/CustomEditText"
@@ -148,7 +145,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="35dp"
         android:layout_marginEnd="30dp"
-        android:hint="Work hours"
+        android:hint="@string/work_hours_string"
         android:inputType="datetime"
         android:textColor="#262626"
         android:textColorHint="@color/grey_text"
@@ -187,7 +184,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="102dp"
 
-        android:text="I want finish later"
+        android:text="@string/finish_later"
         android:textColor="@color/grey_text"
         android:textSize="16sp"
         android:textStyle="italic"
@@ -200,6 +197,7 @@
         android:id="@+id/skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginEnd="102dp"
         android:text="@string/skip_it"
         android:textColor="#262626"
@@ -215,7 +213,7 @@
         android:id="@+id/web_site_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Web site"
+        android:text="@string/web_site_string"
         android:textColor="@color/grey_text"
         app:layout_constraintBottom_toTopOf="@+id/webSite"
         app:layout_constraintStart_toStartOf="@+id/webSite" />
@@ -233,7 +231,7 @@
         android:id="@+id/address_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Address"
+        android:text="@string/address_string"
         android:textColor="@color/grey_text"
         app:layout_constraintBottom_toTopOf="@+id/address"
         app:layout_constraintStart_toStartOf="@+id/address" />
@@ -242,7 +240,7 @@
         android:id="@+id/work_hours_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Work hours"
+        android:text="@string/work_hours_string"
         android:textColor="@color/grey_text"
         app:layout_constraintBottom_toTopOf="@+id/workHours"
         app:layout_constraintStart_toStartOf="@+id/workHours" />
@@ -251,11 +249,32 @@
         android:id="@+id/about_company_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="About_company"
+        android:text="@string/about_company_string"
         android:textColor="@color/grey_text"
         android:textColorHint="@color/grey_text"
         app:layout_constraintBottom_toTopOf="@+id/aboutCompany"
         app:layout_constraintStart_toStartOf="@+id/aboutCompany" />
+
+    <Spinner
+        android:id="@+id/spinner_nums"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/companyPhoneNumber" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="29dp"
+        android:layout_height="1dp"
+        android:background="@color/grey_text"
+        android:backgroundTint="@color/grey_text"
+        android:backgroundTintMode="@color/grey_text"
+        app:layout_constraintBottom_toBottomOf="@+id/companyPhoneNumber"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_nums"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="@+id/spinner_nums"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_nums" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

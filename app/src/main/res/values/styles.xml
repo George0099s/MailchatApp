@@ -11,14 +11,13 @@
     <!--    </style>-->
 
     <style name="AppTheme.NoActionBar">
+        <item name="android:fontFamily">@font/pfbeausanspro</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:statusBarColor">#FCFDFF</item>
         <item name="android:background">#FCFDFF</item>
         <item name="android:windowEnterAnimation">@style/AppTheme.WindowTransition</item>
-
-
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -50,8 +49,10 @@
         <item name="android:capitalize">none</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
-    <!--    <style name="btnLogof">-->
-    <!--        <item name="android:textColor">#F9FBFF</item>-->
-    <!--        <item name="android:background">#48C8DB</item>-->
-    <!--    </style>-->
+   <style name="titleString">
+       <item name="android:textSize">20sp</item>
+       <item name="android:textColor">#262626</item>
+       <item name="android:fontFamily">@font/pfbeausanspro</item>
+       <item name="android:letterSpacing">0.15</item>
+   </style>
 </resources>

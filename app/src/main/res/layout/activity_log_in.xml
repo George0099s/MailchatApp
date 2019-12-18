@@ -5,134 +5,94 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F9FBFF"
-    android:padding="20dp"
-    tools:context=".LogIn">
 
+    tools:context=".Activities.LogIn">
 
-    <ImageView
-        android:id="@+id/back"
-        android:layout_width="77dp"
-        android:layout_height="20dp"
-        android:paddingRight="50dp"
-        android:src="@drawable/arrowback"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-    </ImageView>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="22dp"
         android:layout_gravity="center"
+        android:layout_marginTop="30dp"
         android:gravity="center"
-        android:text="LOG IN"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        android:text="@string/mailchat_title"
+        style="@style/titleString"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-    </TextView>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="38dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="45dp"
-        android:src="@drawable/loginimg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
-
-    </ImageView>
+        app:layout_constraintVertical_bias="0.0"></TextView>
 
     <EditText
-        android:id="@+id/lastNameTV"
+        android:id="@+id/phoneTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="62dp"
+        android:layout_marginEnd="30dp"
         android:hint="Enter phone number"
         android:inputType="phone"
-        android:textColor="@color/grey_text"
+        android:textColor="#262626"
+        android:textColorHint="@color/grey_text"
         android:theme="@style/CustomEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toBottomOf="@+id/textView8">
 
     </EditText>
-
-    <TextView
-        android:id="@+id/weWillSendTV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:gravity="center"
-        android:text="We will send you code for confirmation"
-        android:textColor="#262626"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnlogIn"
-        tools:visibility="visible">
-
-    </TextView>
 
     <Button
         android:id="@+id/btnlogIn"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/foregroundsignup"
-        android:text="Log In"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/okbtn"
+        android:text="Log in"
         android:textAllCaps="false"
-        android:textColor="#48C8DB"
+        android:textColor="#fff"
         android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lastNameTV" />
-
-    <TextView
-        android:id="@+id/validNumTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="47dp"
-        android:layout_marginLeft="47dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="47dp"
-        android:layout_marginRight="47dp"
-        android:text="Please enter a valid number"
-        android:textColor="#262626"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnlogIn"
-        tools:visibility="invisible" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="89dp"
-        android:layout_marginLeft="89dp"
-        android:layout_marginEnd="89dp"
-        android:layout_marginRight="89dp"
-        android:layout_marginBottom="17dp"
-        android:text="Mailchat 2019. All right reserved."
+        android:layout_marginTop="53dp"
+        android:text="Hello Rybinkin"
         android:textColor="#262626"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/not_you"
+        android:textColor="#262626"
+        app:layout_constraintBottom_toTopOf="@+id/phoneTV"
+        app:layout_constraintEnd_toEndOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/forgot_pass"
+        android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneTV" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

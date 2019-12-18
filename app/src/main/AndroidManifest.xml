@@ -15,66 +15,67 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".InboxActivity"></activity>
         <activity
             android:name=".Reservation"
             android:label="@string/title_activity_reservation"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme" />
         <activity
-            android:name=".CongratulationBusiness"
+            android:name=".Activities.CongratulationBusiness"
             android:label="@string/title_activity_congratulation_business"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ChooseBusinessID"
+            android:name=".Activities.ChooseBusinessID"
             android:label="@string/title_activity_choose_business_id"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ChoosePrivateMailchatID"
+            android:name=".Activities.ChoosePrivateMailchatID"
             android:label="@string/title_activity_choose_private_mailchat_id"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AddPrivateUserPhoto"
+            android:name=".Activities.AddPrivateUserPhoto"
             android:label="@string/title_activity_add_private_user_photo"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CompanyProfile"
+            android:name=".Activities.CompanyProfile"
             android:label="@string/title_activity_company_profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AddNewCompany"
+            android:name=".Activities.AddNewCompany"
             android:label="@string/title_activity_add_new_company"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SecurityCodeBusiness"
+            android:name=".Activities.SecurityCodeBusiness"
             android:label="@string/title_activity_security_code_business"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SignUpBusiness"
+            android:name=".Activities.SignUpBusiness"
             android:label="@string/title_activity_sign_up_business"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".FailedConnection"
+            android:name=".Activities.FailedConnection"
             android:label="@string/title_activity_failed_connection"
             android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".Activities.ProfileActivity"
             android:label="@string/title_activity_profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".LogIn"
+            android:name=".Activities.LogIn"
             android:label="@string/title_activity_log_in"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".RegistrationActivity"
+            android:name=".Activities.RegistrationActivity"
             android:label="@string/title_activity_registration"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SecurityActivity"
+            android:name=".Activities.SecurityActivity"
             android:label="@string/title_activity_security"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".start"
-            android:label="@string/title_activity_start"
+            android:name=".Activities.start"
+            android:label="Mailchat"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -83,14 +84,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:name=".Activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

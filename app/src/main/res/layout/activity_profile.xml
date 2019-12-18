@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    tools:context=".Activities.ProfileActivity">
 
     <Spinner
         android:id="@+id/daySpinner"
@@ -42,22 +42,20 @@
         android:layout_marginTop="30dp"
         android:gravity="center"
         android:letterSpacing="0.5"
-        android:text="USER PROFILE"
-        android:textColor="#262626"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:text="@string/user_profile_title"
+        style="@style/titleString"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"></TextView>
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView30"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="Gender"
+        android:text="@string/gender_srtring"
         android:textColor="@color/grey_text"
         app:layout_constraintBottom_toTopOf="@+id/btnMale"
         app:layout_constraintStart_toStartOf="@+id/btnMale" />
@@ -67,12 +65,10 @@
         android:layout_width="140dp"
         android:layout_height="40dp"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="75dp"
         android:layout_marginEnd="19dp"
-        android:layout_marginRight="19dp"
         android:background="@drawable/rect_okbtn_small"
-        android:text="Male"
+        android:text="@string/male_string"
         android:textAllCaps="false"
         android:textColor="#2592FB"
         app:layout_constraintEnd_toStartOf="@+id/btnFemale"
@@ -85,9 +81,8 @@
         android:layout_width="140dp"
         android:layout_height="40dp"
         android:layout_marginEnd="31dp"
-        android:layout_marginRight="31dp"
         android:background="@drawable/rect_okbtn_small"
-        android:text="Female"
+        android:text="@string/female_string"
         android:textAllCaps="false"
         android:textColor="#2592FB"
         app:layout_constraintBottom_toBottomOf="@+id/btnMale"
@@ -112,7 +107,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:text="Date of birth"
+        android:text="@string/date_of_birth_string"
         android:textColor="@color/grey_text"
         app:layout_constraintBottom_toTopOf="@+id/daySpinner"
         app:layout_constraintStart_toStartOf="@+id/daySpinner" />
@@ -122,12 +117,10 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/okbtn"
-        android:text="Next"
+        android:text="@string/next_btn_string"
         android:textAllCaps="false"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -154,7 +147,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="City"
+        android:text="@string/city_string"
         android:textColor="@color/grey_text"
         app:layout_constraintBottom_toTopOf="@+id/spinnerCity"
         app:layout_constraintStart_toStartOf="@+id/spinnerCity" />

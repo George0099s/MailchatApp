@@ -1,21 +1,14 @@
 package com.example.mailchat;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-
 public class Functions {
-
+   public static String[] nums_arr = {"+7", "+1", "+1", "+4"};
 //    private boolean isNetworkAvailable() {
 //        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 //        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
@@ -49,13 +42,22 @@ public class Functions {
 
     }
 
-    public static void isChecked(final EditText editText, final Button btn)
-    {
+    public static void isChecked(final EditText editText, final Button btn) {
 
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() == 10) {
 
+                    btn.getBackground().setAlpha(255);
+                    btn.setEnabled(true);
+                    editText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_check, 0);
+                } else {
+                    btn.getBackground().setAlpha(128);
+                    btn.setEnabled(false);
+                    editText.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+
+                }
             }
 
             @Override
@@ -65,7 +67,7 @@ public class Functions {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (editable.length() > 0) {
+                if (editable.length() > 9) {
 
                     btn.getBackground().setAlpha(255);
                     btn.setEnabled(true);
@@ -79,8 +81,8 @@ public class Functions {
             }
         });
     }
-    public static void isChecked2(final EditText editText, final Button btn, final TextView textView)
-    {
+
+    public static void isChecked2(final EditText editText, final Button btn, final TextView textView) {
         textView.setVisibility(View.INVISIBLE);
         editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -102,6 +104,66 @@ public class Functions {
                     editText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_check, 0);
                 } else {
                     textView.setVisibility(View.INVISIBLE);
+                    btn.getBackground().setAlpha(128);
+                    btn.setEnabled(false);
+                    editText.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+
+                }
+            }
+        });
+    }
+
+    public static void isCheckedPhone(final EditText editText, final Button btn, final TextView textView) {
+        textView.setVisibility(View.INVISIBLE);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() == 10) {
+                    textView.setVisibility(View.VISIBLE);
+                    btn.getBackground().setAlpha(255);
+                    btn.setEnabled(true);
+                    editText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_check, 0);
+                } else {
+                    textView.setVisibility(View.INVISIBLE);
+                    btn.getBackground().setAlpha(128);
+                    btn.setEnabled(false);
+                    editText.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+
+                }
+            }
+        });
+    }
+
+    public static void isCheckedNums(final EditText editText, final Button btn, int s) {
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.length() == s) {
+
+                    btn.getBackground().setAlpha(255);
+                    btn.setEnabled(true);
+
+                } else {
                     btn.getBackground().setAlpha(128);
                     btn.setEnabled(false);
                     editText.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);

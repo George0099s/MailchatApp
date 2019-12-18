@@ -5,7 +5,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".start"
+    tools:context=".Activities.start"
 
 android:background="#FCFDFF">
 
@@ -14,75 +14,68 @@ android:background="#FCFDFF">
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/rect_okbtn"
-        android:text="Create account"
+        android:text="@string/create_acc_string"
         android:textColor="#2592FB"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/loginED"
         app:layout_constraintStart_toStartOf="@+id/logINBTN" />
 
-<TextView
-    android:id="@+id/textView26"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="30dp"
-    android:text="MAILCHAT"
-    android:textColor="#262626"
-    android:textSize="18sp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/mailchat_title"
+        style="@style/titleString"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<TextView
-    android:id="@+id/textView27"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="30dp"
-    android:layout_marginLeft="30dp"
-    android:layout_marginTop="53dp"
-    android:layout_marginEnd="30dp"
-    android:layout_marginRight="30dp"
-    android:text="Log in"
-    android:textColor="#262626"
-    android:textSize="16sp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textView26" />
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/log_in_underline"
+        android:textColor="#262626"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
-<EditText
-    android:id="@+id/loginED"
-    android:theme="@style/CustomEditText"
-    android:layout_width="match_parent"
-    android:layout_height="41dp"
-    android:layout_marginStart="30dp"
-    android:layout_marginLeft="30dp"
-    android:layout_marginTop="40dp"
-    android:layout_marginEnd="30dp"
-    android:layout_marginRight="30dp"
-    android:ems="10"
-    android:gravity="start|top"
-    android:hint="Mailchat ID or Phone number"
-    android:inputType="textNoSuggestions"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textView27" />
-
+    <EditText
+        android:id="@+id/loginED"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="30dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/mailchatid_or_phone"
+        android:inputType="textNoSuggestions"
+        android:textColorHint="@color/grey_text"
+        android:theme="@style/CustomEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
 
     <CheckBox
-    android:id="@+id/checkBox2"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="32dp"
-    android:text="Stay log In"
-    android:textColorHint="#A3AFC9"
-    android:textColor="#262626"
-    app:layout_constraintStart_toStartOf="@+id/loginED"
-    app:layout_constraintTop_toBottomOf="@+id/loginED" />
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/stay_login_string"
+        android:textColor="#262626"
+        android:textColorHint="#A3AFC9"
+        app:layout_constraintStart_toStartOf="@+id/loginED"
+        app:layout_constraintTop_toBottomOf="@+id/loginED" />
 
     <TextView
         android:id="@+id/textView28"
@@ -99,13 +92,11 @@ android:background="#FCFDFF">
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="277dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/okbtn"
-        android:text="Next"
+        android:text="@string/next_btn_string"
 
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/signUPBTN"
