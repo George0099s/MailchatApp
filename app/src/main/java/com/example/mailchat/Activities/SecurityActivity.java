@@ -180,7 +180,7 @@ public class SecurityActivity extends AppCompatActivity {
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                         DatabaseReference reference = database.getReference("Users");
                         reference.child(uid).setValue(Users.userInfo);
-
+                        Log.d(TAG, "signInWithPhoneAuthCredential: eto user  " + user.getPhoneNumber());
                         switch (goTo){
                             case "Inbox":
                                 startActivity(new Intent(SecurityActivity.this, InboxActivity.class));

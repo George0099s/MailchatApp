@@ -1,11 +1,11 @@
 package com.example.mailchat;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mailchat.Models.Users;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +22,7 @@ public class MessageActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private TextView mUserId;
     Intent intent;
+    FirebaseUser user;
 
 
     @Override
@@ -30,13 +31,15 @@ public class MessageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_message);
         mUserId = findViewById(R.id.user_name);
         intent = getIntent();
-        String userId = intent.getStringExtra("userId");
         mUser = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users").child("hZw2EdbqfQV8d4EBachvkfSgjkF2");
+        String userId = mUser.getUid();
+        findViewById(R.id.btn_back).setOnClickListener(v -> super.onBackPressed());
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(userId);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Users user = dataSnapshot.getValue(Users.class);
+
                 mUserId.setText("Artem Rybinkin");
             }
 

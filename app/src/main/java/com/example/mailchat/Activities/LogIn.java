@@ -74,7 +74,7 @@ public class LogIn extends AppCompatActivity {
         {
             editTextPhone.setError("Incorrect phone number");
             editTextPhone.requestFocus();
-            weWill.setVisibility(View.INVISIBLE);
+
             validNum.setVisibility(View.VISIBLE);
         }
 
