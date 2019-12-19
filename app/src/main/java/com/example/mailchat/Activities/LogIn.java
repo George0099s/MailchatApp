@@ -27,7 +27,7 @@ public class LogIn extends AppCompatActivity {
     FirebaseAuth mAuth;
     EditText editTextPhone;
     String codeSent;
-    String phone;
+    String phone, goTo;
     TextView weWill;
     TextView validNum;
     private final String TAG = "Login Activity";
@@ -38,9 +38,9 @@ public class LogIn extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         mAuth = FirebaseAuth.getInstance();
-        editTextPhone = findViewById(R.id.lastNameTV);
-
-
+        editTextPhone = findViewById(R.id.phoneTV);
+        phone = editTextPhone.getText().toString();
+        goTo = "Inbox";
         Button btn =  findViewById(R.id.btnlogIn);
 
 
@@ -114,6 +114,9 @@ public class LogIn extends AppCompatActivity {
             codeSent = s;
             Intent intent = new Intent(LogIn.this, SecurityActivity.class);
             intent.putExtra("phone",phone);
+            intent.putExtra("goTo", goTo);
+            intent.putExtra("codeSent", codeSent);
+
             startActivity(intent);
         }
 

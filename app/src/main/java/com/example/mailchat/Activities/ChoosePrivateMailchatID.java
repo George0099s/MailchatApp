@@ -1,6 +1,7 @@
 package com.example.mailchat.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mailchat.Functions;
+import com.example.mailchat.InboxActivity;
 import com.example.mailchat.Models.Users;
 import com.example.mailchat.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,7 +48,7 @@ public class ChoosePrivateMailchatID extends AppCompatActivity {
         userNameTV.setText(name);
         recomendationED = findViewById(R.id.ourRec);
         recomendationED.setText(Functions.firstUpperCase(Users.userInfo.get("first name")+Functions.firstUpperCase(Users.userInfo.get("last name"))));
-        findViewById(R.id.goToCongrats).setOnClickListener(view -> {
+        findViewById(R.id.go_to_inbox).setOnClickListener(view -> {
             recomendation = recomendationED.getText().toString().replaceAll("#","");
             recomendation = recomendationED.getText().toString().replaceAll("\\s","_");
 
@@ -55,13 +57,14 @@ public class ChoosePrivateMailchatID extends AppCompatActivity {
             recomendationED.setText(rec);
             addData();
             Toast.makeText(getApplicationContext(),"Your mailchatID added",Toast.LENGTH_SHORT);
+
+            Intent intent = new Intent (ChoosePrivateMailchatID.this, InboxActivity.class);
+            startActivity(intent);
         });
     }
 
 
     public void addData(){
-
-
 //        Users.userInfo.put("maichatID", rec);
 //        FirebaseUser user = mAuth.getCurrentUser();
 //        String userId = user.getUid();
@@ -73,8 +76,6 @@ public class ChoosePrivateMailchatID extends AppCompatActivity {
 //        ref.push();
 //        Button btn = findViewById(R.id.goToCongrats);
 //        btn.setEnabled(false);
-
-
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("Users"); // reference is 'chat' because we created the database at /chat

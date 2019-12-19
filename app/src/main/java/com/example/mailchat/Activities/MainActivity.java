@@ -35,7 +35,7 @@ import java.util.concurrent.TimeUnit;
     TextView firstNameTV, lastNameTV, phoneNumberTV;
     private final String TAG = "Sign Up Private user";
     FirebaseAuth mAuth;
-    String codeSent, t;
+    String codeSent, t, goTo;
     CheckBox checkBox;
     Button btn;
 
@@ -55,7 +55,7 @@ import java.util.concurrent.TimeUnit;
         checkBox = findViewById(R.id.checkBoxTerms);
         btn = findViewById(R.id.btnGetCodePrivate);
         btn.getBackground().setAlpha(128);
-
+        goTo = "Security";
         Spinner spinner = findViewById(R.id.spinner_nums2);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Functions.nums_arr);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
@@ -158,9 +158,10 @@ import java.util.concurrent.TimeUnit;
                 codeSent = s;
                 Intent intent = new Intent(MainActivity.this, SecurityActivity.class);
                 intent.putExtra("phone",phone);
-                 intent.putExtra("firstName",name );
+                intent.putExtra("firstName",name );
                 intent.putExtra("lastName",lastName );
                 intent.putExtra("codeSent", codeSent);
+                intent.putExtra("goTo", goTo);
                 startActivity(intent);
             }
 

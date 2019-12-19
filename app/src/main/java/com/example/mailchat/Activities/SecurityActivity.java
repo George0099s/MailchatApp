@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mailchat.Functions;
+import com.example.mailchat.InboxActivity;
 import com.example.mailchat.Models.Users;
 import com.example.mailchat.R;
 import com.google.firebase.FirebaseException;
@@ -33,12 +34,14 @@ import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class SecurityActivity extends AppCompatActivity {
+    private static final String TAG = "SecurityActivity";
+
     private EditText editTextCode;
     FirebaseAuth mAuth;
     private TextView sendAgain;
     Button btn;
     private CountDownTimer countDownTimer;
-    String phone, name, lastname;
+    String phone, name, lastname, goTo;
     String codeSent;
     private Boolean mTimerRunning;
     private long mTimeLeft = Constants.START_TIME;
@@ -49,15 +52,19 @@ public class SecurityActivity extends AppCompatActivity {
         setContentView(R.layout.activity_security);
         phone = getIntent().getStringExtra("phone");
         codeSent = getIntent().getStringExtra("codeSent");
+
         name = getIntent().getStringExtra("firstName");
         lastname = getIntent().getStringExtra("lastName");
+
+        Intent intent = getIntent();
+        goTo = intent.getStringExtra("goTo");
+
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         startTimer();
         sendAgain = findViewById(R.id.send_again_btn);
         sendAgain.setOnClickListener(v -> {
-            if (mTimerRunning)
-            {
+            if (mTimerRunning) {
                 Toast toast = Toast.makeText(SecurityActivity.this, "Please wait", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
             } else {
@@ -83,14 +90,7 @@ public class SecurityActivity extends AppCompatActivity {
         findViewById(R.id.btnVerifyCode).setOnClickListener(v -> verifySignInCode());
     }
 
-    public void verify(String phone) {
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                phone,        // Phone number to verify
-                60,                 // Timeout duration
-                TimeUnit.SECONDS,   // Unit of timeout
-                this,               // Activity (for callback binding)
-                mCallbacks);        // OnVerificationStateChangedCallbacks
-    }
+
 
     PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         @Override
@@ -129,11 +129,20 @@ public class SecurityActivity extends AppCompatActivity {
         }.start();
     mTimerRunning = true;
     }
+    public void verify(String phone) {
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                phone,        // Phone number to verify
+                60,                 // Timeout duration
+                TimeUnit.SECONDS,   // Unit of timeout
+                this,               // Activity (for callback binding)
+                mCallbacks);        // OnVerificationStateChangedCallbacks
+    }
 
     private void resetTimer()  {
         mTimeLeft = Constants.START_TIME;
         updateCountOnText();
     }
+
     private void updateCountOnText(){
         int minutes = (int) (mTimeLeft/1000) / 60;
         int sec = (int) (mTimeLeft/1000) % 60;
@@ -165,18 +174,24 @@ public class SecurityActivity extends AppCompatActivity {
                          FirebaseUser user = mAuth.getCurrentUser();
                         String phoneNum = user.getPhoneNumber();
                         String uid = user.getUid();
-
                         Users.userInfo.put("phone number", phoneNum);
                         Users.userInfo.put("first name", name);
                         Users.userInfo.put("last name", lastname);
-
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                         DatabaseReference reference = database.getReference("Users");
                         reference.child(uid).setValue(Users.userInfo);
 
-                        Toast.makeText(getApplicationContext(), "number" + user.getPhoneNumber(),
-                                Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(SecurityActivity.this, ProfileActivity.class));
+                        switch (goTo){
+                            case "Inbox":
+                                startActivity(new Intent(SecurityActivity.this, InboxActivity.class));
+                                break;
+                            case "Security":
+                                startActivity(new Intent(SecurityActivity.this, ProfileActivity.class));
+                                break;
+
+                        }
+
+
                     } else {
 
                         if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {

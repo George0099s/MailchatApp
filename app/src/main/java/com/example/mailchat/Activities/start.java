@@ -33,7 +33,7 @@ public class start extends AppCompatActivity{
     String login, userID;
     private Button log;
     private Button signUpBtn;
-    ArrayList<String> usersNames = new ArrayList<>();
+    ArrayList<String> mailchatIdList = new ArrayList<>();
     private final String TAG = getClass().toString();
     DatabaseReference reference;
 
@@ -48,9 +48,10 @@ public class start extends AppCompatActivity{
         signUpBtn = findViewById(R.id.signUPBTN);
         signUpBtn.setOnClickListener(this::goToRegistration);
         log.setOnClickListener(this::goToLogIn);
-        Functions.isChecked(logED, log);
+//        Functions.isChecked(logED, log);
 
 
+        Functions.isCheckedLogin(logED, log);
         FirebaseAuth.getInstance().signInAnonymously().addOnCompleteListener(task -> {
             if (task.isComplete() && task.isSuccessful()){
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -60,39 +61,33 @@ public class start extends AppCompatActivity{
     }
 
    private void goToRegistration(View view) {
-       Intent intent = new Intent(start.this, InboxActivity.class);
+       Intent intent = new Intent(start.this, RegistrationActivity.class);
         startActivity(intent);
     }
 
    private void goToLogIn(View view) {
-        login = logED.getText().toString();
-        if (login.isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Fill your login",
-                    Toast.LENGTH_SHORT).show();
-        } else {
 
             FirebaseAuth mAuth = FirebaseAuth.getInstance();
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             reference = database.getReference("Users"); // reference is 'chat' because we created the database at /chat
-
             reference.addValueEventListener(new ValueEventListener() {
-                String name;
+                String userMailchatId;
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
-                        name = (String) messageSnapshot.child("first name").getValue();
-                        usersNames.add(name);
+                        userMailchatId = (String) messageSnapshot.child("maichatID").getValue();
+                        mailchatIdList.add(userMailchatId);
                 }
-                    for (int i = 0; i < usersNames.size(); i++) {
-                        Log.d(TAG, "onDataChange: " +usersNames.get(i));
-                        Log.d(TAG, "onDataChange: " +login);
-                        if (login.equals(usersNames.get(i))){
+                    for (int i = 0; i < mailchatIdList.size(); i++) {
+                        if (logED.getText().toString().equals(mailchatIdList.get(i))){
                             Intent intent = new Intent(start.this, LogIn.class);
                             startActivity(intent);
-
+                            Log.d(TAG, "onDataChange: yes");
                         }
-                        if (login != usersNames.get(i)){
+                        if (logED.getText().toString() != mailchatIdList.get(i)){
                            Toast.makeText(getApplicationContext(),"Incorrect user name", Toast.LENGTH_SHORT);
+                            Log.d(TAG, "onDataChange: no");
+
                         }
                     }
                 }
@@ -103,7 +98,8 @@ public class start extends AppCompatActivity{
                 }
             });
         }
-    }
+
+
    @Override
     public boolean dispatchTouchEvent(@NonNull MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {

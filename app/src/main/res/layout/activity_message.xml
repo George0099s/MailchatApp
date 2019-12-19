@@ -5,10 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MessageActivity">
-    <TextView
-        android:id="@+id/userName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 
     <ImageView
         android:id="@+id/searchImg"
@@ -47,7 +43,7 @@
         android:layout_marginTop="6dp"
         app:layout_constraintStart_toEndOf="@+id/btn_back"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/chat_type"
@@ -55,17 +51,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="7dp"
-        android:text="TextView"
+        android:text="Prived chat"
         android:textColor="#A3AFC9"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/imageView16"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="14dp"
-        android:text="TextView"
+        android:text="Artem Rybinkin"
         android:textColor="#262626"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/chat_type"

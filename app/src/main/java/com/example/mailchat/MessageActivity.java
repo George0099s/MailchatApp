@@ -28,29 +28,24 @@ public class MessageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
-        mUserId = findViewById(R.id.userName);
-
-
+        mUserId = findViewById(R.id.user_name);
         intent = getIntent();
         String userId = intent.getStringExtra("userId");
-
-
         mUser = FirebaseAuth.getInstance().getCurrentUser();
-//        reference = FirebaseDatabase.getInstance().getReference("Users").child(userId);
-//
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                Users user = dataSnapshot.getValue(Users.class);
-//                mUserId.setText(user.getName());
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
+        reference = FirebaseDatabase.getInstance().getReference("Users").child("hZw2EdbqfQV8d4EBachvkfSgjkF2");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Users user = dataSnapshot.getValue(Users.class);
+                mUserId.setText("Artem Rybinkin");
+            }
 
-        mUserId.setText("123");
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
     }
 }
