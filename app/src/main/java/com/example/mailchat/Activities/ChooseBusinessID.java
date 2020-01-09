@@ -35,7 +35,7 @@ public class ChooseBusinessID extends AppCompatActivity {
         mailchatID.setText(Functions.firstUpperCase(User.businessCompanyInfo.get("Company name")));
         mAuth = FirebaseAuth.getInstance();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        findViewById(R.id.goToCongrats).setOnClickListener(view -> {
+        findViewById(R.id.go_to_inbox).setOnClickListener(view -> {
             mailchat = mailchatID.getText().toString().replaceAll("#","");
             mailchat = mailchatID.getText().toString().replaceAll("\\s","_");
             String rec = mailchat +"#";
