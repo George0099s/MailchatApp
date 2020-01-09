@@ -57,6 +57,10 @@
     <string name="inbox_title">Inbox</string>
     <string name="search_string">Search</string>
     <string name="user_img">User img</string>
+    <string name="create_new_message">Create new message</string>
+    <string name="new_subj_hint">New subject:</string>
+    <string name="input_msg">Message...</string>
+    <string name="to_send_to">To:</string>
 
 
     <array name="nums_spinner">

@@ -1,6 +1,7 @@
 package com.example.mailchat.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,7 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mailchat.Functions;
-import com.example.mailchat.Models.Users;
+import com.example.mailchat.InboxActivity;
+import com.example.mailchat.Models.User;
 import com.example.mailchat.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,7 +36,7 @@ public class ChoosePrivateMailchatID extends AppCompatActivity {
     DatabaseReference ref;
     private static final String TAG = "ChoosePrivateMailchatID";
     ArrayList<String> mailchatIDList = new ArrayList<>();
-
+    User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,16 +44,16 @@ public class ChoosePrivateMailchatID extends AppCompatActivity {
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         userNameTV = findViewById(R.id.nameUser);
         mAuth = FirebaseAuth.getInstance();
-        String name = Users.userInfo.get("first name");
-        userNameTV.setText(name);
+        user = getIntent().getParcelableExtra("user");
+        String name = user.getName();
+        String lastName = user.getLastName();
+        userNameTV.setText(lastName + " " + name);
         recomendationED = findViewById(R.id.ourRec);
-        recomendationED.setText(Functions.firstUpperCase(Users.userInfo.get("first name")+Functions.firstUpperCase(Users.userInfo.get("last name"))));
+        recomendationED.setText(Functions.firstUpperCase(user.getName()+Functions.firstUpperCase(user.getLastName())));
         findViewById(R.id.goToCongrats).setOnClickListener(view -> {
             recomendation = recomendationED.getText().toString().replaceAll("#","");
             recomendation = recomendationED.getText().toString().replaceAll("\\s","_");
-
             rec = recomendation +"#";
-
             recomendationED.setText(rec);
             addData();
             Toast.makeText(getApplicationContext(),"Your mailchatID added",Toast.LENGTH_SHORT);
@@ -60,20 +62,19 @@ public class ChoosePrivateMailchatID extends AppCompatActivity {
 
 
     public void addData(){
-
-
-//        Users.userInfo.put("maichatID", rec);
-//        FirebaseUser user = mAuth.getCurrentUser();
-//        String userId = user.getUid();
+//        user = getIntent().getParcelableExtra("user");
+//        user.setMailchatID(rec);
+//        FirebaseUser fUser = mAuth.getCurrentUser();
+//        String userId = fUser.getUid();
 //
 //
 //        FirebaseDatabase db =  FirebaseDatabase.getInstance();
 //        DatabaseReference ref =   db.getReference("Users");
-//        ref.child(userId).setValue(Users.userInfo);
+//        ref.child(userId).setValue(user);
 //        ref.push();
+
 //        Button btn = findViewById(R.id.goToCongrats);
 //        btn.setEnabled(false);
-
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -81,9 +82,9 @@ public class ChoosePrivateMailchatID extends AppCompatActivity {
 
         reference.addValueEventListener(new ValueEventListener() {
             String mailchatID;
-
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                user = getIntent().getParcelableExtra("user");
                 for (DataSnapshot messageSnapshot : dataSnapshot.getChildren()) {
                     mailchatID = (String) messageSnapshot.child("maichatID").getValue();
                     mailchatIDList.add(mailchatID);
@@ -95,15 +96,14 @@ public class ChoosePrivateMailchatID extends AppCompatActivity {
                     }
                     if (rec != mailchatIDList.get(i)) {
                         Toast.makeText(ChoosePrivateMailchatID.this, "MailchayID added", Toast.LENGTH_SHORT).show();
-                        Users.userInfo.put("maichatID", rec);
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        String userId = user.getUid();
-
-
+                        user.setMailchatID(rec);
+                        FirebaseUser fUser = mAuth.getCurrentUser();
+                        String userId = fUser.getUid();
                         FirebaseDatabase db = FirebaseDatabase.getInstance();
                         DatabaseReference ref = db.getReference("Users");
-                        ref.child(userId).setValue(Users.userInfo);
+                        ref.child(userId).setValue(user);
                         ref.push();
+                            startActivity(new Intent(ChoosePrivateMailchatID.this, InboxActivity.class));
 
                     }
                 }

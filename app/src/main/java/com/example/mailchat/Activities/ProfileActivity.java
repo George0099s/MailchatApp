@@ -17,7 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.mailchat.Models.Users;
+import com.example.mailchat.Models.User;
 import com.example.mailchat.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -33,12 +33,13 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
     Button next, male, female;
     String date, city, gender;
     Boolean s = false;
+    User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-
+        user = getIntent().getParcelableExtra("user");
         monthSpinner = findViewById(R.id.monthSspinner);
         yearSpinner = findViewById(R.id.yearSpinner);
         daySpinner = findViewById(R.id.daySpinner);
@@ -57,7 +58,7 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
             female.setBackgroundResource(R.drawable.rect_okbtn_small);
             gender = "male";
             s = true;
-            Users.userInfo.put("gender", gender);
+            user.setGender(gender);
         });
         findViewById(R.id.btnFemale).setOnClickListener(view -> {
             female.setBackgroundResource(R.drawable.okbtn);
@@ -66,7 +67,7 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
             male.setBackgroundResource(R.drawable.rect_okbtn_small);
             s = true;
             gender = "female";
-            Users.userInfo.put("gender", gender);
+            user.setGender(gender);
         });
 
        findViewById(R.id.btnNext).setOnClickListener(v -> {
@@ -74,8 +75,9 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
                next.getBackground().setAlpha(255);
 
                addData();
-               Intent intent = new Intent(ProfileActivity.this, AddPrivateUserPhoto.class);
-               startActivity(intent);
+               Intent intent1 = new Intent(ProfileActivity.this, AddPrivateUserPhoto.class);
+               intent1.putExtra("user", user);
+               startActivity(intent1);
            }
            if (s == false)
            {
@@ -123,7 +125,6 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
         String t  = adapterView.getItemAtPosition(position).toString();
-        Toast.makeText(adapterView.getContext(), t, Toast.LENGTH_LONG).show();
         String y = yearSpinner.getItemAtPosition(yearSpinner.getSelectedItemPosition()).toString();
         String d = daySpinner.getItemAtPosition(daySpinner.getSelectedItemPosition()).toString();
         String m = monthSpinner.getItemAtPosition(monthSpinner.getSelectedItemPosition()).toString();
@@ -135,19 +136,17 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
     public void onNothingSelected(AdapterView<?> adapterView) {
     }
 
-    public void addData()
-    {
+    public void addData() {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        String uid = user.getUid();
+        FirebaseUser fUser = mAuth.getCurrentUser();
+        String uid = fUser.getUid();
+        user = getIntent().getParcelableExtra("user");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-
         DatabaseReference reference = database.getReference("Users");
-        Users.userInfo.put("Date of birth",date);
-        Users.userInfo.put("City",city);
+        user.setDateOfBirth(date);
+        user.setCity(city);
 
-        reference.child(uid).setValue(Users.userInfo);
-
+        reference.child(uid).setValue(user);
     }
 
     @Override

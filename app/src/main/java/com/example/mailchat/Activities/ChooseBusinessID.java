@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mailchat.Functions;
-import com.example.mailchat.Models.Users;
+import com.example.mailchat.Models.User;
 import com.example.mailchat.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -32,7 +32,7 @@ public class ChooseBusinessID extends AppCompatActivity {
         setContentView(R.layout.activity_choose_business_id);
         mailchatID = findViewById(R.id.editText5);
 
-        mailchatID.setText(Functions.firstUpperCase(Users.businessCompanyInfo.get("Company name")));
+        mailchatID.setText(Functions.firstUpperCase(User.businessCompanyInfo.get("Company name")));
         mAuth = FirebaseAuth.getInstance();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         findViewById(R.id.goToCongrats).setOnClickListener(view -> {
@@ -60,8 +60,8 @@ public class ChooseBusinessID extends AppCompatActivity {
             mailchatID.requestFocus();
         }
         if (mailchat.length() > 0) {
-            Users.businessCompanyInfo.put("mailchatID", mailchat);
-            reference.child(Objects.requireNonNull(Users.businessCompanyInfo.get("Company name"))).setValue(Users.businessCompanyInfo);
+            User.businessCompanyInfo.put("mailchatID", mailchat);
+            reference.child(Objects.requireNonNull(User.businessCompanyInfo.get("Company name"))).setValue(User.businessCompanyInfo);
             startActivity(new Intent(ChooseBusinessID.this, CongratulationBusiness.class));
         }
     }

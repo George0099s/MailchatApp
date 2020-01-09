@@ -18,7 +18,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mailchat.Functions;
-import com.example.mailchat.Models.Users;
+import com.example.mailchat.InboxActivity;
+import com.example.mailchat.Models.User;
 import com.example.mailchat.R;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,24 +34,25 @@ import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class SecurityActivity extends AppCompatActivity {
+    private static final String TAG = "SecurityActivity";
     private EditText editTextCode;
     FirebaseAuth mAuth;
     private TextView sendAgain;
     Button btn;
     private CountDownTimer countDownTimer;
-    String phone, name, lastname;
+    private String phone, name, lastname;
     String codeSent;
+    String goTo;
     private Boolean mTimerRunning;
     private long mTimeLeft = Constants.START_TIME;
-
+    User user1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_security);
         phone = getIntent().getStringExtra("phone");
         codeSent = getIntent().getStringExtra("codeSent");
-        name = getIntent().getStringExtra("firstName");
-        lastname = getIntent().getStringExtra("lastName");
+        goTo = getIntent().getStringExtra("goTo");
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         startTimer();
@@ -148,7 +150,6 @@ public class SecurityActivity extends AppCompatActivity {
         String code = editTextCode.getText().toString();
         try {
             PhoneAuthCredential credential = PhoneAuthProvider.getCredential(codeSent, code);
-            Log.d("Credential" ," " + credential.toString());
             signInWithPhoneAuthCredential(credential);
         } catch (Exception e) {
             Toast toast = Toast.makeText(this, "Verification Code is wrong", Toast.LENGTH_SHORT);
@@ -166,17 +167,37 @@ public class SecurityActivity extends AppCompatActivity {
                         String phoneNum = user.getPhoneNumber();
                         String uid = user.getUid();
 
-                        Users.userInfo.put("phone number", phoneNum);
-                        Users.userInfo.put("first name", name);
-                        Users.userInfo.put("last name", lastname);
+
+
+
+//                        User.userInfo.put("phone number", phoneNum);
+//                        User.userInfo.put("first name", name);
+//                        User.userInfo.put("last name", lastname);
+
+
 
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                         DatabaseReference reference = database.getReference("Users");
-                        reference.child(uid).setValue(Users.userInfo);
 
-                        Toast.makeText(getApplicationContext(), "number" + user.getPhoneNumber(),
-                                Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(SecurityActivity.this, ProfileActivity.class));
+
+
+
+                        switch (goTo){
+                            case "registration":
+                                user1 = getIntent().getParcelableExtra("user");
+                                user1.setPhone(phoneNum);
+                                user1.setUserId(user.getUid());
+                                reference.child(uid).setValue(user1);
+                                Intent intent = new Intent(SecurityActivity.this, ProfileActivity.class);
+                                intent.putExtra("user", user1);
+                                startActivity(intent);
+                                break;
+                            case "login":
+                                startActivity(new Intent(SecurityActivity.this, InboxActivity.class));
+                                break;
+                        }
+
+
                     } else {
 
                         if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
@@ -214,7 +235,6 @@ public class SecurityActivity extends AppCompatActivity {
 
             }
         }
-
         return super.dispatchTouchEvent(event);
     }
 

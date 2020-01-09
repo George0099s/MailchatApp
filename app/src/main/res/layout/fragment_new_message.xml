@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:backgroundTintMode="add"
+    tools:context=".Fragments.NewMessageFragment">
+
+    <EditText
+        android:id="@+id/reciever_edittext"
+        style="@style/CustomEditText"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:ems="10"
+        android:foreground="@drawable/shape_subj_edittext"
+        android:hint="@string/to_send_to"
+        android:paddingLeft="15dp"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/select_img"
+        app:layout_constraintTop_toBottomOf="@+id/create_new_msg" />
+
+    <View
+        android:id="@+id/select_img2"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/image_subj_shape"
+        android:backgroundTint="#E3E9F5"
+        app:layout_constraintBottom_toBottomOf="@+id/subject_edittext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/subject_edittext" />
+
+    <TextView
+        android:id="@+id/create_new_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/create_new_message"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/close"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginEnd="22dp"
+        android:src="@drawable/ic_close"
+        app:layout_constraintBottom_toBottomOf="@+id/create_new_msg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/create_new_msg"
+        app:layout_constraintTop_toTopOf="@+id/create_new_msg" />
+
+    <EditText
+        android:id="@+id/subject_edittext"
+        style="@style/CustomEditText"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:ems="10"
+        android:foreground="@drawable/shape_subj_edittext"
+        android:hint="@string/new_subj_hint"
+        android:paddingLeft="15dp"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/select_img"
+        app:layout_constraintTop_toBottomOf="@+id/reciever_edittext" />
+
+    <View
+        android:id="@+id/select_img"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/image_subj_shape"
+        android:backgroundTint="#E3E9F5"
+        app:layout_constraintBottom_toBottomOf="@+id/reciever_edittext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/reciever_edittext" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="23dp"
+        android:layout_height="21dp"
+        android:src="@drawable/ic_image_subject"
+        app:layout_constraintBottom_toBottomOf="@+id/select_img2"
+        app:layout_constraintEnd_toEndOf="@+id/select_img2"
+        app:layout_constraintStart_toStartOf="@+id/select_img2"
+        app:layout_constraintTop_toTopOf="@+id/select_img2" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subject_edittext">
+
+        <ImageView
+            android:id="@+id/sada"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="-7dp"
+            android:src="@drawable/ic_photo" />
+
+        <ImageView
+            android:id="@+id/imageView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_relationships" />
+
+        <ImageView
+            android:id="@+id/imageView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_doc" />
+
+        <ImageView
+            android:id="@+id/imageView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_clock" />
+
+        <ImageView
+            android:id="@+id/imageView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_money" />
+
+        <ImageView
+            android:id="@+id/imageView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_cube" />
+
+        <ImageView
+            android:id="@+id/imageView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingEnd="-7dp"
+            android:src="@drawable/ic_more" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/message_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/message_bg_shape"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/input_msg"
+        android:inputType="textMultiLine"
+        android:maxLines="5"
+        android:minHeight="145dp"
+        android:paddingStart="15dp"
+        android:paddingTop="6dp"
+        android:singleLine="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.81"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+    <ImageView
+        android:id="@+id/send_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_to_send"
+        app:layout_constraintBottom_toBottomOf="@+id/message_body"
+        app:layout_constraintEnd_toEndOf="@+id/message_body" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_user_white"
+        app:layout_constraintBottom_toBottomOf="@+id/select_img"
+        app:layout_constraintEnd_toStartOf="@+id/reciever_edittext"
+        app:layout_constraintStart_toStartOf="@+id/select_img"
+        app:layout_constraintTop_toTopOf="@+id/select_img" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

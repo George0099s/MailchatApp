@@ -18,10 +18,6 @@
         <activity android:name=".MessageActivity"></activity>
         <activity android:name=".InboxActivity" />
         <activity
-            android:name=".Reservation"
-            android:label="@string/title_activity_reservation"
-            android:theme="@style/AppTheme" />
-        <activity
             android:name=".Activities.CongratulationBusiness"
             android:label="@string/title_activity_congratulation_business"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -75,7 +71,7 @@
             android:label="@string/title_activity_security"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activities.start"
+            android:name=".Activities.Start"
             android:label="Mailchat"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

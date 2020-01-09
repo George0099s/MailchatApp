@@ -19,6 +19,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mailchat.Activities.ChoosePrivateMailchatID;
+import com.example.mailchat.Models.User;
 import com.example.mailchat.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -45,10 +47,11 @@ public class AddPrivateUserPhoto extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         mAuth = FirebaseAuth.getInstance();
-
+        User user = getIntent().getParcelableExtra("user");
         findViewById(R.id.chose_photo).setOnClickListener(v -> chooseImage());
         findViewById(R.id.finish_private_registr).setOnClickListener(v -> {
             Intent intent = new Intent(AddPrivateUserPhoto.this, ChoosePrivateMailchatID.class);
+            intent.putExtra("user", user);
             startActivity(intent);
             uploadImage();
         });

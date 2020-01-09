@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.mailchat.Functions;
 import com.example.mailchat.R;
 
-public class RegistrationActivity extends AppCompatActivity {
+public class  RegistrationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

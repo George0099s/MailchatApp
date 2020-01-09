@@ -21,6 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mailchat.Functions;
+import com.example.mailchat.Models.User;
 import com.example.mailchat.R;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,7 +34,7 @@ import java.util.concurrent.TimeUnit;
 
     private EditText editTextPhone, editTextName, editTextLastName;
     TextView firstNameTV, lastNameTV, phoneNumberTV;
-    private final String TAG = "Sign Up Private user";
+    private final String TAG = "Sign Up Private Muser";
     FirebaseAuth mAuth;
     String codeSent, t;
     CheckBox checkBox;
@@ -156,11 +157,16 @@ import java.util.concurrent.TimeUnit;
                 Log.d("ABCD","Code sent "+ s);
                 super.onCodeSent(s, forceResendingToken);
                 codeSent = s;
+
+                final User user = new User();
+                user.setName(name);
+                user.setLastName(lastName);
+
                 Intent intent = new Intent(MainActivity.this, SecurityActivity.class);
                 intent.putExtra("phone",phone);
-                 intent.putExtra("firstName",name );
-                intent.putExtra("lastName",lastName );
+                intent.putExtra("goTo","registration");
                 intent.putExtra("codeSent", codeSent);
+                intent.putExtra("user", user);
                 startActivity(intent);
             }
 

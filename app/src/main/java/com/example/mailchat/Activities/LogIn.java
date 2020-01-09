@@ -38,15 +38,8 @@ public class LogIn extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         mAuth = FirebaseAuth.getInstance();
-        editTextPhone = findViewById(R.id.lastNameTV);
-
-
-        Button btn =  findViewById(R.id.btnlogIn);
-
-
+        editTextPhone = findViewById(R.id.phoneTV);
         findViewById(R.id.btnlogIn).setOnClickListener(v -> sendVerificationCode());
-
-
     }
     @Override
     public boolean dispatchTouchEvent(@NonNull MotionEvent event) {
@@ -114,6 +107,8 @@ public class LogIn extends AppCompatActivity {
             codeSent = s;
             Intent intent = new Intent(LogIn.this, SecurityActivity.class);
             intent.putExtra("phone",phone);
+            intent.putExtra("codeSent", codeSent);
+            intent.putExtra("goTo","login");
             startActivity(intent);
         }
 

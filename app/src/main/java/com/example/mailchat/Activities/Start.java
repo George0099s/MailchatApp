@@ -15,10 +15,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.mailchat.Functions;
 import com.example.mailchat.InboxActivity;
 import com.example.mailchat.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class start extends AppCompatActivity{
+public class Start extends AppCompatActivity{
     ImageView isChecked;
     EditText logED;
     String login, userID;
@@ -37,6 +37,18 @@ public class start extends AppCompatActivity{
     private final String TAG = getClass().toString();
     DatabaseReference reference;
 
+    FirebaseUser mFirebaseUser;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(mFirebaseUser != null){
+            startActivity(new Intent(Start.this, InboxActivity.class));
+            finish();
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +56,10 @@ public class start extends AppCompatActivity{
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         logED = findViewById(R.id.loginED);
         log = findViewById(R.id.logINBTN);
-        log.getBackground().setAlpha(128);
         signUpBtn = findViewById(R.id.signUPBTN);
         signUpBtn.setOnClickListener(this::goToRegistration);
         log.setOnClickListener(this::goToLogIn);
-        Functions.isChecked(logED, log);
+
 
 
         FirebaseAuth.getInstance().signInAnonymously().addOnCompleteListener(task -> {
@@ -60,7 +71,7 @@ public class start extends AppCompatActivity{
     }
 
    private void goToRegistration(View view) {
-       Intent intent = new Intent(start.this, InboxActivity.class);
+       Intent intent = new Intent(Start.this, RegistrationActivity.class);
         startActivity(intent);
     }
 
@@ -87,12 +98,12 @@ public class start extends AppCompatActivity{
                         Log.d(TAG, "onDataChange: " +usersNames.get(i));
                         Log.d(TAG, "onDataChange: " +login);
                         if (login.equals(usersNames.get(i))){
-                            Intent intent = new Intent(start.this, LogIn.class);
+                            Intent intent = new Intent(Start.this, LogIn.class);
                             startActivity(intent);
 
                         }
                         if (login != usersNames.get(i)){
-                           Toast.makeText(getApplicationContext(),"Incorrect user name", Toast.LENGTH_SHORT);
+                           Toast.makeText(getApplicationContext(),"Incorrect Muser name", Toast.LENGTH_SHORT);
                         }
                     }
                 }
@@ -117,5 +128,5 @@ public class start extends AppCompatActivity{
 
         return super.dispatchTouchEvent(event);
       }
-    }
+}
 

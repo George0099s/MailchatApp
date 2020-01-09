@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mailchat.Functions;
-import com.example.mailchat.Models.Users;
+import com.example.mailchat.Models.User;
 import com.example.mailchat.R;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
@@ -188,14 +188,14 @@ public class SecurityCodeBusiness extends AppCompatActivity {
 
 
 
-                        Users.businessUserInfo.put("phone number", phoneNum);
-                        Users.businessUserInfo.put("uid", uid);
-                        Users.businessUserInfo.put("first name", firsName); // передается из signUpbusiness puExtra
-                        Users.businessUserInfo.put("last name", lastName);
+                        User.businessUserInfo.put("phone number", phoneNum);
+                        User.businessUserInfo.put("uid", uid);
+                        User.businessUserInfo.put("first name", firsName); // передается из signUpbusiness puExtra
+                        User.businessUserInfo.put("last name", lastName);
 
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                         DatabaseReference reference = database.getReference("Business users");
-                        reference.child(uid).setValue(Users.businessUserInfo);
+                        reference.child(uid).setValue(User.businessUserInfo);
                         addData();
                         Toast.makeText(getApplicationContext(), "number" + user.getPhoneNumber(),
                                 Toast.LENGTH_SHORT).show();
@@ -236,7 +236,7 @@ public class SecurityCodeBusiness extends AppCompatActivity {
                             userInfo.put("last name", lastName);
 
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
-                            DatabaseReference reference = database.getReference("Users");
+                            DatabaseReference reference = database.getReference("User");
                             reference.child(uid).setValue(userInfo);
     }
 

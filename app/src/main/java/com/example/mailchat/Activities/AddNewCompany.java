@@ -21,7 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mailchat.Functions;
-import com.example.mailchat.Models.Users;
+import com.example.mailchat.Models.User;
 import com.example.mailchat.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -138,17 +138,17 @@ public class AddNewCompany extends AppCompatActivity  implements AdapterView.OnI
         String uid = user.getUid();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("Business users/" + uid + "/Company");
-        Users.businessCompanyInfo.put("City",city);
-        Users.businessCompanyInfo.put("Category",category);
-        Users.businessCompanyInfo.put("Company name",cpName);
-        Users.businessCompanyInfo.put("links",arrayList.get(0) + ", " + arrayList.get(1) + ", " + arrayList.get(2));
+        User.businessCompanyInfo.put("City",city);
+        User.businessCompanyInfo.put("Category",category);
+        User.businessCompanyInfo.put("Company name",cpName);
+        User.businessCompanyInfo.put("links",arrayList.get(0) + ", " + arrayList.get(1) + ", " + arrayList.get(2));
         if (cpName.isEmpty())
         {
             companyName.setError("Fill the field");
             companyName.requestFocus();
             next.getBackground().setAlpha(128);
         } else {
-            reference.child(cpName).setValue(Users.businessCompanyInfo);
+            reference.child(cpName).setValue(User.businessCompanyInfo);
             Intent intent = new Intent(AddNewCompany.this, ChooseBusinessID.class);
             startActivity(intent);
         }

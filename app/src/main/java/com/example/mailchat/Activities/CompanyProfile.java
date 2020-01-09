@@ -25,7 +25,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mailchat.Functions;
-import com.example.mailchat.Models.Users;
+import com.example.mailchat.Models.User;
 import com.example.mailchat.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -143,13 +143,13 @@ public class CompanyProfile extends AppCompatActivity implements AdapterView.OnI
             }
 
             DatabaseReference reference = database.getReference("Business users/" + uid + "/Company");
-            Users.businessCompanyInfo.put("web site", web);
-            Users.businessCompanyInfo.put("company number", companyNumber);
-            Users.businessCompanyInfo.put("company address", companyAddress);
-            Users.businessCompanyInfo.put("work hours", companyWorkHours);
-            Users.businessCompanyInfo.put("about company", about);
+            User.businessCompanyInfo.put("web site", web);
+            User.businessCompanyInfo.put("company number", companyNumber);
+            User.businessCompanyInfo.put("company address", companyAddress);
+            User.businessCompanyInfo.put("work hours", companyWorkHours);
+            User.businessCompanyInfo.put("about company", about);
 
-            reference.child(Users.businessCompanyInfo.get("Company name")).setValue(Users.businessCompanyInfo);
+            reference.child(User.businessCompanyInfo.get("Company name")).setValue(User.businessCompanyInfo);
             }
         }
     @Override

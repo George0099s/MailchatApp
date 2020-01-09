@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mailchat.MessageActivity;
-import com.example.mailchat.Models.Users;
+import com.example.mailchat.Models.User;
 import com.example.mailchat.R;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ChatsViewHol
     private ArrayList<String> mTextMsgList;
     private ArrayList<String> mRecievedTimeList;
     private Context mContext;
-    Users users = new Users();
+    User user = new User();
     public ChatsAdapter(ArrayList<String> mChatNameList, ArrayList<String> mSybjectMsgList, ArrayList<String> mTextMsgList, ArrayList<String> mRecievedTimeList, Context context) {
         this.mChatNameList = mChatNameList;
         this.mSybjectMsgList = mSybjectMsgList;
@@ -48,7 +48,7 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ChatsViewHol
         holder.mTimeMsgRecieved.setText(mRecievedTimeList.get(position));
         holder.itemView.setOnClickListener(v-> {
             Intent intent = new Intent(mContext, MessageActivity.class);
-            intent.putExtra("userId", users.getUserId());
+            intent.putExtra("userId", user.getUserId());
             mContext.startActivity(intent);
         });
     }
