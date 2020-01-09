@@ -145,7 +145,6 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
         DatabaseReference reference = database.getReference("Users");
         user.setDateOfBirth(date);
         user.setCity(city);
-
         reference.child(uid).setValue(user);
     }
 

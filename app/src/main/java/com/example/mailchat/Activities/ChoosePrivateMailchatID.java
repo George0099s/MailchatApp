@@ -50,7 +50,7 @@ public class ChoosePrivateMailchatID extends AppCompatActivity {
         userNameTV.setText(lastName + " " + name);
         recomendationED = findViewById(R.id.ourRec);
         recomendationED.setText(Functions.firstUpperCase(user.getName()+Functions.firstUpperCase(user.getLastName())));
-        findViewById(R.id.goToCongrats).setOnClickListener(view -> {
+        findViewById(R.id.go_to_inbox).setOnClickListener(view -> {
             recomendation = recomendationED.getText().toString().replaceAll("#","");
             recomendation = recomendationED.getText().toString().replaceAll("\\s","_");
             rec = recomendation +"#";

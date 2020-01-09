@@ -64,9 +64,9 @@ public class InboxActivity extends AppCompatActivity {
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = item -> {
         switch (item.getItemId()) {
-//            case R.id.folder:
-//                loadFragment(ChatsFragment.newInstance());
-//                return true;
+            case R.id.folder:
+                loadFragment(ChatsFragment.newInstance());
+                return true;
             case R.id.new_message:
                 loadFragment(NewMessageFragment.newInstance());
                 return true;

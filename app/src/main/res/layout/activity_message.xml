@@ -28,16 +28,17 @@
         app:srcCompat="@drawable/ic_arrow_back" />
 
     <View
+        android:id="@+id/view5"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
         android:background="#E3E9F5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView16" />
+        app:layout_constraintTop_toBottomOf="@+id/img_profile" />
 
     <ImageView
-        android:id="@+id/imageView16"
+        android:id="@+id/img_profile"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="21dp"
@@ -55,11 +56,11 @@
         android:text="TextView"
         android:textColor="#A3AFC9"
         android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/imageView16"
+        app:layout_constraintStart_toEndOf="@+id/img_profile"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="14dp"
         android:text="TextView"
@@ -67,4 +68,40 @@
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/chat_type"
         app:layout_constraintTop_toBottomOf="@+id/chat_type" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@id/bottom"
+        app:layout_constraintBottom_toTopOf="@+id/bottom"
+        app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+    <RelativeLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#fff"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/text_send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:hint="message" />
+
+        <ImageButton
+            android:id="@+id/btn_send"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/common_google_signin_btn_icon_light" />
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

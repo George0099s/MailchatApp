@@ -33,7 +33,7 @@ public class Start extends AppCompatActivity{
     String login, userID;
     private Button log;
     private Button signUpBtn;
-    ArrayList<String> usersNames = new ArrayList<>();
+    ArrayList<String> mailchatIDList = new ArrayList<>();
     private final String TAG = getClass().toString();
     DatabaseReference reference;
 
@@ -87,22 +87,22 @@ public class Start extends AppCompatActivity{
             reference = database.getReference("Users"); // reference is 'chat' because we created the database at /chat
 
             reference.addValueEventListener(new ValueEventListener() {
-                String name;
+                String mailchatID;
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
-                        name = (String) messageSnapshot.child("first name").getValue();
-                        usersNames.add(name);
+                        mailchatID = (String) messageSnapshot.child("mailchatID").getValue();
+                        mailchatIDList.add(mailchatID);
                 }
-                    for (int i = 0; i < usersNames.size(); i++) {
-                        Log.d(TAG, "onDataChange: " +usersNames.get(i));
+                    for (int i = 0; i < mailchatIDList.size(); i++) {
+                        Log.d(TAG, "onDataChange: " + mailchatIDList.get(i));
                         Log.d(TAG, "onDataChange: " +login);
-                        if (login.equals(usersNames.get(i))){
+                        if (login.equals(mailchatIDList.get(i))){
                             Intent intent = new Intent(Start.this, LogIn.class);
                             startActivity(intent);
 
                         }
-                        if (login != usersNames.get(i)){
+                        if (login != mailchatIDList.get(i)){
                            Toast.makeText(getApplicationContext(),"Incorrect Muser name", Toast.LENGTH_SHORT);
                         }
                     }

@@ -15,20 +15,19 @@ import com.example.mailchat.Models.User;
 import com.example.mailchat.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ChatsViewHolder> {
 
-    private ArrayList<String> mChatNameList;
-    private ArrayList<String> mSybjectMsgList;
-    private ArrayList<String> mTextMsgList;
-    private ArrayList<String> mRecievedTimeList;
+//    private ArrayList<String> mChatNameList;
+//    private ArrayList<String> mSybjectMsgList;
+//    private ArrayList<String> mTextMsgList;
+//    private ArrayList<String> mRecievedTimeList;
+    private List<User> mUsers;
     private Context mContext;
-    User user = new User();
-    public ChatsAdapter(ArrayList<String> mChatNameList, ArrayList<String> mSybjectMsgList, ArrayList<String> mTextMsgList, ArrayList<String> mRecievedTimeList, Context context) {
-        this.mChatNameList = mChatNameList;
-        this.mSybjectMsgList = mSybjectMsgList;
-        this.mTextMsgList = mTextMsgList;
-        this.mRecievedTimeList = mRecievedTimeList;
+
+    public ChatsAdapter( List<User> mUsers , Context context) {
+        this.mUsers = mUsers;
         this.mContext = context;
     }
 
@@ -42,10 +41,9 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ChatsViewHol
 
     @Override
     public void onBindViewHolder(@NonNull ChatsViewHolder holder, int position) {
-        holder.mUserName.setText(mChatNameList.get(position));
-        holder.mMsgSubject.setText(mSybjectMsgList.get(position));
-        holder.mTextMsg.setText(mTextMsgList.get(position));
-        holder.mTimeMsgRecieved.setText(mRecievedTimeList.get(position));
+        final User user = mUsers.get(position);
+
+        holder.mUserName.setText(user.getName() + " " + user.getLastName());
         holder.itemView.setOnClickListener(v-> {
             Intent intent = new Intent(mContext, MessageActivity.class);
             intent.putExtra("userId", user.getUserId());
@@ -55,14 +53,11 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ChatsViewHol
 
     @Override
     public int getItemCount() {
-        return mChatNameList.size();
+        return mUsers.size();
     }
 
-
     public class ChatsViewHolder extends RecyclerView.ViewHolder {
-
         TextView mUserName, mMsgSubject, mTextMsg, mTimeMsgRecieved;
-
 
         public ChatsViewHolder(@NonNull View itemView) {
             super(itemView);
