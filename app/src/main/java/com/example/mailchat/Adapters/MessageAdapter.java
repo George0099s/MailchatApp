@@ -53,6 +53,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Chat chat = mChat.get(position);
         holder.show_message.setText(chat.getMessage());
+        holder.date.setText((CharSequence) chat.getDate());
         if(imageURL.equals("default")){
             holder.img.setImageResource(R.mipmap.ic_launcher_round);
         } else {
@@ -69,11 +70,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
         public ImageView img;
         public TextView show_message;
-
+        public TextView date;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             img =  itemView.findViewById(R.id.profile_img);
             show_message = itemView.findViewById(R.id.show_msg123);
+            date = itemView.findViewById(R.id.date_text_view);
         }
     }
 

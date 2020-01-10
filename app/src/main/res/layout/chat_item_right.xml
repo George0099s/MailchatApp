@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:padding="8dp"
     android:layout_height="wrap_content">
     <RelativeLayout
@@ -18,10 +19,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
+        android:paddingEnd="40dp"
         android:layout_alignParentEnd="true"
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@id/profile_img"
         android:background="@drawable/bg_right"
-        android:text="hello"/>
+        android:text="hello qsd qwd qsed qwd qwd qwd qwd qwdqwd qwdq dfqwef qwef qef qwe fq "/>
+
+        <TextView
+            android:layout_margin="5dp"
+            android:id="@+id/date_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/show_msg123"
+            android:layout_alignParentEnd="true"
+            android:textSize="12sp"
+            android:textColor="@color/black_user_color"
+            tools:text="11:03" />
     </RelativeLayout>
 </RelativeLayout>

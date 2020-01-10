@@ -29,7 +29,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -42,7 +45,8 @@ public class MessageActivity extends AppCompatActivity {
 
     ImageButton mBtnSend;
     EditText mTextSend;
-
+    DateFormat dateFormat;
+    Date date;
     MessageAdapter messageAdapter;
     List<Chat> mChat;
     RecyclerView recyclerView;
@@ -74,6 +78,7 @@ public class MessageActivity extends AppCompatActivity {
             mTextSend.setText("");
         });
 
+
         reference = FirebaseDatabase.getInstance().getReference("Users").child(userId);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -93,17 +98,23 @@ public class MessageActivity extends AppCompatActivity {
 
             }
         });
+
+
+
+         dateFormat = new SimpleDateFormat("HH:mm");
+
+
     }
 
     private void sendMessage(String sender, String receiver, String message){
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-
+        date = new Date();
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("sender", sender);
         hashMap.put("receiver", receiver);
         hashMap.put("message", message);
-
+        hashMap.put("date",dateFormat.format(date));
         reference.child("Chats").push().setValue(hashMap);
 
     }
@@ -116,8 +127,6 @@ public class MessageActivity extends AppCompatActivity {
                 mChat.clear();
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
                     Chat chat = snapshot.getValue(Chat.class);
-                    Log.d(TAG, "onDataChange: reciever " + chat.getReceiver());
-                    Log.d(TAG, "onDataChange: msg " + chat.getMessage());
                     if(chat.getReceiver().equals(myId) && chat.getSender().equals(userId) ||
                             chat.getReceiver().equals(userId) &&  chat.getSender().equals(myId)){
                         mChat.add(chat);

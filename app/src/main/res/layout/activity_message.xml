@@ -29,20 +29,21 @@
         app:srcCompat="@drawable/ic_arrow_back" />
 
 
-
     <View
         android:id="@+id/view5"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"
         android:background="#E3E9F5"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_profile" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
 
     <ImageView
+        android:scaleType="centerCrop"
         android:id="@+id/img_profile"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -76,10 +77,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler123"
-        android:background="#FCFDFF"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="15dp"
+        android:background="#FCFDFF"
         app:layout_constraintBottom_toTopOf="@+id/view6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -171,5 +172,42 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView23"
         app:layout_constraintStart_toEndOf="@+id/imageView23"
         app:layout_constraintTop_toTopOf="@+id/imageView23" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/view5"
+        app:layout_constraintTop_toBottomOf="@+id/user_name"
+        app:srcCompat="@drawable/ic_suggestion" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Subject: "
+        app:layout_constraintBottom_toBottomOf="@+id/imageView10"
+        app:layout_constraintStart_toEndOf="@+id/imageView10"
+        app:layout_constraintTop_toTopOf="@+id/imageView10" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Helli, mr Artem"
+        android:textColor="@color/black_user_color"
+        app:layout_constraintBottom_toBottomOf="@+id/textView11"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="@+id/textView11" />
+
+    <ImageView
+        android:id="@+id/imageView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/textView22"
+        app:layout_constraintEnd_toEndOf="@+id/view5"
+        app:srcCompat="@drawable/ic_filters" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

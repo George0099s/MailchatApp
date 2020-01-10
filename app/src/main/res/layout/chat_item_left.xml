@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:padding="8dp"
     android:layout_height="wrap_content">
     <ImageView
+        android:scaleType="centerCrop"
         android:id="@+id/profile_img"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -13,8 +15,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
+        android:paddingEnd="40dp"
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@id/profile_img"
         android:background="@drawable/bg_left"
-        android:text="hello"/>
+        android:text="hello mrtasmn amlsnfasdnfklsdnf mlsdnfmlsdnfln sdfnsdl nfls dnfkl nsdfkl sdnl"/>
+
+    <TextView
+        android:padding="5dp"
+        android:textSize="12sp"
+        android:id="@+id/date_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/show_msg123"
+        android:layout_alignBottom="@+id/show_msg123"
+        android:textColor="@color/black_user_color"
+        tools:text="11:03" />
 </RelativeLayout>
