@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -28,7 +29,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ProfileActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-
+    private static final String TAG = "ProfileActivity";
     Spinner monthSpinner, daySpinner, yearSpinner, citySpinner;
     Button next, male, female;
     String date, city, gender;
@@ -75,9 +76,7 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
                next.getBackground().setAlpha(255);
 
                addData();
-               Intent intent1 = new Intent(ProfileActivity.this, AddPrivateUserPhoto.class);
-               intent1.putExtra("user", user);
-               startActivity(intent1);
+
            }
            if (s == false)
            {
@@ -124,12 +123,15 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+
         String t  = adapterView.getItemAtPosition(position).toString();
         String y = yearSpinner.getItemAtPosition(yearSpinner.getSelectedItemPosition()).toString();
         String d = daySpinner.getItemAtPosition(daySpinner.getSelectedItemPosition()).toString();
         String m = monthSpinner.getItemAtPosition(monthSpinner.getSelectedItemPosition()).toString();
         city = citySpinner.getItemAtPosition(citySpinner.getSelectedItemPosition()).toString();
         date = d + "." + m + ". " + y;
+        user.setCity(city);
+        Log.d(TAG, "onItemSelected: city" + user.getCity());
     }
 
     @Override
@@ -140,12 +142,14 @@ public class ProfileActivity extends AppCompatActivity implements AdapterView.On
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser fUser = mAuth.getCurrentUser();
         String uid = fUser.getUid();
-        user = getIntent().getParcelableExtra("user");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference("Users");
         user.setDateOfBirth(date);
         user.setCity(city);
         reference.child(uid).setValue(user);
+        Intent intent1 = new Intent(ProfileActivity.this, AddPrivateUserPhoto.class);
+        intent1.putExtra("user", user);
+        startActivity(intent1);
     }
 
     @Override

@@ -2,11 +2,15 @@ package com.example.mailchat;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -30,6 +34,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class MessageActivity extends AppCompatActivity {
+    private static final String TAG = "MessageActivity";
     private ImageView mProfileImg;
     private FirebaseUser fUser;
     private DatabaseReference reference;
@@ -47,7 +52,11 @@ public class MessageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_message);
 
         mUserName = findViewById(R.id.user_name);
-        recyclerView = findViewById(R.id.recycler);
+        recyclerView = findViewById(R.id.recycler123);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutmanager = new LinearLayoutManager(getApplicationContext());
+        linearLayoutmanager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(linearLayoutmanager);
         mTextSend = findViewById(R.id.text_send);
         mBtnSend = findViewById(R.id.btn_send);
         mProfileImg = findViewById(R.id.img_profile);
@@ -107,12 +116,14 @@ public class MessageActivity extends AppCompatActivity {
                 mChat.clear();
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
                     Chat chat = snapshot.getValue(Chat.class);
+                    Log.d(TAG, "onDataChange: reciever " + chat.getReceiver());
+                    Log.d(TAG, "onDataChange: msg " + chat.getMessage());
                     if(chat.getReceiver().equals(myId) && chat.getSender().equals(userId) ||
                             chat.getReceiver().equals(userId) &&  chat.getSender().equals(myId)){
                         mChat.add(chat);
                     }
 
-                    Log.d("!@3", "onDataChange: "+ mChat.size());
+
                     messageAdapter = new MessageAdapter(MessageActivity.this, mChat, imageURL);
                     recyclerView.setAdapter(messageAdapter);
                 }
@@ -125,4 +136,7 @@ public class MessageActivity extends AppCompatActivity {
         });
 
     }
+
+
+
 }

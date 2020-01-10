@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.mailchat.MessageActivity;
 import com.example.mailchat.Models.User;
 import com.example.mailchat.R;
@@ -44,6 +46,11 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ChatsViewHol
         final User user = mUsers.get(position);
 
         holder.mUserName.setText(user.getName() + " " + user.getLastName());
+        if(user.getImageURL().equals("default")){
+            holder.img.setImageResource(R.mipmap.ic_launcher_round);
+        } else {
+            Glide.with(mContext).load(user.getImageURL()).into(holder.img);
+        }
         holder.itemView.setOnClickListener(v-> {
             Intent intent = new Intent(mContext, MessageActivity.class);
             intent.putExtra("userId", user.getUserId());
@@ -58,9 +65,10 @@ public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ChatsViewHol
 
     public class ChatsViewHolder extends RecyclerView.ViewHolder {
         TextView mUserName, mMsgSubject, mTextMsg, mTimeMsgRecieved;
-
+        public ImageView img;
         public ChatsViewHolder(@NonNull View itemView) {
             super(itemView);
+            img = itemView.findViewById(R.id.imageView);
             mUserName = itemView.findViewById(R.id.user_name);
             mMsgSubject = itemView.findViewById(R.id.msg_subject);
             mTextMsg = itemView.findViewById(R.id.msg_text);

@@ -3,6 +3,7 @@ package com.example.mailchat.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -45,6 +46,8 @@ public class ChoosePrivateMailchatID extends AppCompatActivity {
         userNameTV = findViewById(R.id.nameUser);
         mAuth = FirebaseAuth.getInstance();
         user = getIntent().getParcelableExtra("user");
+
+        Log.d(TAG, "onDataChange: city" + user.getCity());
         String name = user.getName();
         String lastName = user.getLastName();
         userNameTV.setText(lastName + " " + name);
@@ -102,7 +105,7 @@ public class ChoosePrivateMailchatID extends AppCompatActivity {
                         FirebaseDatabase db = FirebaseDatabase.getInstance();
                         DatabaseReference ref = db.getReference("Users");
                         ref.child(userId).setValue(user);
-                        ref.push();
+
                             startActivity(new Intent(ChoosePrivateMailchatID.this, InboxActivity.class));
 
                     }

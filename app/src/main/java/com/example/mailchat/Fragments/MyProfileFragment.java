@@ -31,6 +31,7 @@ public class MyProfileFragment extends Fragment {
     private static final String TAG = "MyProfileFragment";
 
     private ImageView signOut;
+    private ImageView profileImg;
     private DatabaseReference mReference;
     private FirebaseUser mUser;
     private StorageReference mStorageReference;
@@ -60,7 +61,7 @@ public class MyProfileFragment extends Fragment {
         signOut = view.findViewById(R.id.sign_out_IV);
         signOut.setOnClickListener(v -> signOut());
         userName = view.findViewById(R.id.user_nameTV);
-
+        profileImg = view.findViewById(R.id.profile_img);
         mStorageReference = FirebaseStorage.getInstance().getReference("uploads");
         mUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -72,11 +73,11 @@ public class MyProfileFragment extends Fragment {
 
                 userName.setText(user.getLastName() + " " + user.getName());
 
-//                if (user.getImageURL().equals("default")) {
-//                    profileImg.setImageResource(R.mipmap.ic_launcher_round);
-//                } else {
-//                    Glide.with(getContext()).load(user.getImageURL()).into(profileImg);
-//                }
+                if (user.getImageURL().equals("default")) {
+                    profileImg.setImageResource(R.mipmap.ic_launcher_round);
+                } else {
+                    Glide.with(getContext()).load(user.getImageURL()).into(profileImg);
+                }
             }
 
             @Override
@@ -93,5 +94,7 @@ public class MyProfileFragment extends Fragment {
     private void signOut(){
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(getActivity(), Start.class));
+
     }
+
 }

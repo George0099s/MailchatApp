@@ -59,6 +59,9 @@ public class ChatsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_chats, container, false);
 
+
+
+
         readUsers();
         mRecyclerView = view.findViewById(R.id.chats_recycler_view1);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -92,4 +95,5 @@ public class ChatsFragment extends Fragment {
             }
         });
     }
+
 }

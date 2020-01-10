@@ -187,6 +187,7 @@ public class SecurityActivity extends AppCompatActivity {
                                 user1 = getIntent().getParcelableExtra("user");
                                 user1.setPhone(phoneNum);
                                 user1.setUserId(user.getUid());
+                                user1.setImageURL("default");
                                 reference.child(uid).setValue(user1);
                                 Intent intent = new Intent(SecurityActivity.this, ProfileActivity.class);
                                 intent.putExtra("user", user1);

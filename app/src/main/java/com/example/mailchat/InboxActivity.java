@@ -82,4 +82,5 @@ public class InboxActivity extends AppCompatActivity {
         ft.replace(R.id.container, fragment);
         ft.commit();
     }
+
 }

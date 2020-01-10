@@ -53,7 +53,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Chat chat = mChat.get(position);
         holder.show_message.setText(chat.getMessage());
-
         if(imageURL.equals("default")){
             holder.img.setImageResource(R.mipmap.ic_launcher_round);
         } else {
@@ -74,14 +73,13 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             img =  itemView.findViewById(R.id.profile_img);
-            show_message = itemView.findViewById(R.id.show_msg);
+            show_message = itemView.findViewById(R.id.show_msg123);
         }
     }
 
     @Override
     public int getItemViewType(int position) {
         mUser = FirebaseAuth.getInstance().getCurrentUser();
-
         if(mChat.get(position).getSender().equals(mUser.getUid())){
             return MSG_TYPE_RIGHT;
         } else {
